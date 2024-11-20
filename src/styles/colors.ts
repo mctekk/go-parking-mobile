@@ -1,0 +1,13 @@
+export const PRIMARY = '#111827';
+export const PRIMARY_CLEAR = 'rgba(17, 24, 39, 0.2)';
+export const BLACK = '#000000';
+export const SOFT_BLACK = '#374151';
+export const BLACK_TRANSPARENT = 'rgba(0, 0, 0, 0.99)';
+export const WHITE = '#FFFFFF';
+export const BORDER_COLOR = '#D1D5DB';
+export const SOFT_BLUE = '#1b75bb';
+export const ERROR_RED = 'red';
+export const BUTTON_GAP_COLOR = '#1D1D1D1A';
+export const FACEBOOK = '#4267B2';
+export const TRANSPARENT = 'rgba(52, 52, 52, 0)';
+export const PLACEHOLDER_TEXT = '#5E5E5E';
