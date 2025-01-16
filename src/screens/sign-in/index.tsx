@@ -2,7 +2,7 @@
 /* eslint-disable react-native/no-inline-styles */
 // Modules
 import React, { useContext, useEffect, useState } from 'react';
-import { Alert, Platform } from 'react-native';
+import { Alert, Image, Platform } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -23,7 +23,8 @@ import { AuthContainer } from 'components/organisms/auth-container';
 
 // Styles
 import { Colors, Typography } from 'styles';
-import { 
+import {
+  Container,
   Title,
   Content,
   Button,
@@ -31,7 +32,12 @@ import {
   SignUpButton,
   SignUpText,
   SocialContainer,
- } from './styles';
+  LogoImage,
+  SubTitle,
+  InputsContainer,
+  Wrapper,
+  SocialTitle,
+} from './styles';
 
 // Services
 import authService from 'core/services/auth-service';
@@ -42,6 +48,9 @@ import { AUTH_TOKEN } from 'utils/constants';
 
 // Context
 import { AuthContext } from 'components/context/auth-context';
+import styled from 'styled-components/native';
+
+
 
 // Interfaces
 interface ISignInProps {
@@ -122,21 +131,32 @@ export const SignIn = (props: ISignInProps) => {
   };
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={(values, actions) => handleSignIn(values, actions)}>
-        {props => (
-          <AuthContainer>
-            <Title>{translate('welcome', TextTransform.CAPITALIZE)}</Title>
-            <Content>
+    <Container>
+
+      <Image
+        source={require('assets/images/go_parking_logo.png')}
+        style={{
+          width: 180,
+          height: 180,
+          alignSelf: 'center',
+          marginTop: 50,
+        }}
+      />
+
+      <Content>
+        <Wrapper>
+          <Title>{translate('login', TextTransform.CAPITALIZE)}</Title>
+          <SubTitle>{translate('loginMsg', TextTransform.CAPITALIZE)}</SubTitle>
+        </Wrapper>
+
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={(values, actions) => handleSignIn(values, actions)}>
+          {props => (
+            <InputsContainer>
               <TextInput
-                labelText={translate('email', TextTransform.CAPITALIZE)}
-                placeholderText={translate(
-                  'placeholderMail',
-                  TextTransform.CAPITALIZE,
-                )}
+                placeholderText={translate('placeholderMail', TextTransform.CAPITALIZE)}
                 onChangeText={props.handleChange('email')}
                 error={props.errors.email}
                 inputProps={{
@@ -147,11 +167,7 @@ export const SignIn = (props: ISignInProps) => {
               />
 
               <TextInput
-                labelText={translate('password', TextTransform.CAPITALIZE)}
-                placeholderText={translate(
-                  'placeholderPassword',
-                  TextTransform.CAPITALIZE,
-                )}
+                placeholderText={translate('password', TextTransform.CAPITALIZE)}
                 style={{ marginTop: 20 }}
                 onChangeText={props.handleChange('password')}
                 secureTextEntry={true}
@@ -161,39 +177,55 @@ export const SignIn = (props: ISignInProps) => {
                   value: props.values.password,
                 }}
               />
-            </Content>
 
-            <Button
-              title={translate('signIn', TextTransform.CAPITALIZE)}
-              onPress={props.handleSubmit}
-              disabled={isLoading}
-              style={{ marginTop: 20 }}
-            />
+              <ForgotPasswordButton
+                title={translate('recoverPassword', TextTransform.CAPITALIZE)}
+                onPress={() => navigation.navigate('ForgotPassword')}
+                textStyle={{
+                  color: 'rgba(0, 0, 0, 1)',
+                  fontSize: Typography.FONT_SIZE_14,
+                  alignSelf: 'flex-start',
+                }}
+              />
 
-            <SocialContainer>
-              {Platform.OS === 'ios' && (
-                <SignWithApple isSmall onLogin={onSocialLogin} />
-              )}
-              <SignWithFacebook isSmall onLogin={onSocialLogin} />
-              <SignWithGoogle isSmall onLogin={onSocialLogin} />
-            </SocialContainer>
+              <Button
+                title={translate('login', TextTransform.CAPITALIZE)}
+                onPress={props.handleSubmit}
+                disabled={isLoading}
+                style={{ marginTop: 10 }}
+                textStyle={{
+                  color: 'rgba(0, 0, 0, 1)',
+                  fontSize: Typography.FONT_SIZE_14,
+                  fontWeight: '700',
+                }}
+              />
 
-            <ForgotPasswordButton
-              title={translate('forgotPassword', TextTransform.CAPITALIZE)}
-              onPress={() => navigation.navigate('ForgotPassword')}
-              style={{ marginTop: 10 }}
-              textStyle={{
-                color: Colors.PRIMARY,
-                fontSize: Typography.FONT_SIZE_13,
-              }}
-            />
-          </AuthContainer>
-        )}
-      </Formik>
+              <SocialTitle>
+                {translate('orContinueWith', TextTransform.CAPITALIZE)}
+              </SocialTitle>
+
+              <SocialContainer>
+                {Platform.OS === 'ios' && (
+                  <SignWithApple isSmall onLogin={onSocialLogin} />
+                )}
+                <SignWithFacebook isSmall onLogin={onSocialLogin} />
+                <SignWithGoogle isSmall onLogin={onSocialLogin} />
+              </SocialContainer>
+
+
+            </InputsContainer>
+          )}
+        </Formik>
+      </Content>
 
       <SignUpButton onPress={() => navigation.navigate('SignUp')}>
         <SignUpText>
-          {translate('signUpNow', TextTransform.CAPITALIZE)}
+          {translate('notAMember', TextTransform.CAPITALIZE)} {' '}
+          <SignUpText
+            style={{ color: 'rgba(199, 165, 2, 1)', fontWeight: 'bold' }}
+          >
+            {translate('registerNow', TextTransform.CAPITALIZE)}
+          </SignUpText>
         </SignUpText>
       </SignUpButton>
 
@@ -201,6 +233,7 @@ export const SignIn = (props: ISignInProps) => {
         visible={isLoading}
         title={translate('signingIn', TextTransform.CAPITALIZE)}
       />
-    </>
+    </Container>
+
   );
 };

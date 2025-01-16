@@ -13,13 +13,14 @@ import IconButton from 'components/atoms/icon-button';
 
 const Container = styled.View`
   border-width: 1px;
-  height: 42px;
+  height: 50px;
   border-width: 1px;
   border-color: ${props => props.isFocused ? DEFAULT_THEME.inputFocus : DEFAULT_THEME.boderColor};
-  border-radius: 4px;
+  border-radius: 10px;
   padding-horizontal: 10px;
-  background-color: ${DEFAULT_THEME.inputBg};
+  background-color: rgba(244, 244, 244, 1);
   justify-content: center;
+  align-items: center;
   flex-direction: row;
   ${is('error')`
     border-color: ${DEFAULT_THEME.error};
