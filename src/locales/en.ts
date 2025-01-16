@@ -7,6 +7,7 @@ export default {
   welcome: 'Welcome',
   placeholderMail: 'Email address',
   password: 'Password',
+  passwordConfirmation: 'Password confirmation',
   placeholderPassword: 'Enter your password',
   signIn: 'Sign In',
   signUp: 'Sign Up',
@@ -48,4 +49,6 @@ export default {
   notAMember: 'Not a member?',
   registerNow: 'Register Now',
   orContinueWith: 'Or continue with',
+  createYourAccount: 'Create your Account',
+  alreadyHaveAnAccount: 'Already have an account?',
 };

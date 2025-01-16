@@ -201,15 +201,39 @@ export const SignIn = (props: ISignInProps) => {
               />
 
               <SocialTitle>
-                {translate('orContinueWith', TextTransform.CAPITALIZE)}
+                {translate('orContinueWith', TextTransform.NONE)}
               </SocialTitle>
 
               <SocialContainer>
+
+                <SignWithGoogle
+                  isSmall
+                  onLogin={onSocialLogin}
+                  style={{
+                    borderWidth: 1,
+                    borderColor: 'rgba(0, 0, 0, 0.08)',
+                  }}
+                />
+
+                <SignWithFacebook
+                  isSmall
+                  onLogin={onSocialLogin}
+                  style={{
+                    borderWidth: 1.5,
+                    borderColor: 'rgba(8, 102, 255, 1)',
+                  }}
+                />
+
                 {Platform.OS === 'ios' && (
-                  <SignWithApple isSmall onLogin={onSocialLogin} />
+                  <SignWithApple
+                    isSmall
+                    onLogin={onSocialLogin}
+                    style={{
+                      borderWidth: 1.5,
+                      borderColor: 'rgba(0, 0, 0, 1)'
+                    }}
+                  />
                 )}
-                <SignWithFacebook isSmall onLogin={onSocialLogin} />
-                <SignWithGoogle isSmall onLogin={onSocialLogin} />
               </SocialContainer>
 
 
