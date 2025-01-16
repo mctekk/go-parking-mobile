@@ -49,6 +49,8 @@ import { AUTH_TOKEN } from 'utils/constants';
 // Context
 import { AuthContext } from 'components/context/auth-context';
 import styled from 'styled-components/native';
+import UserIcon from 'assets/icons/user-icon';
+import LockIcon from 'assets/icons/lock-icon';
 
 
 
@@ -164,6 +166,7 @@ export const SignIn = (props: ISignInProps) => {
                   autoCapitalize: 'none',
                   value: props.values.email,
                 }}
+                customLeftIcon={() => <UserIcon /> }
               />
 
               <TextInput
@@ -176,6 +179,7 @@ export const SignIn = (props: ISignInProps) => {
                   autoCapitalize: 'none',
                   value: props.values.password,
                 }}
+                customLeftIcon={() => <LockIcon /> }
               />
 
               <ForgotPasswordButton
@@ -230,7 +234,7 @@ export const SignIn = (props: ISignInProps) => {
                     onLogin={onSocialLogin}
                     style={{
                       borderWidth: 1.5,
-                      borderColor: 'rgba(0, 0, 0, 1)'
+                      borderColor: 'rgba(0, 0, 0, 1)',
                     }}
                   />
                 )}

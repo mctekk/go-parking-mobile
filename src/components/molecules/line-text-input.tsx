@@ -86,6 +86,11 @@ interface IProps {
   isFocused?: boolean;
   error?: boolean | string;
   customRef?: any;
+  leftIconType?: string;
+  leftIconSize?: number;
+  leftIconColor?: string;
+  leftIconName?: string;
+  customLeftIcon?: () => JSX.Element;
 }
 
 const LineTextInput = ({
@@ -107,6 +112,11 @@ const LineTextInput = ({
   error,
   customRef,
   containerStyle,
+  leftIconName = '',
+  leftIconType = 'Ionicons',
+  leftIconSize = 24,
+  leftIconColor = DEFAULT_THEME.placeHolderText,
+  customLeftIcon,
   ...props
 }: IProps) => {
 
@@ -144,7 +154,31 @@ const LineTextInput = ({
     );
   }
   return (
-    <Container error={error} isFocused={isFocused} style={containerStyle}>
+    <Container
+      error={error}
+      isFocused={isFocused}
+      style={containerStyle}
+    >
+
+      <IconContainer
+        style={{ marginRight: 2 }}
+      >
+        {customLeftIcon ? (
+          <>
+            {customLeftIcon()}
+          </>
+        ) : (
+          <IconButton
+            iconType={leftIconType}
+            name={leftIconName}
+            size={leftIconSize}
+            color={leftIconColor}
+            backgroundColor={backgroundColor}
+            onPress={() => togglePasswordVisibility(!showPassword)}
+          />
+        )}
+      </IconContainer>
+
       <TextInput
         ref={customRef}
         fontSize={fontSize}

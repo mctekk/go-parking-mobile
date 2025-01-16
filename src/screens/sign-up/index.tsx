@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
@@ -45,6 +46,8 @@ import SignWithApple from 'components/molecules/sign-with-apple-button';
 import SignWithFacebook from 'components/molecules/sign-with-facebook-button';
 import SignWithGoogle from 'components/molecules/sign-with-google-button';
 import authService from 'core/services/auth-service';
+import UserIcon from 'assets/icons/user-icon';
+import LockIcon from 'assets/icons/lock-icon';
 
 // Interfaces
 interface ISignUpProps {
@@ -172,6 +175,7 @@ export const SignUp = (props: ISignUpProps) => {
                     autoCapitalize: 'none',
                     value: props.values.email,
                   }}
+                  customLeftIcon={() => <UserIcon />}
                 />
 
                 <Input
@@ -183,6 +187,7 @@ export const SignUp = (props: ISignUpProps) => {
                     autoCapitalize: 'none',
                     value: props.values.password,
                   }}
+                  customLeftIcon={() => <LockIcon />}
                 />
 
                 <Input
@@ -194,6 +199,7 @@ export const SignUp = (props: ISignUpProps) => {
                     autoCapitalize: 'none',
                     value: props.values.password_confirmation,
                   }}
+                  customLeftIcon={() => <LockIcon />}
                 />
 
                 <Button
@@ -249,7 +255,7 @@ export const SignUp = (props: ISignUpProps) => {
         </Formik>
       </Content>
 
-      <SignUpButton onPress={() => navigation.navigate('SignUp')}>
+      <SignUpButton onPress={() => navigation.goBack()}>
         <SignUpText>
           {translate('alreadyHaveAnAccount', TextTransform.CAPITALIZE)} {' '}
           <SignUpText
