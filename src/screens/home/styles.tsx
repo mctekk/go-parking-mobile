@@ -8,6 +8,7 @@ import Header from 'components/molecules/header';
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
 import { Colors, Typography } from 'styles';
+import MainHeader from 'components/molecules/main-header';
 
 
 export const Container = styled.View`
@@ -15,10 +16,9 @@ export const Container = styled.View`
   background-color: ${DEFAULT_THEME.background};
 `;
 
-export const ScreenHeader = styled(Header)`
+export const ScreenHeader = styled(MainHeader)`
   justify-content: space-between;
   align-items: center;
-  background-color: ${DEFAULT_THEME.primary};
 `;
 
 export const Content = styled.SafeAreaView`
