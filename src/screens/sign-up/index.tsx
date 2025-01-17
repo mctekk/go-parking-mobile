@@ -48,6 +48,7 @@ import SignWithGoogle from 'components/molecules/sign-with-google-button';
 import authService from 'core/services/auth-service';
 import UserIcon from 'assets/icons/user-icon';
 import LockIcon from 'assets/icons/lock-icon';
+import LoadingModal from 'components/molecules/modals/loading-modal';
 
 // Interfaces
 interface ISignUpProps {
@@ -265,6 +266,11 @@ export const SignUp = (props: ISignUpProps) => {
           </SignUpText>
         </SignUpText>
       </SignUpButton>
+
+      <LoadingModal
+        visible={isLoading}
+        title={translate('signingIn', TextTransform.CAPITALIZE)}
+      />
 
     </Container>
   );

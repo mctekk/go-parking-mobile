@@ -2,6 +2,7 @@
 import React, { useEffect, useReducer, useMemo } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import NetInfo, { useNetInfoInstance } from '@react-native-community/netinfo';
 
 // Scenes
 import HomeStack from './stacks/home-stack';
@@ -21,72 +22,119 @@ import {
   USER_DATA_UPDATE,
   SIGN_UP,
   UPDATE_TOKEN,
+  HAS_INTERNET,
 } from 'utils/constants';
 
 // core
 import { client } from 'core/kanvas_client';
 import kanvasService from 'core/services/kanvas-service';
 import authService from 'core/services/auth-service';
+import NavigationService from './navigation-service';
 
 // Constants
 const Stack = createStackNavigator();
 
-const initialState = {
-  isLoading: true,
-  isSignout: false,
-  userToken: null,
-  refresh_token: null,
-  userData: null,
-};
-
-const reducer = (prevState, action) => {
-  switch (action.type) {
-    case SIGN_IN:
-    case SIGN_UP:
-      return {
-        ...prevState,
-        isSignout: false,
-        userToken: action.token,
-        refresh_token: action.refresh_token,
-        userData: action.user,
-        isLoading: false,
-      };
-    case REFRESH_TOKEN:
-      return {
-        ...prevState,
-        userToken: action.token,
-        refresh_token: action.refresh_token,
-        userData: action.user,
-        isLoading: false,
-      };
-    case USER_DATA_UPDATE:
-      return {
-        ...prevState,
-        userData: action.user,
-        isLoading: false,
-      };
-    case SIGN_OUT:
-      return {
-        ...prevState,
-        isSignout: true,
-        userToken: null,
-        refresh_token: null,
-        userData: null,
-      };
-    case UPDATE_TOKEN:
-      return {
-        ...prevState,
-        userToken: action.token,
-        refresh_token: action.refresh_token,
-      };
-    default:
-      return prevState;
-  }
-};
-
 const MainStack = ({ navigation }) => {
-  const AsyncKeys = [AUTH_TOKEN, USER_DATA, REFRESH_TOKEN];
-  const [state, dispatch] = useReducer(reducer, initialState);
+
+  // Hooks
+  // Hooks
+  const {
+    netInfo,
+    refresh,
+  } = useNetInfoInstance();
+
+  const AsyncKeys = [
+    AUTH_TOKEN,
+    USER_DATA,
+    REFRESH_TOKEN,
+  ];
+
+  const [state, dispatch] = React.useReducer(
+    (prevState, action) => {
+      switch (action.type) {
+        case SIGN_IN:
+          return {
+            ...prevState,
+            isSignout: false,
+            userToken: action.token,
+            refresh_token: action.refresh_token,
+            userData: action.user,
+            isLoading: false,
+          };
+        case SIGN_UP:
+          return {
+            ...prevState,
+            isSignout: false,
+            userToken: action.token,
+            refresh_token: action.refresh_token,
+            userData: action.user,
+            isLoading: false,
+          };
+        case REFRESH_TOKEN:
+          return {
+            ...prevState,
+            userToken: action.token,
+            refresh_token: action.refresh_token,
+            userData: action.user,
+            isLoading: false,
+          };
+        case USER_DATA_UPDATE:
+          return {
+            ...prevState,
+            userData: action.user,
+            isLoading: false,
+          };
+        case SIGN_OUT:
+          return {
+            isLoading: true,
+            isSignout: true,
+            userToken: null,
+            refresh_token: null,
+            userData: null,
+            isConnected: true,
+          };
+        case UPDATE_TOKEN:
+          return {
+            ...prevState,
+            userToken: action.token,
+            refresh_token: action.refresh_token,
+          };
+        case HAS_INTERNET:
+          return {
+            ...prevState,
+            isConnected: action.isConnected,
+          };
+      }
+    },
+    {
+      isLoading: true,
+      isSignout: false,
+      userToken: null,
+      refresh_token: null,
+      userData: null,
+      isConnected: netInfo?.isConnected,
+      iAP_products: [],
+    },
+  );
+
+  const onConnectionChange = async (hasInternet: boolean) => {
+    if (!hasInternet && hasInternet !== null) {
+      console.log('No internet connection', hasInternet);
+      // Toast.show(<OfflineNotification />, Toast.Duration.STATIC, Toast.Position.BOTTOM);
+      dispatch({ type: HAS_INTERNET, isConnected: false });
+      return;
+    }
+  };
+
+  useEffect(() => {
+    if (!netInfo?.isConnected) {
+      onConnectionChange(netInfo?.isConnected);
+    }
+    if (netInfo?.isConnected) {
+      // Toast.hide();
+      dispatch({ type: HAS_INTERNET, isConnected: netInfo?.isConnected });
+    }
+  }, [netInfo?.isConnected]);
 
   const onRefreshToken = async () => {
     try {
@@ -121,22 +169,32 @@ const MainStack = ({ navigation }) => {
 
   useEffect(() => {
     const bootstrapAsync = async () => {
+      let userToken;
+      let userData;
       try {
         const token = await AsyncStorage.getItem(AUTH_TOKEN);
-        if (token) {
+        userToken = token;
+        if (userToken) {
           onRefreshToken();
           onUserUpdate();
         }
 
         const user = await AsyncStorage.getItem(USER_DATA);
-        const userInfo = JSON.parse(user || '{}');
-        dispatch({ type: REFRESH_TOKEN, token, user: userInfo });
+        const userInfo = JSON.parse(user || ''); // Provide a default value of an empty string
+        userData = userInfo;
       } catch (e) {
         await AsyncStorage.multiRemove(AsyncKeys);
-        dispatch({ type: SIGN_OUT });
+        dispatch({ type: SIGN_OUT }); // Restoring token failed
       }
+      dispatch({
+        type: REFRESH_TOKEN,
+        token: userToken,
+        user: userData,
+        isConnected: netInfo?.isConnected,
+      });
     };
     bootstrapAsync();
+    NavigationService.setTopLevelNavigator(navigation);
   }, []);
 
   const onUserLogout = async () => {
@@ -150,35 +208,43 @@ const MainStack = ({ navigation }) => {
     }
   };
 
-  const authContext = useMemo(
+  const authContext = React.useMemo(
     () => ({
       signIn: async data => {
-        console.log('data', data);
-        await AsyncStorage.multiSet([
-          [AUTH_TOKEN, data.token],
-          [USER_DATA, JSON.stringify(data.user)],
-          [REFRESH_TOKEN, data.refresh_token],
-        ]);
-        dispatch({ type: SIGN_IN, token: data.token, user: data.user, refresh_token: data.refresh_token });
+        AsyncStorage.setItem(AUTH_TOKEN, data.token);
+        AsyncStorage.setItem(USER_DATA, JSON.stringify(data.user));
+        AsyncStorage.setItem(REFRESH_TOKEN, data.refresh_token);
+        dispatch({
+          type: SIGN_IN,
+          token: data.token,
+          user: data.user,
+          refresh_token: data.refresh_token,
+        });
       },
       signUp: async data => {
-        await AsyncStorage.multiSet([
-          [AUTH_TOKEN, data.token],
-          [USER_DATA, JSON.stringify(data.user)],
-          [REFRESH_TOKEN, data.refresh_token],
-        ]);
-        dispatch({ type: SIGN_UP, token: data.token, user: data.user, refresh_token: data.refresh_token });
+        AsyncStorage.setItem(AUTH_TOKEN, data.token);
+        AsyncStorage.setItem(USER_DATA, JSON.stringify(data.user));
+        AsyncStorage.setItem(REFRESH_TOKEN, data.refresh_token);
+        dispatch({
+          type: SIGN_UP,
+          token: data.token,
+          user: data.user,
+          refresh_token: data.refresh_token,
+        });
       },
       signOut: async () => {
         onUserLogout();
         dispatch({ type: SIGN_OUT });
       },
-      updateUserData: async data => {
-        await AsyncStorage.setItem(USER_DATA, JSON.stringify(data.user || data));
-        dispatch({ type: USER_DATA_UPDATE, user: data.user || data });
+      updateUserData: async (data: IUser) => {
+        AsyncStorage.setItem(USER_DATA, JSON.stringify(data));
+        dispatch({
+          type: USER_DATA_UPDATE,
+          user: data
+        });
       },
     }),
-    []
+    [],
   );
 
   return (
@@ -190,11 +256,19 @@ const MainStack = ({ navigation }) => {
           isLoading: state.isLoading,
           isUserLogged: !!state.userData?.id,
         }}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator
+          screenOptions={{ headerShown: false }}
+        >
           {state.userToken == null ? (
-            <Stack.Screen name="LoginStack" component={LoginStack} />
+            <Stack.Screen
+              name="LoginStack"
+              component={LoginStack}
+            />
           ) : (
-            <Stack.Screen name="HomeStack" component={HomeStack} />
+            <Stack.Screen
+              name="HomeStack"
+              component={HomeStack}
+            />
           )}
         </Stack.Navigator>
       </UserContextProvider>
