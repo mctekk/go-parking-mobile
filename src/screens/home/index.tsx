@@ -21,6 +21,8 @@ import {
   IconContainer,
   ScreenHeader,
 } from './styles';
+
+// Organisms
 import ViewContainer from 'components/organisms/view-container';
 
 // Interfaces

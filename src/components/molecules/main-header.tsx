@@ -62,7 +62,6 @@ const SubTitle = styled(Text)`
   color: ${Colors.BLACK};
   font-size: ${Typography.FONT_SIZE_10}px;
   line-height: ${Typography.FONT_SIZE_12}px;
-  width: 200px;
   padding-top: 5px;
 `;
 
