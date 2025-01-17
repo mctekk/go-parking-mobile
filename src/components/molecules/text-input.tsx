@@ -88,6 +88,7 @@ const TextInput = (props: IProps) => {
     error = false | '',
     isFocused,
     customRef,
+    customLeftIcon,
   } = props;
 
   return (
@@ -124,6 +125,7 @@ const TextInput = (props: IProps) => {
         secureTextEntry={secureTextEntry}
         error={error}
         containerStyle={containerStyle}
+        customLeftIcon={customLeftIcon}
         {...inputProps}
       />
 

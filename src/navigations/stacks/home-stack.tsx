@@ -1,39 +1,79 @@
+/* eslint-disable react/no-unstable-nested-components */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
+
 // Modules
-import React, { useEffect } from 'react';
+import React, { memo, useContext, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // Screens
-import { navigationScreen } from 'navigations/navigation-screen';
 import { Home } from 'screens/home';
 import { Settings } from 'screens/settings';
-import { DrawerContent } from 'components/molecules/drawer-content';
+
+// Styles
 import { Colors } from 'styles';
+import { DEFAULT_THEME, theme } from 'styles/theme';
+
+// Molecules
+import TabIcon from 'components/molecules/tab-icon';
+
+// Context
+import { UserContext } from 'components/context/user-context';
+
+// Navigations
+import { navigationScreen } from 'navigations/navigation-screen';
+import ReceiptScreen from 'screens/parking-history';
+import UserProfile from 'screens/user-profile';
+import SavePlacesScreen from 'screens/save-places/indext';
+import ParkingScreen from 'screens/parking';
+
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
-const DrawerNavigator = ({ navigation }) => {
+const TabNavigatior = ({ navigation }) => {
+
+  const { userToken } = useContext(UserContext);
+
   return (
-    <Drawer.Navigator
+    <Tab.Navigator
       initialRouteName='Home'
-      drawerContent={(props) => <DrawerContent {...props} />}
-      screenOptions={{ 
+      screenOptions={({ route }) => ({
+        tabBarShowLabel: false,
         headerShown: false,
-        drawerActiveBackgroundColor: Colors.PRIMARY_CLEAR,
-        drawerLabelStyle: { color: Colors.PRIMARY },
-       }}
+        tabBarIcon: ({ focused }) => <TabIcon name={route.name.toLowerCase()} focused={focused} />,
+        tabBarStyle: {
+          backgroundColor: 'rgba(66, 66, 66, 1)',
+          borderTopColor: 'rgba(24, 24, 24, 0.16)',
+          shadowRadius: 0,
+          shadowOffset: {
+            height: 0,
+          },
+        },
+      })}
     >
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Settings" component={Settings} />
-    </Drawer.Navigator>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="ParkingScreen" component={ParkingScreen} />
+      <Tab.Screen name="ParkingHistory" component={ReceiptScreen} />
+      <Tab.Screen name="SavePlacesScreen" component={SavePlacesScreen} />
+      <Tab.Screen name="UserProfile" component={UserProfile} />
+
+    </Tab.Navigator>
   );
 };
 
-const HomeStack = ({ navigation }) => {
+
+const HomeStack = ({ navigation, route }) => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+    >
+
+      <Stack.Screen
+        name="TabNavigatior"
+        component={TabNavigatior}
+      />
 
       {navigationScreen.map((navScreen, index) => {
         return (
@@ -48,6 +88,7 @@ const HomeStack = ({ navigation }) => {
           />
         );
       })}
+
     </Stack.Navigator>
   );
 };
