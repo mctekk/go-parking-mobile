@@ -13,7 +13,7 @@ interface ColorTheme {
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.PRIMARY,
-  background: Colors.WHITE,
+  background: Colors.SECONDARY,
   text: Colors.SOFT_BLACK,
   boderColor: Colors.BORDER_COLOR,
   error: Colors.ERROR_RED,
