@@ -51,4 +51,10 @@ export default {
   orContinueWith: 'Or continue with',
   createYourAccount: 'Create your Account',
   alreadyHaveAnAccount: 'Already have an account?',
+  parkingSesion: 'Parking Session',
+  parkingSesionMsg: 'Manage and enhance your recent parking sessions',
+  history: 'History',
+  historyMsg: 'Your Transactions at a Glance',
+  savedPlaces: 'Saved Places',
+  savedPlacesMsg: 'Discover Your Saved Locations',
 };
