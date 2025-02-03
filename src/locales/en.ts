@@ -57,4 +57,6 @@ export default {
   historyMsg: 'Your Transactions at a Glance',
   savedPlaces: 'Saved Places',
   savedPlacesMsg: 'Discover Your Saved Locations',
+  parkEasySafety: 'Park Easy & Safety',
+  findParkingSpace: 'Find Parking Space',
 };
