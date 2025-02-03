@@ -13,13 +13,14 @@ import IconButton from 'components/atoms/icon-button';
 
 const Container = styled.View`
   border-width: 1px;
-  height: 42px;
+  height: 50px;
   border-width: 1px;
   border-color: ${props => props.isFocused ? DEFAULT_THEME.inputFocus : DEFAULT_THEME.boderColor};
-  border-radius: 4px;
+  border-radius: 10px;
   padding-horizontal: 10px;
-  background-color: ${DEFAULT_THEME.inputBg};
+  background-color: rgba(244, 244, 244, 1);
   justify-content: center;
+  align-items: center;
   flex-direction: row;
   ${is('error')`
     border-color: ${DEFAULT_THEME.error};
@@ -85,6 +86,11 @@ interface IProps {
   isFocused?: boolean;
   error?: boolean | string;
   customRef?: any;
+  leftIconType?: string;
+  leftIconSize?: number;
+  leftIconColor?: string;
+  leftIconName?: string;
+  customLeftIcon?: () => JSX.Element;
 }
 
 const LineTextInput = ({
@@ -106,6 +112,11 @@ const LineTextInput = ({
   error,
   customRef,
   containerStyle,
+  leftIconName = '',
+  leftIconType = 'Ionicons',
+  leftIconSize = 24,
+  leftIconColor = DEFAULT_THEME.placeHolderText,
+  customLeftIcon,
   ...props
 }: IProps) => {
 
@@ -143,7 +154,31 @@ const LineTextInput = ({
     );
   }
   return (
-    <Container error={error} isFocused={isFocused} style={containerStyle}>
+    <Container
+      error={error}
+      isFocused={isFocused}
+      style={containerStyle}
+    >
+
+      <IconContainer
+        style={{ marginRight: 2 }}
+      >
+        {customLeftIcon ? (
+          <>
+            {customLeftIcon()}
+          </>
+        ) : (
+          <IconButton
+            iconType={leftIconType}
+            name={leftIconName}
+            size={leftIconSize}
+            color={leftIconColor}
+            backgroundColor={backgroundColor}
+            onPress={() => togglePasswordVisibility(!showPassword)}
+          />
+        )}
+      </IconContainer>
+
       <TextInput
         ref={customRef}
         fontSize={fontSize}

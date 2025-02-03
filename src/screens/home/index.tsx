@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 // Modules
 import React, { useContext, useEffect } from 'react';
 import { Title } from 'react-native-paper';
