@@ -17,6 +17,7 @@ import BellV2 from 'assets/icons/bell';
 
 export interface IProps {
   title?: string;
+  subtitle?: string;
   customHeader?: any;
   titleProps?: any;
   rightButtonComponent?: any;

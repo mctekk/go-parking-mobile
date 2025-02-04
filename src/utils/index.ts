@@ -14,8 +14,13 @@ export const capitalize = (text: string = '') => {
 export const handleCustomFields = (userData: IUser) => {
   let new_user = { ...userData };
   const customFields = userData?.custom_fields.data;
-  customFields.forEach((item) => {
+  customFields.forEach(item => {
     new_user[item.name] = item.value;
   });
   return new_user;
 };
+
+export const wait = (milliseconds: number): Promise<number> =>
+  new Promise(resolve => {
+    setTimeout(() => resolve(milliseconds), milliseconds);
+  });
