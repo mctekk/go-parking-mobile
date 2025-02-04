@@ -1,4 +1,4 @@
-import { Colors } from "styles";
+import { Colors } from 'styles';
 
 interface ColorTheme {
   primary: string;
@@ -10,6 +10,9 @@ interface ColorTheme {
   placeHolderText: string;
   black: string;
   white: string;
+  cardGray: string;
+  titleGray: string;
+  dashGray: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.PRIMARY,
@@ -21,4 +24,7 @@ export const DEFAULT_THEME: ColorTheme = {
   placeHolderText: Colors.PLACEHOLDER_TEXT,
   black: Colors.BLACK,
   white: Colors.WHITE,
+  cardGray: Colors.CARD_GRAY,
+  titleGray: Colors.TITLE_GRAY,
+  dashGray: Colors.LIGHT_GRAY,
 };
