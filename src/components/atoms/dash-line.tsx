@@ -19,13 +19,18 @@ interface IDashLineProps {
 }
 
 const DashLine = (props: IDashLineProps) => {
-
-  const { style, dashWidth = 10, dashGap = 5, lineHeight = 1, color = DEFAULT_THEME.background } = props;
+  const {
+    style,
+    dashWidth = 5,
+    dashGap = 5,
+    lineHeight = 1,
+    color = DEFAULT_THEME.background,
+  } = props;
 
   // States
   const [containerLength, seContainerLength] = useState(0);
 
-  const LineQty = Math.ceil( containerLength / (dashWidth + dashGap));
+  const LineQty = Math.ceil(containerLength / (dashWidth + dashGap));
 
   const styles = StyleSheet.create({
     dashStyle: {
@@ -40,12 +45,14 @@ const DashLine = (props: IDashLineProps) => {
     <DashLineContainer
       style={style}
       onLayout={event => {
-          const { width } = event.nativeEvent.layout;
-          seContainerLength(width);
-        }}>
-      {Array(LineQty).fill(null).map((_, index) =>
-        <DashLineBox key={index} style={styles.dashStyle} />
-      )}
+        const { width } = event.nativeEvent.layout;
+        seContainerLength(width);
+      }}>
+      {Array(LineQty)
+        .fill(null)
+        .map((_, index) => (
+          <DashLineBox key={index} style={styles.dashStyle} />
+        ))}
     </DashLineContainer>
   );
 };
