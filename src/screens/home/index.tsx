@@ -15,6 +15,11 @@ import {
   Content,
   ScreenHeader,
   Title,
+  ListContainer,
+  SubtitleContainer,
+  SubtitleText,
+  ViewMoreButton,
+  ViewMoreText,
 } from './styles';
 
 // Organisms
@@ -22,6 +27,7 @@ import ViewContainer from 'components/organisms/view-container';
 
 // Molecules
 import SearchCard from 'components/molecules/search-card';
+import ParkingList from 'components/organisms/parking-list';
 
 // Interfaces
 interface IHomeProps {
@@ -51,12 +57,10 @@ export const Home = (props: IHomeProps) => {
     <ViewContainer
       headerViewStyles={{ height: '35%' }}
     >
-
       <ScreenHeader
         title={translate('home', TextTransform.CAPITALIZE)}
         subtitle={'Your Transactions at a Glance'}
       />
-
       <ScrollContainer
         ref={scrollList}
         showsVerticalScrollIndicator={false}
@@ -67,13 +71,22 @@ export const Home = (props: IHomeProps) => {
             onSearch={onSearch}
           />
 
+          <ListContainer>
+            <Title>{translate('nearbyPark', TextTransform.NONE)}</Title>
+            <SubtitleContainer>
+              <SubtitleText>{translate('theBestParkingSpaceNearYou', TextTransform.NONE)}</SubtitleText>
+              <ViewMoreButton>
+                <ViewMoreText>{translate('seeMore', TextTransform.CAPITALIZE)}</ViewMoreText>
+              </ViewMoreButton>
+            </SubtitleContainer>
 
-          <Title>{translate('parkEasySafety', TextTransform.NONE)}</Title>
+            <ParkingList 
+            
+            />
     
-
+          </ListContainer>
         </Content>
       </ScrollContainer>
-
     </ViewContainer>
   );
 };
