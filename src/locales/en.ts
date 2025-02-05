@@ -64,4 +64,7 @@ export default {
   exitBefore: 'Exit before',
   duration: 'Duration',
   subtotal: 'Subtotal',
+  paymentMethod: 'Payment method',
+  total: 'total',
+  share: 'share',
 };
