@@ -11,6 +11,8 @@ import Header from 'components/molecules/header';
 export const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
+  border-radius: 25px;
+  padding-horizontal: 20px;
 `;
 
 export const DetailsContainer = styled.View``;
@@ -25,12 +27,7 @@ export const ScreenHeader = styled(Header)`
   background-color: ${DEFAULT_THEME.transparent};
 `;
 
-export const Content = styled.View`
-  flex: 1px;
-  background-color: ${DEFAULT_THEME.background};
-  border-radius: 25px;
-  padding-horizontal: 20px;
-`;
+export const Content = styled.ScrollView``;
 
 export const Title = styled.Text`
   font-size: ${Typography.FONT_SIZE_24}px;

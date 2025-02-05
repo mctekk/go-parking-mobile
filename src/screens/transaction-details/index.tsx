@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native';
 
 // Styles
 import {
+  Container,
   ScreenHeader,
   Content,
   TopContainer,
@@ -85,72 +86,77 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   return (
     <ViewContainer>
       <SafeAreaView />
-      <Content>
+      <Container>
         <ScreenHeader
           title={translate('transactionDetails', TextTransform.CAPITALIZE)}
           style={{ paddingHorizontal: 0 }}
           titleProps={{ weight: '700' }}
         />
-        <TopContainer>
-          <MapContainer />
-          <TopSectionContainer>
+        <Content>
+          <TopContainer>
+            <MapContainer />
+            <TopSectionContainer>
+              <CustomText
+                size={Typography.FONT_SIZE_14}
+                weight="700"
+                style={{ marginBottom: 8 }}
+                color={DEFAULT_THEME.white}>
+                {order?.name}
+              </CustomText>
+              <CustomText
+                size={Typography.FONT_SIZE_10}
+                weight="500"
+                lineHeight={Typography.FONT_SIZE_14}
+                color={DEFAULT_THEME.white}>
+                {order?.street}
+              </CustomText>
+            </TopSectionContainer>
+          </TopContainer>
+          <DashLine color={DEFAULT_THEME.cardGray} />
+          <DetailsContainer>
+            {rowsData?.map((rowData: any) => {
+              return (
+                <>
+                  <DetailRowContainer>
+                    <CustomText
+                      size={Typography.FONT_SIZE_10}
+                      weight="500"
+                      color={DEFAULT_THEME.dashGray}>
+                      {translate(
+                        rowData?.titleLocale,
+                        TextTransform.CAPITALIZE,
+                      )}
+                    </CustomText>
+                    <CustomText
+                      size={Typography.FONT_SIZE_12}
+                      weight="600"
+                      color={DEFAULT_THEME.titleGray}>
+                      {rowData?.subtitle}
+                    </CustomText>
+                  </DetailRowContainer>
+                  {rowData?.bottomDashLine && (
+                    <DashLine color={DEFAULT_THEME.cardGray} />
+                  )}
+                </>
+              );
+            })}
+          </DetailsContainer>
+          <PaymentMethod style={{ marginTop: 10 }} />
+          <DetailRowContainer style={{ marginVertical: 16 }}>
             <CustomText
               size={Typography.FONT_SIZE_14}
-              weight="700"
-              style={{ marginBottom: 8 }}
-              color={DEFAULT_THEME.white}>
-              {order?.name}
+              weight="500"
+              color={DEFAULT_THEME.dashGray}>
+              {translate('total', TextTransform.CAPITALIZE)}
             </CustomText>
             <CustomText
-              size={Typography.FONT_SIZE_10}
-              weight="500"
-              lineHeight={Typography.FONT_SIZE_14}
-              color={DEFAULT_THEME.white}>
-              {order?.street}
+              size={Typography.FONT_SIZE_16}
+              weight="600"
+              color={DEFAULT_THEME.titleGray}>
+              {`$${order?.price?.amount}`}
             </CustomText>
-          </TopSectionContainer>
-        </TopContainer>
-        <DashLine color={DEFAULT_THEME.cardGray} />
-        <DetailsContainer>
-          {rowsData?.map((rowData: any) => {
-            return (
-              <>
-                <DetailRowContainer>
-                  <CustomText
-                    size={Typography.FONT_SIZE_10}
-                    weight="500"
-                    color={DEFAULT_THEME.dashGray}>
-                    {translate(rowData?.titleLocale, TextTransform.CAPITALIZE)}
-                  </CustomText>
-                  <CustomText
-                    size={Typography.FONT_SIZE_12}
-                    weight="600"
-                    color={DEFAULT_THEME.titleGray}>
-                    {rowData?.subtitle}
-                  </CustomText>
-                </DetailRowContainer>
-                {rowData?.bottomDashLine && (
-                  <DashLine color={DEFAULT_THEME.cardGray} />
-                )}
-              </>
-            );
-          })}
-        </DetailsContainer>
-        <PaymentMethod style={{ marginTop: 10 }} />
-        <DetailRowContainer style={{ marginVertical: 16 }}>
-          <CustomText
-            size={Typography.FONT_SIZE_14}
-            weight="500"
-            color={DEFAULT_THEME.dashGray}>
-            {translate('total', TextTransform.CAPITALIZE)}
-          </CustomText>
-          <CustomText
-            size={Typography.FONT_SIZE_16}
-            weight="600"
-            color={DEFAULT_THEME.titleGray}>
-            {`$${order?.price?.amount}`}
-          </CustomText>
-        </DetailRowContainer>
+          </DetailRowContainer>
+        </Content>
         <BottomButton onPress={() => ShareUtil('', 'https://www.google.com')}>
           <CustomText
             size={Typography.FONT_SIZE_16}
@@ -159,7 +165,7 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
             {translate('share', TextTransform.CAPITALIZE)}
           </CustomText>
         </BottomButton>
-      </Content>
+      </Container>
     </ViewContainer>
   );
 };
