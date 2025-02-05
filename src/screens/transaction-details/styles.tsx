@@ -73,3 +73,14 @@ export const MapContainer = styled.View`
 export const TopSectionContainer = styled.View`
   margin-left: 20px;
 `;
+
+export const BottomButton = styled.TouchableOpacity`
+  width: 100%;
+  padding-vertical: 20px;
+  background-color: ${DEFAULT_THEME.primary};
+  border-radius: 50px;
+  align-items: center;
+  position: absolute;
+  align-self: center;
+  bottom: 50px;
+`;

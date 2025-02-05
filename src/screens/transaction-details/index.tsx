@@ -12,12 +12,16 @@ import {
   TopSectionContainer,
   DetailsContainer,
   DetailRowContainer,
+  BottomButton,
 } from './styles';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Organisms
 import ViewContainer from 'components/organisms/view-container';
+
+// Molecules
+import PaymentMethod from 'components/molecules/payment-method';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
@@ -129,6 +133,29 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
             );
           })}
         </DetailsContainer>
+        <PaymentMethod style={{ marginTop: 10 }} />
+        <DetailRowContainer style={{ marginVertical: 16 }}>
+          <CustomText
+            size={Typography.FONT_SIZE_14}
+            weight="500"
+            color={DEFAULT_THEME.dashGray}>
+            {translate('total', TextTransform.CAPITALIZE)}
+          </CustomText>
+          <CustomText
+            size={Typography.FONT_SIZE_16}
+            weight="600"
+            color={DEFAULT_THEME.titleGray}>
+            {`$${order?.price?.amount}`}
+          </CustomText>
+        </DetailRowContainer>
+        <BottomButton>
+          <CustomText
+            size={Typography.FONT_SIZE_16}
+            weight="600"
+            color={DEFAULT_THEME.black}>
+            {translate('share', TextTransform.CAPITALIZE)}
+          </CustomText>
+        </BottomButton>
       </Content>
     </ViewContainer>
   );
