@@ -7,6 +7,7 @@ import { Colors, Typography } from 'styles';
 
 // Molecules
 import MainHeader from 'components/molecules/main-header';
+import Text from 'components/atoms/text';
 
 
 export const Container = styled.View`
@@ -19,32 +20,76 @@ export const ScreenHeader = styled(MainHeader)`
   align-items: center;
 `;
 
-export const Content = styled.SafeAreaView`
+export const ScrollContainer = styled.ScrollView`
   flex: 1px;
-  margin: 10px;
 `;
 
-export const Title = styled.Text`
-  font-size: ${Typography.FONT_SIZE_24}px;
-  font-weight: bold;
-  color: ${DEFAULT_THEME.text};
-  text-align: center;
+export const Content = styled.View`
+  flex: 1;
+  margin-horizontal: 30px;
+`;
+
+export const ListContainer = styled.View`
+  padding-top: 20px;
+`;
+
+export const Title = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_18}px;
+  line-height: ${Typography.FONT_SIZE_20}px;
+  color: ${DEFAULT_THEME.white};
+  margin-bottom: 10px;
+  font-weight: 700;
+`;
+
+export const SubtitleContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 `;
 
-export const UserInfoContainer = styled.View`
+export const SubtitleText = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_14}px;
+  line-height: ${Typography.FONT_SIZE_16}px;
+  color: ${DEFAULT_THEME.white};
+`;
+
+export const ViewMoreButton = styled.TouchableOpacity`
+  height: 30px;
+`;
+
+export const ViewMoreText = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_14}px;
+  line-height: ${Typography.FONT_SIZE_16}px;
+  color: ${DEFAULT_THEME.primary};
+  font-weight: 700;
+`;
+
+export const FloatingButton = styled.TouchableOpacity`
+  position: absolute;
+  bottom: 20px;
+  background-color: ${DEFAULT_THEME.primary};
+  border-radius: 10px;
   justify-content: center;
-`;
-
-export const InfoText = styled.Text`
-  font-size: ${Typography.FONT_SIZE_16}px;
-  line-height: ${Typography.FONT_SIZE_18}px;
-  color: ${DEFAULT_THEME.text};
-  margin-vertical: 2px;
-`;
-
-export const IconContainer = styled.TouchableOpacity`
   align-items: center;
-  padding-right: 16px;
-  margin-top: 10px;
+  flex-direction: row;
+  align-self: center;
+  padding: 10px 20px;
+  width: 150px;
+  height: 45px;
+`;
+
+export const FloatingButtonText = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_14}px;
+  line-height: ${Typography.FONT_SIZE_16}px;
+  color: ${DEFAULT_THEME.background};
+  margin-right: 10px;
+  font-weight: 700;
+`;
+
+export const IconContainer = styled.View`
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
 `;

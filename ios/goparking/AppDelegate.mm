@@ -4,11 +4,13 @@
 #import <AuthenticationServices/AuthenticationServices.h>
 #import <SafariServices/SafariServices.h>
 #import <FBSDKCoreKit/FBSDKCoreKit-Swift.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [GMSServices provideAPIKey:@"AIzaSyAsB7r3J10r8EAf2SZq8YNOsfrP3oDjikQ"];
   self.moduleName = @"goparking";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.

@@ -10,17 +10,21 @@ import BackArrowV2 from 'assets/icons/back-arrow-v2';
 // Constants
 import { TOUCHABLE_AREA } from 'utils/constants';
 
+interface IBackButtonProps extends TouchableOpacityProps {
+  backIconColor?: string;
+}
+
 const BackButtonContainer = styled(TouchableOpacity)`
   flex-direction: row;
   align-items: center;
   padding-right: 16px;
 `;
 
-const BackButton = (props: TouchableOpacityProps) => {
-  const { onPress } = props;
+const BackButton = (props: IBackButtonProps) => {
+  const { onPress, backIconColor } = props;
   return (
     <BackButtonContainer onPress={onPress} hitSlop={TOUCHABLE_AREA} {...props}>
-      <BackArrowV2 />
+      <BackArrowV2 fill={backIconColor} />
     </BackButtonContainer>
   );
 };
