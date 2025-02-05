@@ -5,7 +5,7 @@ import { Inventory } from 'screens/inventory';
 import { Notifications } from 'screens/notifications';
 import { SignIn } from 'screens/sign-in';
 import { SignUp } from 'screens/sign-up';
-
+import { TransactionDetails } from 'screens/transaction-details';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -53,6 +53,13 @@ export const navigationScreen = [
     options: {
       navigationDefaultOptions,
       presentation: 'modal',
+    },
+  },
+  {
+    name: 'TransactionDetails',
+    screen: TransactionDetails,
+    options: {
+      navigationDefaultOptions,
     },
   },
 ];

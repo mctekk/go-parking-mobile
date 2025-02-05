@@ -57,4 +57,11 @@ export default {
   historyMsg: 'Your Transactions at a Glance',
   savedPlaces: 'Saved Places',
   savedPlacesMsg: 'Discover Your Saved Locations',
+  transactionDetails: 'Transaction Details',
+  bookingDate: 'Booking date',
+  parkingNo: 'No. parking',
+  arriveAfter: 'Arrive after',
+  exitBefore: 'Exit before',
+  duration: 'Duration',
+  subtotal: 'Subtotal',
 };
