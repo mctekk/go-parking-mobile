@@ -28,6 +28,9 @@ import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
 import DashLine from 'components/atoms/dash-line';
 
+// Utils
+import { ShareUtil } from 'utils';
+
 interface ITransactionDetailsScreenProps {
   navigation: any;
   route: any;
@@ -148,7 +151,7 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
             {`$${order?.price?.amount}`}
           </CustomText>
         </DetailRowContainer>
-        <BottomButton>
+        <BottomButton onPress={() => ShareUtil('', 'https://www.google.com')}>
           <CustomText
             size={Typography.FONT_SIZE_16}
             weight="600"
