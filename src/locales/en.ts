@@ -67,4 +67,11 @@ export default {
   paymentMethod: 'Payment method',
   total: 'total',
   share: 'share',
+  parkEasySafety: 'Park Easy & Safety',
+  findParkingSpace: 'Find Parking Space',
+  nearbyPark: 'Nearby Park',
+  theBestParkingSpaceNearYou: 'The Best Parking Space Near You',
+  seeMore: 'See More',
+  available: 'Available',
+  whereAreYouGoing: 'Where are you going?',
 };

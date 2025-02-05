@@ -90,6 +90,7 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
           title={translate('transactionDetails', TextTransform.CAPITALIZE)}
           style={{ paddingHorizontal: 0 }}
           titleProps={{ weight: '700' }}
+          backIconColor={DEFAULT_THEME.primary}
         />
         <TopContainer>
           <MapContainer />

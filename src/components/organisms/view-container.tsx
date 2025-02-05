@@ -3,7 +3,8 @@ import styled from "styled-components/native";
 import { DEFAULT_THEME } from "styles/theme";
 
 interface IViewContainerProps {
-
+  children: React.ReactNode;
+  headerViewStyles?: any;
 };
 
 const Container = styled.View`
@@ -28,12 +29,15 @@ export const ViewContainer = (props: IViewContainerProps) => {
   // Props
   const {
     children,
+    headerViewStyles = {},
   } = props;
 
   return (
     <Container>
       <ContentView>
-      <HeaderView />
+      <HeaderView
+        style={headerViewStyles}
+      />
         {children}
       </ContentView>
     </Container>

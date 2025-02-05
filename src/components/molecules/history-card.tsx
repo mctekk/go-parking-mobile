@@ -119,7 +119,7 @@ const HistoryCard = (props: IHistoryCardProps) => {
           </IconRow>
           <IconRow>
             <IconContainer>
-              <CarIcon />
+              <CarIcon width={10} height={10} fill={DEFAULT_THEME.black}/>
             </IconContainer>
             <CustomText
               size={Typography.FONT_SIZE_15}
