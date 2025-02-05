@@ -7,6 +7,7 @@ import React, {
 import {
   ReturnKeyType,
   TextInputProps,
+  StyleProp,
 } from 'react-native';
 import styled from 'styled-components/native';
 import is from 'styled-is';
@@ -19,11 +20,11 @@ import Text from 'atoms/text';
 
 // Constants
 import { TextTransform, translate } from 'components/atoms/localized-label';
-import { StyleProp } from 'react-native';
 import { DEFAULT_THEME } from 'styles/theme';
+
+// Icons
 import CircularClose from 'assets/icons/circle-close';
 import SearchIcon from 'assets/icons/search-icon';
-import BackArrow from 'assets/icons/back-arrow';
 import BackArrowV2 from 'assets/icons/back-arrow-v2';
 
 
@@ -40,6 +41,7 @@ interface IProps extends TextInputProps {
   handleClearText?: () => void;
   searchContainerStyle?: StyleProp<any>;
   hasBackButton?: boolean;
+  searchInputStyle?: StyleProp<any>;
 }
 
 const Container = styled.View`
@@ -47,33 +49,33 @@ const Container = styled.View`
 `;
 
 const SearchContainer = styled.View`
+  padding-horizontal: 5px;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   border-width: ${props => props.isFocused ? '0px' : '0px'};
-  border-radius: 32px;
-  flex: 1;
+  border-radius: 15px;
   height: 40px;
-  background-color: rgba(242, 242, 242, 1);
+  background-color: rgba(255, 255, 255, 1);
+`;
+
+const BackContainer = styled.TouchableOpacity`
+  width: 30px;
+  height: 90%;
+  justify-content: center;
+  align-items: center;
 `;
 
 const IconContainer = styled.View`
   width: 30px;
-  height: 40px;
+  height: 90%;
   justify-content: center;
   align-items: center;
-  ${is('isGoback')`
-    width: 40px;
-    padding-left: 10px;
-  `}
 `;
 
 const SearchInput = styled.TextInput`
-  width: 78%;
-  height: 90%;
-  align-items: center;
-  justify-content: center;
-  color: rgba(40,41,38,1);
-  font-size: ${Typography.FONT_SIZE_14}px;
+  flex: 1;
+  height: 40px;
   padding-left: 10px;
 `;
 
@@ -103,16 +105,13 @@ const SearchBar = forwardRef((props: IProps, ref: any) => {
 
   // Props
   const {
-    onSubmit,
     placeholder,
-    setOnSearching,
     searchIconColor = DEFAULT_THEME.text,
     isButton = false,
-    onPress,
-    value = '',
     handleClearText,
     searchContainerStyle,
     hasBackButton,
+    searchInputStyle,
   } = props;
 
   // States
@@ -155,19 +154,19 @@ const SearchBar = forwardRef((props: IProps, ref: any) => {
   };
 
   return (
-    <Container>
+    <Container
+      style={searchContainerStyle}
+    >
       <SearchContainer
-        style={searchContainerStyle}
         isFocused={isFocused}
+        style={searchInputStyle}
       >
         {hasBackButton && (
-          <TouchableOpacity
+          <BackContainer
             onPress={() => navigation.goBack()}
           >
-            <IconContainer isGoback>
-              <BackArrowV2 />
-            </IconContainer>
-          </TouchableOpacity>
+            <BackArrowV2 />
+          </BackContainer>
         )}
         {HandleSearchButton()}
         <IconContainer>

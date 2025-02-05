@@ -63,4 +63,5 @@ export default {
   theBestParkingSpaceNearYou: 'The Best Parking Space Near You',
   seeMore: 'See More',
   available: 'Available',
+  whereAreYouGoing: 'Where are you going?',
 };

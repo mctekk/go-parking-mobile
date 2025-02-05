@@ -91,6 +91,9 @@ export const SearchCard = (props: ISearchCardProps) => {
         onChangeText={handleSearch}
         handleClearText={handleClearText}
         onSubmitEditing={onSubmitEditing}
+        searchInputStyle={{
+          backgroundColor: 'rgba(238, 238, 238, 1)',
+        }}
       />
 
     </CardContainer>

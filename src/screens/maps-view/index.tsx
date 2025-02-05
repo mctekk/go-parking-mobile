@@ -4,9 +4,13 @@ import { StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 // Styles
-import { Container, Content } from './styled';
+import { BottomContent, Container, Content } from './styled';
 import SearchBar from 'components/molecules/search-bar';
 import MapsSearch from 'components/molecules/maps-search';
+import { FlatList } from 'react-native-gesture-handler';
+import { parking_dummy_list } from 'utils/dummy-data';
+import ParkingCard from 'components/molecules/parking-card';
+import MapsParkingCards from 'components/molecules/maps-parking-card';
 
 interface IMapsViewProps {
 
@@ -33,6 +37,26 @@ const MapsView = (props: IMapsViewProps) => {
     console.log('Search:', keyword);
   }, [keyword]);
 
+
+  const renderItem = useCallback(({ item }) => {
+    return (
+      <MapsParkingCards
+        id={item.id}
+        title={item.name}
+        street={item.street}
+        location={item.locations}
+        parkingLeft={item.parkingsLeft}
+        duration_time={item.duration_time}
+        price={item.price}
+        tags={item.tags}
+        isFromMaps={true}
+      />
+    )
+  }, []);
+
+  const keyExtractor = useCallback((item: Parking) => item.id, []);
+
+
   return (
     <Container>
       <MapView
@@ -48,9 +72,28 @@ const MapsView = (props: IMapsViewProps) => {
         }}
       />
       <Content>
+        <MapsSearch
+          keyword={keyword}
+          handleSearch={handleSearch}
+          handleClearText={handleClearText}
+          onSubmitEditing={onSubmitEditing}
+        />
 
-        <MapsSearch />
+        <BottomContent>
 
+          <FlatList
+            data={parking_dummy_list}
+            extraData={parking_dummy_list}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+            horizontal
+            contentContainerStyle={{
+              paddingLeft: 20,
+              paddingBottom: 20,
+            }}
+          />
+
+        </BottomContent>
       </Content>
     </Container>
   );

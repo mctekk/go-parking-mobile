@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 // Modules
 import React, { useCallback, useState } from 'react';
 import styled from 'styled-components/native';
@@ -11,6 +12,7 @@ import { Typography } from 'styles';
 import { vehicleTypes } from 'utils/dummy-data';
 import { FlatList } from 'react-native-gesture-handler';
 import { DEFAULT_THEME } from 'styles/theme';
+import { TextTransform, translate } from 'components/atoms/localized-label';
 
 
 interface IMapsSearchProps {
@@ -132,10 +134,14 @@ const MapsSearch = (props: IMapsSearchProps) => {
         value={keyword}
         defaultValue={keyword}
         returnKeyType="search"
+        placeholder={translate('whereAreYouGoing', TextTransform.NONE)}
         onChangeText={handleSearch}
         handleClearText={handleClearText}
         onSubmitEditing={onSubmitEditing}
         hasBackButton
+        searchContainerStyle={{
+          paddingHorizontal: 15,
+        }}
       />
 
       <TagListContainer>
@@ -146,7 +152,10 @@ const MapsSearch = (props: IMapsSearchProps) => {
           keyExtractor={keyExtractor}
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ width: '100%' }}
+          contentContainerStyle={{
+            width: '100%',
+            paddingLeft: 15,
+           }}
         />
       </TagListContainer>
 

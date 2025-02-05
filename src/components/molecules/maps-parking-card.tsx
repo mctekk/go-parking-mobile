@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 // Models
 import React from 'react';
 import styled from 'styled-components/native';
@@ -17,6 +18,8 @@ import { Typography } from 'styles';
 import DollarIcon from 'assets/icons/dollar-icon';
 import ClockIcon from 'assets/icons/clock-icon';
 import CarIcon from 'assets/icons/car-icon';
+import Button from 'components/atoms/button';
+import BookmarkIcon from 'assets/icons/bookmark-icon';
 
 interface IParkingCardProps {
   id: number;
@@ -26,50 +29,21 @@ interface IParkingCardProps {
   parkingLeft: number;
   price: number;
   tags: string[];
+  isFromMaps?: boolean;
 }
 
 interface ITagsProps {
   name: string;
 }
 
-const Container = styled.TouchableOpacity`
-  flex: 1;
-  background-color: rgba(66, 66, 66, 1);
-  border-radius: 10px;
+const Container = styled.View`
+  flex: 1;  
+  margin-right: 10px;
+  border-radius: 15px;
+  background-color: rgba(45, 45, 45, 1);
   padding: 20px;
   margin-bottom: 10px;
-  ${is('isFromMaps')`
-    margin-right: 16px;
-  `}
-`;
-
-const TopContainer = styled.View`
-  flex-direction: row;
-`;
-
-const Wrapper = styled.View`
-  flex: 1;
-  margin-left: 15px;
-`;
-
-const Title = styled(Text)`
-  font-size: ${Typography.FONT_SIZE_16}px;
-  line-height: ${Typography.FONT_SIZE_18}px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 5px;
-`;
-
-const Street = styled(Text)`
-  font-size: ${Typography.FONT_SIZE_12}px;
-  line-height: ${Typography.FONT_SIZE_20}px;
-  color: white;
-`;
-
-const MapContainer = styled.View`
-  height: 80px;
-  width: 80px;
-  border-radius: 10px;
+  width: 350px;
 `;
 
 const TagListContainer = styled.View`
@@ -78,7 +52,7 @@ const TagListContainer = styled.View`
 `;
 
 const TagContainer = styled.View`
-  background-color: rgba(45, 45, 45, 1);
+  background-color: rgba(66, 66, 66, 1);
   border-radius: 5px;
   padding: 5px 10px;
   margin-horizontal: 2px;
@@ -89,6 +63,50 @@ const TagText = styled(Text)`
   line-height: ${Typography.FONT_SIZE_12}px;
   color: white;
   font-weight: 700;
+`;
+
+const BookmarksContainer = styled.TouchableOpacity`
+  background-color: rgba(66, 66, 66, 1);
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TopContainer = styled.View`
+  flex-direction: row;
+`;
+
+const Wrapper = styled.View`
+  margin-left: 10px;
+  justify-content: space-evenly;
+  align-items: flex-start;
+`;
+
+const Title = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_16}px;
+  line-height: ${Typography.FONT_SIZE_18}px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 15px;
+  width: 220px;
+`;
+
+const Street = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_12}px;
+  line-height: ${Typography.FONT_SIZE_20}px;
+  color: white;
+  width: 220px;
+`;
+
+const MapContainer = styled.View`
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
 `;
 
 const BottomContainer = styled.View`
@@ -129,16 +147,23 @@ const IconContainer = styled.View`
   background-color: ${DEFAULT_THEME.primary};
 `;
 
+const BookNowButton = styled(Button)`
+  border-radius: 25px;
+  margin-top: 15px;
+`;
+
 const Tags = (props: ITagsProps) => {
-  const { name } = props;
+  const { name, isFromMaps } = props;
   return (
-    <TagContainer>
+    <TagContainer
+      isFromMaps={isFromMaps}
+    >
       <TagText>{name}</TagText>
     </TagContainer>
   );
 };
 
-const ParkingCard = (props: IParkingCardProps) => {
+const MapsParkingCards = (props: IParkingCardProps) => {
 
   // Props
   const {
@@ -150,12 +175,30 @@ const ParkingCard = (props: IParkingCardProps) => {
     duration_time,
     price,
     tags,
+    isFromMaps,
   } = props;
 
   const { latitude, longitude } = location;
 
   return (
-    <Container>
+    <Container
+      isFromMaps={isFromMaps}
+    >
+
+      <TagListContainer>
+        {tags.map((tag, index) => (
+          <Tags
+            key={index}
+            name={tag?.name}
+            isFromMaps={isFromMaps}
+          />
+        ))}
+      </TagListContainer>
+
+        <BookmarksContainer>
+          <BookmarkIcon />
+        </BookmarksContainer>
+
       <TopContainer>
         <MapContainer>
           <MapView
@@ -171,23 +214,23 @@ const ParkingCard = (props: IParkingCardProps) => {
             }}
           />
         </MapContainer>
-
         <Wrapper>
-          <TagListContainer>
-            {tags.map((tag, index) => (
-              <Tags
-                key={index}
-                name={tag?.name}
-              />
-            ))}
-          </TagListContainer>
-          <Title>{title}</Title>
-          <Street>{street}</Street>
+          <Title
+            numberOfLines={2}
+            ellipsizeMode='tail'
+          >
+            {title}
+          </Title>
+          <Street
+            numberOfLines={2}
+            ellipsizeMode='tail'
+          >
+            {street}
+          </Street>
         </Wrapper>
       </TopContainer>
 
       <BottomContainer>
-
         <BottomContent>
           <IconContainer>
             <DollarIcon />
@@ -211,18 +254,28 @@ const ParkingCard = (props: IParkingCardProps) => {
           <BottomText>{parkingLeft}</BottomText>
           <BottomSubtitle>{translate('available', TextTransform.NONE)}</BottomSubtitle>
         </BottomContent>
-
       </BottomContainer>
+
+      <BookNowButton
+        title='Book Now'
+        onPress={() => console.log('Book Now')}
+        textStyle={{
+          fontSize: Typography.FONT_SIZE_16,
+          lineHeight: Typography.FONT_SIZE_18,
+          fontWeight: '700',
+          color: DEFAULT_THEME.black,
+        }}
+      />
     </Container>
   );
 };
 
 const styles = StyleSheet.create({
   map: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     borderRadius: 10,
   },
 });
 
-export default ParkingCard;
+export default MapsParkingCards;
