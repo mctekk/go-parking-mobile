@@ -15,6 +15,7 @@ const TruckIcon = (props: SvgProps) => {
       width={width}
       height={height}
       fill="none"
+      viewBox='0 0 21 18'
       {...props}
     >
       <Path

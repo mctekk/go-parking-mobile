@@ -15,6 +15,7 @@ const ScooterIcon = (props: SvgProps) => {
     width={width}
     height={height}
     fill="none"
+    viewBox='0 0 18 16'
     {...props}
   >
     <Path

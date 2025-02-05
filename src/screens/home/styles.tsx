@@ -64,3 +64,32 @@ export const ViewMoreText = styled(Text)`
   color: ${DEFAULT_THEME.primary};
   font-weight: 700;
 `;
+
+export const FloatingButton = styled.TouchableOpacity`
+  position: absolute;
+  bottom: 20px;
+  background-color: ${DEFAULT_THEME.primary};
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  align-self: center;
+  padding: 10px 20px;
+  width: 150px;
+  height: 45px;
+`;
+
+export const FloatingButtonText = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_14}px;
+  line-height: ${Typography.FONT_SIZE_16}px;
+  color: ${DEFAULT_THEME.background};
+  margin-right: 10px;
+  font-weight: 700;
+`;
+
+export const IconContainer = styled.View`
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+`;

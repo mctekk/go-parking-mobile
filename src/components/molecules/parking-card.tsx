@@ -3,13 +3,19 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { DEFAULT_THEME } from 'styles/theme';
+
+// Atoms
 import Text from 'components/atoms/text';
+import { TextTransform, translate } from 'components/atoms/localized-label';
+
+// Styles
+import { DEFAULT_THEME } from 'styles/theme';
 import { Typography } from 'styles';
+
+// Icons
 import DollarIcon from 'assets/icons/dollar-icon';
 import ClockIcon from 'assets/icons/clock-icon';
 import CarIcon from 'assets/icons/car-icon';
-import { TextTransform, translate } from 'components/atoms/localized-label';
 
 interface IParkingCardProps {
   id: number;

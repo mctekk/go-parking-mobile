@@ -91,7 +91,6 @@ export const SearchCard = (props: ISearchCardProps) => {
         onChangeText={handleSearch}
         handleClearText={handleClearText}
         onSubmitEditing={onSubmitEditing}
-        autoFocus={true}
       />
 
     </CardContainer>

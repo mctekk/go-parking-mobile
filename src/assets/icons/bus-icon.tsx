@@ -15,6 +15,7 @@ const BusIcon = (props: SvgProps) => {
       width={width}
       height={height}
       fill="none"
+      viewBox='0 0 17 19'
       {...props}
     >
       <Path

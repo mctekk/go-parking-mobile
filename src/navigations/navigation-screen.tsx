@@ -2,6 +2,7 @@
 import { ChangePassword } from 'screens/change-password';
 import { EditProfile } from 'screens/edit-profile';
 import { Inventory } from 'screens/inventory';
+import MapsView from 'screens/maps-view';
 import { Notifications } from 'screens/notifications';
 import { SignIn } from 'screens/sign-in';
 import { SignUp } from 'screens/sign-up';
@@ -53,6 +54,13 @@ export const navigationScreen = [
     options: {
       navigationDefaultOptions,
       presentation: 'modal',
+    },
+  },
+  {
+    name: 'MapView',
+    screen: MapsView,
+    options: {
+      navigationDefaultOptions,
     },
   },
 ];

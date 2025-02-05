@@ -63,62 +63,90 @@ export const parking_dummy_list = [
       longitude: '-122.4194',
     },
   },
-{
-  id: 2,
-  name: 'Parking Plaza Las Americas',
-  street: '525 Av. Franklin Delano Roosevelt, San Juan, 00918',
-  price: {
-    amount: 15,
-    currency: 'USD',
+  {
+    id: 2,
+    name: 'Parking Plaza Las Americas',
+    street: '525 Av. Franklin Delano Roosevelt, San Juan, 00918',
+    price: {
+      amount: 15,
+      currency: 'USD',
+    },
+    duration_time: '3',
+    parkingsLeft: 5,
+    tags: [
+      {
+        id: 1,
+        name: 'Car',
+      },
+      {
+        id: 2,
+        name: 'Bike',
+      },
+      {
+        id: 3,
+        name: 'Bus',
+      },
+    ],
+    locations: {
+      latitude: '18.4233',
+      longitude: '-66.0628',
+    },
   },
-  duration_time: '3',
-  parkingsLeft: 5,
-  tags: [
-    {
-      id: 1,
-      name: 'Car',
+  {
+    id: 3,
+    name: 'Parking Condado',
+    street: 'Ashford Ave, San Juan, 00907',
+    price: {
+      amount: 20,
+      currency: 'USD',
     },
-    {
-      id: 2,
-      name: 'Bike',
+    duration_time: '1',
+    parkingsLeft: 2,
+    tags: [
+      {
+        id: 1,
+        name: 'Car',
+      },
+      {
+        id: 2,
+        name: 'Bike',
+      },
+      {
+        id: 3,
+        name: 'Bus',
+      },
+    ],
+    locations: {
+      latitude: '18.4568',
+      longitude: '-66.0852',
     },
-    {
-      id: 3,
-      name: 'Bus',
-    },
-  ],
-  locations: {
-    latitude: '18.4233',
-    longitude: '-66.0628',
-  },
-},
-{
-  id: 3,
-  name: 'Parking Condado',
-  street: 'Ashford Ave, San Juan, 00907',
-  price: {
-    amount: 20,
-    currency: 'USD',
-  },
-  duration_time: '1',
-  parkingsLeft: 2,
-  tags: [
-    {
-      id: 1,
-      name: 'Car',
-    },
-    {
-      id: 2,
-      name: 'Bike',
-    },
-    {
-      id: 3,
-      name: 'Bus',
-    },
-  ],
-  locations: {
-    latitude: '18.4568',
-    longitude: '-66.0852',
-  },
-}
+  }
 ]
+
+export const vehicleTypes = [
+  {
+    id: 1,
+    name: 'Car',
+    icon: CarIcon,
+  },
+  {
+    id: 2,
+    name: 'Bike',
+    icon: BikeIcon,
+  },
+  {
+    id: 3,
+    name: 'Bus',
+    icon: BusIcon,
+  },
+  {
+    id: 4,
+    name: 'Truck',
+    icon: TruckIcon,
+  },
+  {
+    id: 5,
+    name: 'Scooter',
+    icon: ScooterIcon,
+  },
+];

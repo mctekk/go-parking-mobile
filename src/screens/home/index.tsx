@@ -20,6 +20,9 @@ import {
   SubtitleText,
   ViewMoreButton,
   ViewMoreText,
+  FloatingButton,
+  FloatingButtonText,
+  IconContainer,
 } from './styles';
 
 // Organisms
@@ -28,6 +31,7 @@ import ViewContainer from 'components/organisms/view-container';
 // Molecules
 import SearchCard from 'components/molecules/search-card';
 import ParkingList from 'components/organisms/parking-list';
+import MapIcon from 'assets/icons/map-icon';
 
 // Interfaces
 interface IHomeProps {
@@ -53,6 +57,10 @@ export const Home = (props: IHomeProps) => {
     console.log('Search:', text);
   };
 
+  const onMapPress = () => {
+    navigation.navigate('MapView');
+  };
+
   return (
     <ViewContainer
       headerViewStyles={{ height: '35%' }}
@@ -61,9 +69,11 @@ export const Home = (props: IHomeProps) => {
         title={translate('home', TextTransform.CAPITALIZE)}
         subtitle={'Your Transactions at a Glance'}
       />
+
       <ScrollContainer
         ref={scrollList}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 80 }}
       >
         <Content>
           <SearchCard
@@ -87,6 +97,16 @@ export const Home = (props: IHomeProps) => {
           </ListContainer>
         </Content>
       </ScrollContainer>
+
+      <FloatingButton
+        onPress={onMapPress}
+      >
+        <FloatingButtonText>Map View</FloatingButtonText>
+        <IconContainer>
+          <MapIcon />
+        </IconContainer>
+      </FloatingButton>
+
     </ViewContainer>
   );
 };

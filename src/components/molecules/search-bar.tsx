@@ -9,6 +9,7 @@ import {
   TextInputProps,
 } from 'react-native';
 import styled from 'styled-components/native';
+import is from 'styled-is';
 import { Colors, Typography } from 'styles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
@@ -22,6 +23,8 @@ import { StyleProp } from 'react-native';
 import { DEFAULT_THEME } from 'styles/theme';
 import CircularClose from 'assets/icons/circle-close';
 import SearchIcon from 'assets/icons/search-icon';
+import BackArrow from 'assets/icons/back-arrow';
+import BackArrowV2 from 'assets/icons/back-arrow-v2';
 
 
 interface IProps extends TextInputProps {
@@ -36,6 +39,7 @@ interface IProps extends TextInputProps {
   onPress?: () => void;
   handleClearText?: () => void;
   searchContainerStyle?: StyleProp<any>;
+  hasBackButton?: boolean;
 }
 
 const Container = styled.View`
@@ -57,11 +61,14 @@ const IconContainer = styled.View`
   height: 40px;
   justify-content: center;
   align-items: center;
+  ${is('isGoback')`
+    width: 40px;
+    padding-left: 10px;
+  `}
 `;
 
 const SearchInput = styled.TextInput`
-  margin-left: 8px;
-  width: 85%;
+  width: 78%;
   height: 90%;
   align-items: center;
   justify-content: center;
@@ -105,6 +112,7 @@ const SearchBar = forwardRef((props: IProps, ref: any) => {
     value = '',
     handleClearText,
     searchContainerStyle,
+    hasBackButton,
   } = props;
 
   // States
@@ -152,6 +160,15 @@ const SearchBar = forwardRef((props: IProps, ref: any) => {
         style={searchContainerStyle}
         isFocused={isFocused}
       >
+        {hasBackButton && (
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+          >
+            <IconContainer isGoback>
+              <BackArrowV2 />
+            </IconContainer>
+          </TouchableOpacity>
+        )}
         {HandleSearchButton()}
         <IconContainer>
           <SearchIcon
