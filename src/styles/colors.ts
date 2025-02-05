@@ -15,3 +15,4 @@ export const PLACEHOLDER_TEXT = '#5E5E5E';
 export const CARD_GRAY = '#424242';
 export const TITLE_GRAY = '#CCCCCC';
 export const LIGHT_GRAY = '#AAAAAA';
+export const DISABLED_GRAY = '#222222';

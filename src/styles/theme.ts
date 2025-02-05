@@ -13,6 +13,7 @@ interface ColorTheme {
   cardGray: string;
   titleGray: string;
   dashGray: string;
+  disabledPayment: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.PRIMARY,
@@ -27,4 +28,5 @@ export const DEFAULT_THEME: ColorTheme = {
   cardGray: Colors.CARD_GRAY,
   titleGray: Colors.TITLE_GRAY,
   dashGray: Colors.LIGHT_GRAY,
+  disabledPayment: Colors.DISABLED_GRAY,
 };
