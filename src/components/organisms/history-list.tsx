@@ -227,7 +227,7 @@ const HistoryList = (props: IFeedProps) => {
   };
 
   const onCardPress = (item: object) => {
-    //navigation.navigate('TransactionDetail', { transactionData: item });
+    navigation.navigate('TransactionDetails', { transactionData: item });
   };
 
   const renderItem = useCallback(
