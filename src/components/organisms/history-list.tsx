@@ -47,14 +47,14 @@ export enum HISTORY_LIST_EVENTS {
 }
 
 // Interfaces
-interface IFeedProps {
+interface IHistoryListProps {
   isLoading?: boolean;
   isSearching?: boolean;
   searchText?: string;
   safeCache?: string;
 }
 
-const HistoryList = (props: IFeedProps) => {
+const HistoryList = (props: IHistoryListProps) => {
   // Props
   const { isLoading = true, isSearching, searchText = '', safeCache } = props;
 
