@@ -42,8 +42,8 @@ const EmptyFooter = styled.View`
   height: 40px;
 `;
 
-export enum LOCAL_LIST_EVENTS {
-  ON_LOCAL_LIST_UPDATE = 'ON_LOCAL_LIST_UPDATE',
+export enum HISTORY_LIST_EVENTS {
+  ON_HISTORY_LIST_UPDATE = 'ON_HISTORY_LIST_UPDATE',
 }
 
 // Interfaces
@@ -77,7 +77,7 @@ const HistoryList = (props: IFeedProps) => {
   const [hasError, setError] = useState(false);
 
   // Const
-  const { ON_LOCAL_LIST_UPDATE } = LOCAL_LIST_EVENTS;
+  const { ON_HISTORY_LIST_UPDATE } = HISTORY_LIST_EVENTS;
 
   const saveCache = async (data: any) => {
     if (!safeCache) {
@@ -186,7 +186,7 @@ const HistoryList = (props: IFeedProps) => {
   }, [searchText]);
 
   useEffect(() => {
-    const updateList = EventRegister.on(ON_LOCAL_LIST_UPDATE, () => {
+    const updateList = EventRegister.on(ON_HISTORY_LIST_UPDATE, () => {
       setLoading(true);
       pages_total.current = 1;
       setPage(1);
