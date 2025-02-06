@@ -24,7 +24,7 @@ const Tab = styled.TouchableOpacity`
   height: 36px;
 `;
 
-export const SessionTab = (props: IButtonProps & TouchableOpacityProps) => {
+export const SingleTab = (props: IButtonProps & TouchableOpacityProps) => {
   const { label, style, disabled, active } = props;
   return (
     <Tab
