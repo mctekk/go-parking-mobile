@@ -74,4 +74,6 @@ export default {
   seeMore: 'See More',
   available: 'Available',
   whereAreYouGoing: 'Where are you going?',
+  ongoing: 'ongoing',
+  pastBookings: 'Past bookings',
 };
