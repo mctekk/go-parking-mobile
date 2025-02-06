@@ -12,7 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Molecules
 // import ErrorListComponent from 'components/molecules/error-list-component';
-import HistoryCard from 'components/molecules/history-card';
+import SessionCard from 'components/molecules/session-card';
 
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
@@ -31,7 +31,7 @@ import { RefreshControl } from 'react-native-gesture-handler';
 
 const Container = styled.View`
   flex: 1;
-  margin-top: 25px;
+  margin-top: 20px;
   border-radius: 10px;
 `;
 
@@ -42,25 +42,23 @@ const EmptyFooter = styled.View`
   height: 40px;
 `;
 
-export enum HISTORY_LIST_EVENTS {
-  ON_HISTORY_LIST_UPDATE = 'ON_HISTORY_LIST_UPDATE',
+export enum SESSION_LIST_EVENTS {
+  ON_SESSION_LIST_UPDATE = 'ON_SESSION_LIST_UPDATE',
 }
 
 // Interfaces
-interface IHistoryListProps {
+interface ISessionListProps {
   isLoading?: boolean;
-  isSearching?: boolean;
-  searchText?: string;
   safeCache?: string;
+  isPastList?: boolean;
 }
 
-const HistoryList = (props: IHistoryListProps) => {
+const SessionList = (props: ISessionListProps) => {
   // Props
-  const { isLoading = true, isSearching, searchText = '', safeCache } = props;
+  const { isLoading = true, safeCache, isPastList = false } = props;
 
   // Refs
   const items = useRef([]);
-  const searchedItems = useRef([]);
   const flatListRef = useRef(null);
   const pages_total = useRef<number>(0);
   const last_page = useRef<number>(0);
@@ -77,7 +75,7 @@ const HistoryList = (props: IHistoryListProps) => {
   const [hasError, setError] = useState(false);
 
   // Const
-  const { ON_HISTORY_LIST_UPDATE } = HISTORY_LIST_EVENTS;
+  const { ON_SESSION_LIST_UPDATE } = SESSION_LIST_EVENTS;
 
   const saveCache = async (data: any) => {
     if (!safeCache) {
@@ -108,14 +106,14 @@ const HistoryList = (props: IHistoryListProps) => {
     onRefresh();
   };
 
-  // Get the list of transactions
-  const getTransactions = debounce(async (pageNumber = 1) => {
+  // Get the list of sessions
+  const getSessions = debounce(async (pageNumber = 1) => {
     try {
       // const response = await kanvasService.getOrders(
       //   pageNumber,
       // );
       // const { paginatorInfo, data } = response?.orders;
-      const data: any = parking_dummy_list;
+      const data: any = session_dummy_list;
       if (pageNumber > 1) {
         items.current.push(...data);
       } else {
@@ -133,28 +131,11 @@ const HistoryList = (props: IHistoryListProps) => {
       setLoadingMore(false);
       setError(false);
     } catch (error) {
-      console.log('getTransactions error:', error);
+      console.log('getSessions error:', error);
       setError(true);
       setLoading(false);
     }
   }, 500);
-
-  // Get the list of transactions by search text
-  const searchProducts = async () => {
-    try {
-      // const response = await kanvasService.searchOrders(
-      //   searchText.trim(),
-      // );
-      // const { data } = response?.orders;
-      // searchedItems.current = data;
-      // setRefreshing(false);
-      // setLoading(false);
-      // setError(false);
-    } catch (error) {
-      console.log('searchProducts error:', error);
-      setLoading(false);
-    }
-  };
 
   useEffect(
     () => () => {
@@ -174,23 +155,15 @@ const HistoryList = (props: IHistoryListProps) => {
       return;
     }
 
-    getTransactions();
+    getSessions();
   }, []);
 
   useEffect(() => {
-    !loading && setLoading(true);
-    const delayDebounceFn = setTimeout(() => {
-      searchProducts();
-    }, 500);
-    return () => clearTimeout(delayDebounceFn);
-  }, [searchText]);
-
-  useEffect(() => {
-    const updateList = EventRegister.on(ON_HISTORY_LIST_UPDATE, () => {
+    const updateList = EventRegister.on(ON_SESSION_LIST_UPDATE, () => {
       setLoading(true);
       pages_total.current = 1;
       setPage(1);
-      getTransactions(1);
+      getSessions(1);
     });
 
     return () => {
@@ -213,7 +186,7 @@ const HistoryList = (props: IHistoryListProps) => {
       newPageNumber > last_page.current &&
       newPageNumber <= pages_total.current
     ) {
-      getTransactions(newPageNumber);
+      getSessions(newPageNumber);
       pages_total.current = newPageNumber;
       setPage(newPageNumber);
     }
@@ -223,25 +196,22 @@ const HistoryList = (props: IHistoryListProps) => {
     setRefreshing(true);
     await wait(1000);
     setPage(1);
-    getTransactions(1);
+    getSessions(1);
   };
 
   const onCardPress = (item: object) => {
-    navigation.navigate('TransactionDetails', { transactionData: item });
+    //navigation.navigate('SessionDetails', { sessionData: item });
   };
 
-  const renderItem = useCallback(
-    ({ item, index }) => {
-      return (
-        <HistoryCard
-          key={item.id}
-          order={item}
-          onPress={() => onCardPress(item)}
-        />
-      );
-    },
-    [isSearching],
-  );
+  const renderItem = useCallback(({ item, index }) => {
+    return (
+      <SessionCard
+        key={item.id}
+        order={item}
+        onPress={() => onCardPress(item)}
+      />
+    );
+  }, []);
 
   const ListFooterComponent = () => {
     return loadingMore ? (
@@ -276,7 +246,7 @@ const HistoryList = (props: IHistoryListProps) => {
         <ActivityIndicator size="small" color={DEFAULT_THEME.primary} />
       )}
 
-      {!loading && !hasError && !isSearching && (
+      {!loading && !hasError && (
         <FlatList
           data={items.current}
           extraData={items.current}
@@ -299,18 +269,6 @@ const HistoryList = (props: IHistoryListProps) => {
           ListFooterComponent={ListFooterComponent}
         />
       )}
-
-      {!loading && !hasError && isSearching && (
-        <FlatList
-          data={searchedItems.current}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          showsVerticalScrollIndicator={false}
-          scrollEventThrottle={16}
-          //ListEmptyComponent={<SearchEmptyComponent />}
-          contentContainerStyle={styles?.listContainerStyle}
-        />
-      )}
     </Container>
   );
 };
@@ -318,12 +276,12 @@ const HistoryList = (props: IHistoryListProps) => {
 const styles = {
   listContainerStyle: {
     borderRadius: 10,
-    paddingHorizontal: 22,
     paddingBottom: 50,
+    paddingHorizontal: 20,
   },
 };
 
-const parking_dummy_list = [
+const session_dummy_list = [
   {
     id: 1,
     name: 'Parking La Puntilla',
@@ -376,4 +334,4 @@ const parking_dummy_list = [
   },
 ];
 
-export default memo(HistoryList);
+export default memo(SessionList);
