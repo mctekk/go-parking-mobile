@@ -3,6 +3,8 @@
 // Modules
 import React from 'react';
 import styled from 'styled-components/native';
+import { StyleSheet } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 // Atoms
 import CustomText from 'atoms/text';
@@ -41,7 +43,6 @@ const BottomContainer = styled.View`
 const MapContainer = styled.View`
   width: 53px;
   height: 53px;
-  background-color: ${DEFAULT_THEME.titleGray};
   border-radius: 5px;
 `;
 
@@ -88,7 +89,20 @@ const HistoryCard = (props: IHistoryCardProps) => {
       </TopContainer>
       <DashLine color={DEFAULT_THEME.dashGray} />
       <BottomContainer>
-        <MapContainer />
+        <MapContainer>
+          <MapView
+            style={styles.map}
+            scrollEnabled={false}
+            zoomEnabled={false}
+            zoomTapEnabled={false}
+            region={{
+              latitude: order?.locations?.latitude,
+              longitude: order?.locations?.longitude,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.0121,
+            }}
+          />
+        </MapContainer>
         <BottomSectionContainer style={{ width: '48%' }}>
           <CustomText
             size={Typography.FONT_SIZE_14}
@@ -119,7 +133,7 @@ const HistoryCard = (props: IHistoryCardProps) => {
           </IconRow>
           <IconRow>
             <IconContainer>
-              <CarIcon width={10} height={10} fill={DEFAULT_THEME.black}/>
+              <CarIcon width={10} height={10} fill={DEFAULT_THEME.black} />
             </IconContainer>
             <CustomText
               size={Typography.FONT_SIZE_15}
@@ -133,5 +147,13 @@ const HistoryCard = (props: IHistoryCardProps) => {
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  map: {
+    width: 53,
+    height: 53,
+    borderRadius: 5,
+  },
+});
 
 export default HistoryCard;

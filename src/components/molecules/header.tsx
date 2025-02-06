@@ -32,7 +32,7 @@ export interface IProps {
 }
 
 const SCREEN_MARGIN = 20;
-const HEADER_HEIGHT = Platform.OS === 'ios' ? 130 : 90;
+const HEADER_HEIGHT = Platform.OS === 'ios' ? 130 : 130;
 const HEADER_PADDING_TOP = Platform.OS === 'ios' ? 40 : 1;
 
 const Container = styled.View`

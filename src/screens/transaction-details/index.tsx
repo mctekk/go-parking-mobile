@@ -1,7 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 // Modules
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 // Styles
 import {
@@ -95,7 +96,20 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
         />
         <Content>
           <TopContainer>
-            <MapContainer />
+            <MapContainer>
+              <MapView
+                style={styles.map}
+                scrollEnabled={false}
+                zoomEnabled={false}
+                zoomTapEnabled={false}
+                region={{
+                  latitude: order?.locations?.latitude,
+                  longitude: order?.locations?.longitude,
+                  latitudeDelta: 0.015,
+                  longitudeDelta: 0.0121,
+                }}
+              />
+            </MapContainer>
             <TopSectionContainer>
               <CustomText
                 size={Typography.FONT_SIZE_14}
@@ -170,3 +184,11 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
     </ViewContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  map: {
+    width: 53,
+    height: 53,
+    borderRadius: 5,
+  },
+});

@@ -345,8 +345,8 @@ const parking_dummy_list = [
       },
     ],
     locations: {
-      latitude: '37.7749',
-      longitude: '-122.4194',
+      latitude: '18.4233',
+      longitude: '-66.0628',
     },
   },
   {
