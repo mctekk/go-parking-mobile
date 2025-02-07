@@ -76,4 +76,7 @@ export default {
   whereAreYouGoing: 'Where are you going?',
   ongoing: 'ongoing',
   pastBookings: 'Past bookings',
+  timeLeft: 'time left',
+  remindMe: 'Remind me',
+  manage: 'Manage',
 };
