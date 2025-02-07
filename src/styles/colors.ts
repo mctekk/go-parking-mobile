@@ -16,3 +16,4 @@ export const CARD_GRAY = '#424242';
 export const TITLE_GRAY = '#CCCCCC';
 export const LIGHT_GRAY = '#AAAAAA';
 export const DISABLED_GRAY = '#222222';
+export const DARK_YELLOW = '#C7A502';
