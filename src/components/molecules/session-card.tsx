@@ -57,7 +57,7 @@ const Separator = styled.View`
   background-color: ${DEFAULT_THEME.dashGray};
 `;
 
-const Button = styled.View`
+const Button = styled.TouchableOpacity`
   width: 48%;
   border-width: 1px;
   padding-vertical: 14px;
