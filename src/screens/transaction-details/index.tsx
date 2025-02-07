@@ -13,8 +13,9 @@ import {
   MapContainer,
   TopSectionContainer,
   DetailsContainer,
-  DetailRowContainer,
+  DetailRowContent,
   BottomButton,
+  DetailRow,
 } from './styles';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
@@ -129,10 +130,10 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
           </TopContainer>
           <DashLine color={DEFAULT_THEME.cardGray} />
           <DetailsContainer>
-            {rowsData?.map((rowData: any) => {
+            {rowsData?.map((rowData: any, index: number) => {
               return (
-                <>
-                  <DetailRowContainer>
+                <DetailRow key={index}>
+                  <DetailRowContent>
                     <CustomText
                       size={Typography.FONT_SIZE_10}
                       weight="500"
@@ -148,16 +149,16 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
                       color={DEFAULT_THEME.titleGray}>
                       {rowData?.subtitle}
                     </CustomText>
-                  </DetailRowContainer>
+                  </DetailRowContent>
                   {rowData?.bottomDashLine && (
                     <DashLine color={DEFAULT_THEME.cardGray} />
                   )}
-                </>
+                </DetailRow>
               );
             })}
           </DetailsContainer>
           <PaymentMethod style={{ marginTop: 10 }} />
-          <DetailRowContainer style={{ marginVertical: 16 }}>
+          <DetailRowContent style={{ marginVertical: 16 }}>
             <CustomText
               size={Typography.FONT_SIZE_14}
               weight="500"
@@ -170,7 +171,7 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
               color={DEFAULT_THEME.titleGray}>
               {`$${order?.price?.amount}`}
             </CustomText>
-          </DetailRowContainer>
+          </DetailRowContent>
         </Content>
         <BottomButton onPress={() => ShareUtil('', 'https://www.google.com')}>
           <CustomText
