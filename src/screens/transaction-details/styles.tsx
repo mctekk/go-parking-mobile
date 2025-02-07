@@ -17,11 +17,13 @@ export const Container = styled.View`
 
 export const DetailsContainer = styled.View``;
 
-export const DetailRowContainer = styled.View`
+export const DetailRowContent = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-vertical: 14px;
 `;
+
+export const DetailRow = styled.View``;
 
 export const ScreenHeader = styled(Header)`
   background-color: ${DEFAULT_THEME.transparent};
