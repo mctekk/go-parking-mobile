@@ -98,6 +98,7 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
           <TopContainer>
             <MapContainer>
               <MapView
+                provider={PROVIDER_GOOGLE}
                 style={styles.map}
                 scrollEnabled={false}
                 zoomEnabled={false}
