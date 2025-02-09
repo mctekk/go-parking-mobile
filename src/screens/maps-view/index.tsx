@@ -61,9 +61,7 @@ const MapsView = (props: IMapsViewProps) => {
     <Container>
       <MapView
         style={styles.map}
-        scrollEnabled={false}
-        zoomEnabled={false}
-        zoomTapEnabled={false}
+        provider={'google'}
         region={{
           latitude: 37.7749,
           longitude: -122.4194,
@@ -71,6 +69,7 @@ const MapsView = (props: IMapsViewProps) => {
           longitudeDelta: 0.0121,
         }}
       />
+      
       <Content>
         <MapsSearch
           keyword={keyword}
