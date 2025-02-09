@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 // Styles
-import { BottomContent, Container, Content } from './styled';
+import { BottomContent, Container, Content, SearchContainer } from './styled';
 import SearchBar from 'components/molecules/search-bar';
 import MapsSearch from 'components/molecules/maps-search';
 import { FlatList } from 'react-native-gesture-handler';
@@ -69,31 +69,29 @@ const MapsView = (props: IMapsViewProps) => {
           longitudeDelta: 0.0121,
         }}
       />
-      
-      <Content>
+
+      <SearchContainer>
         <MapsSearch
           keyword={keyword}
           handleSearch={handleSearch}
           handleClearText={handleClearText}
           onSubmitEditing={onSubmitEditing}
         />
+      </SearchContainer>
 
-        <BottomContent>
-
-          <FlatList
-            data={parking_dummy_list}
-            extraData={parking_dummy_list}
-            renderItem={renderItem}
-            keyExtractor={keyExtractor}
-            horizontal
-            contentContainerStyle={{
-              paddingLeft: 20,
-              paddingBottom: 20,
-            }}
-          />
-
-        </BottomContent>
-      </Content>
+      <BottomContent>
+        <FlatList
+          data={parking_dummy_list}
+          extraData={parking_dummy_list}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+          horizontal
+          contentContainerStyle={{
+            paddingLeft: 20,
+            paddingBottom: 20,
+          }}
+        />
+      </BottomContent>
     </Container>
   );
 };
