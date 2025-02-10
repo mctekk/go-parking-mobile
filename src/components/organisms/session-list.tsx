@@ -200,7 +200,7 @@ const SessionList = (props: ISessionListProps) => {
   };
 
   const onCardPress = (item: object) => {
-    //navigation.navigate('SessionDetails', { sessionData: item });
+    navigation.navigate('SessionDetails', { sessionData: item });
   };
 
   const renderItem = useCallback(({ item, index }) => {
