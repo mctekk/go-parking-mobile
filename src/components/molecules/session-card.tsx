@@ -156,7 +156,7 @@ const SessionCard = (props: ISessionCardProps) => {
             {translate('remindMe', TextTransform.CAPITALIZE)}
           </CustomText>
         </Button>
-        <Button style={styles.manageButton}>
+        <Button style={styles.manageButton} onPress={onCardPress}>
           <CustomText
             size={Typography.FONT_SIZE_16}
             weight="700"
