@@ -40,7 +40,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
   const { navigation, route } = props;
 
   // Params
-  const session = route?.params?.sessionData;
+  const sessionData = route?.params?.sessionData;
 
   return (
     <ViewContainer>
@@ -60,7 +60,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
                 size={Typography.FONT_SIZE_14}
                 weight="600"
                 color={DEFAULT_THEME.titleGray}>
-                {session?.name}
+                {sessionData?.name}
               </CustomText>
             </RowBetween>
             <CustomText
@@ -69,7 +69,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
               style={{}}
               lineHeight={Typography.FONT_SIZE_14}
               color={DEFAULT_THEME.dashGray}>
-              {session?.street}
+              {sessionData?.street}
             </CustomText>
             <ModelRow>
               <Row style={{ width: '40%' }}>
@@ -104,7 +104,13 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
           </CardContainer>
         </Content>
         <BottomButtonsContainer>
-          <BottomButton onPress={() => {}} style={styles.extendButton}>
+          <BottomButton
+            onPress={() =>
+              navigation.navigate('ParkingBooking', {
+                sessionData: sessionData,
+              })
+            }
+            style={styles.extendButton}>
             <CustomText
               size={Typography.FONT_SIZE_16}
               weight="600"

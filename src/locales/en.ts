@@ -82,4 +82,5 @@ export default {
   remainingParkingTime: 'Remaining parking time',
   extendTime: 'Extend time',
   endParking: 'End parking',
+  continue: 'continue',
 };
