@@ -66,8 +66,10 @@ interface ITransactionDetailsParamsProps {
 
 export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   // Props
-  const { route } = props;
-
+  const {
+    navigation,
+    route,
+  } = props;
   // Params
   const {
     location,
@@ -121,6 +123,12 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
     ShareUtil('', 'https://www.google.com');
   };
 
+  const onBookingButtonPress = () => {
+    navigation.replace('BookingConfirmationScreen', {
+      price: price,
+      timeSelected: timeSelected,
+    });
+  };  
   const getButtonLocale = () => {
     if (type === TRANSACTION_TYPE.BOOKING) {
       return 'bookingNow';
@@ -145,8 +153,6 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
       onBookingButtonPress();
     }
   };
-
-  const onBookingButtonPress = () => {};
 
   return (
     <ViewContainer>

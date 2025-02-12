@@ -10,6 +10,7 @@ import { TransactionDetails } from 'screens/transaction-details';
 import { SessionDetails } from 'screens/session-details';
 import { ParkingBooking } from 'screens/parking-booking';
 import  BookingScreen from 'screens/booking';
+import BookingConfirmationScreen from 'screens/booking-confirmation';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -83,6 +84,13 @@ export const navigationScreen = [
   {
     name: 'ParkingBooking',
     screen: ParkingBooking,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'BookingConfirmationScreen',
+    screen: BookingConfirmationScreen,
     options: {
       navigationDefaultOptions,
     },

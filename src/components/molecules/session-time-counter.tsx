@@ -17,6 +17,7 @@ import { DEFAULT_THEME } from 'styles/theme';
 
 // Hooks
 import useCountDown from 'hooks/useCountDown';
+import { getFormattedRemainingTime } from 'utils';
 
 
 const ARC_ANGLE_LENGTH = 260;
@@ -57,11 +58,6 @@ const SessionTimeCounter = (props: ISessionTimeCounterProps) => {
   const getRotation = () => {
     const rotation = 180 + (360 - ARC_ANGLE_LENGTH) / 2;
     return rotation;
-  };
-
-  const getFormattedRemainingTime = (milliseconds: number) => {
-    const formattedTime = moment.utc(milliseconds).format('HH:mm:ss');
-    return formattedTime;
   };
 
   const getBarPercentage = () => {
