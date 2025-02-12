@@ -29,6 +29,7 @@ import SessionTimeCounter from 'components/molecules/session-time-counter';
 import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
 import { CarIconOutline, LocationIcon } from 'assets/icons';
+import { TRANSACTION_TYPE } from 'screens/transaction-details';
 
 interface ISessionDetailsScreenProps {
   navigation: any;
@@ -57,8 +58,9 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
       streetLocation: streetLocation,
       price: price,
       durationTime: durationTime,
+      type: TRANSACTION_TYPE.EXTEND,
     });
-  }
+  };
 
   return (
     <ViewContainer>
@@ -122,9 +124,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
           </CardContainer>
         </Content>
         <BottomButtonsContainer>
-          <BottomButton
-            onPress={onExtentTimePress}
-            style={styles.extendButton}>
+          <BottomButton onPress={onExtentTimePress} style={styles.extendButton}>
             <CustomText
               size={Typography.FONT_SIZE_16}
               weight="600"
