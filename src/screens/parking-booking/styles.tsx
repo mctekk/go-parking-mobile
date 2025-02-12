@@ -11,6 +11,9 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
   border-radius: 25px;
+`;
+
+export const PaddingContainer = styled.View`
   padding-horizontal: 20px;
 `;
 
@@ -28,7 +31,7 @@ export const BottomButton = styled.TouchableOpacity`
   border-radius: 50px;
 `;
 
-export const BottomButtonsContainer = styled.TouchableOpacity`
+export const BottomButtonsContainer = styled.View`
   width: 100%;
   align-items: center;
   flex-direction: row;
