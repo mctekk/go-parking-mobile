@@ -84,4 +84,5 @@ export default {
   endParking: 'End parking',
   continue: 'continue',
   booking: 'Booking',
+  howLong: 'how long?',
 };

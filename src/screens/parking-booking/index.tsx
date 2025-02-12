@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 // Modules
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
 
@@ -13,16 +13,15 @@ import {
   BottomButton,
   TopContainer,
   MapContainer,
-  Row,
   IconContainer,
   Title,
   Subtitle,
-  CustomText,
   IconsContainer,
   InfoWrapper,
   InfoText,
   InfoSubtext,
-  Wrapper,
+  PaddingContainer,
+  PriceText,
 } from './styles';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
@@ -32,11 +31,13 @@ import ViewContainer from 'components/organisms/view-container';
 
 // Molecules
 import CarSelectorButton from 'components/molecules/car-selector-button';
+import TimeSelector from 'components/molecules/time-selector';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
-import { CarIconOutline } from 'assets/icons';
 import DollarIcon from 'assets/icons/dollar-icon';
+
+// Interfaces
 import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
 
 interface IParkingBookingProps {
@@ -72,83 +73,92 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
   // Params
   const sessionData = route?.params?.sessionData;
 
+  // States
+  const [timeSelected, setTimeSelected] = useState<{ id?: string }>({});
+
   return (
     <ViewContainer>
       <SafeAreaView />
       <Container>
-        <ScreenHeader
-          title={''}
-          style={{ paddingHorizontal: 0, height: 90 }}
-          titleProps={{}}
-          backIconColor={DEFAULT_THEME.primary}
-        />
-        <Content>
-          <MapContainer>
-            <MapView
-              style={styles.map}
-              provider={'google'}
-              scrollEnabled={false}
-              zoomEnabled={false}
-              zoomTapEnabled={false}
-              region={{
-                latitude: location?.latitude,
-                longitude: location?.longitude,
-                latitudeDelta: 0.015,
-                longitudeDelta: 0.0121,
-              }}
+
+        <PaddingContainer>
+          <ScreenHeader
+            title={''}
+            style={{ paddingHorizontal: 0, height: 90 }}
+            titleProps={{}}
+            backIconColor={DEFAULT_THEME.primary}
+          />
+
+          <Content>
+            <MapContainer>
+              <MapView
+                style={styles.map}
+                provider={'google'}
+                scrollEnabled={false}
+                zoomEnabled={false}
+                zoomTapEnabled={false}
+                region={{
+                  latitude: location?.latitude,
+                  longitude: location?.longitude,
+                  latitudeDelta: 0.015,
+                  longitudeDelta: 0.0121,
+                }}
+              />
+            </MapContainer>
+
+            <TopContainer>
+              <Title>{parkingName}</Title>
+              <Subtitle>{streetLocation}</Subtitle>
+              <IconsContainer>
+                <InfoWrapper>
+                  <IconContainer>
+                    <DollarIcon />
+                  </IconContainer>
+                  <InfoText>{price.amount}</InfoText>
+                  <InfoSubtext>/hr</InfoSubtext>
+                </InfoWrapper>
+
+                <InfoWrapper>
+                  <IconContainer>
+                    <DollarIcon />
+                  </IconContainer>
+                  <InfoText>{parkingAvailable}</InfoText>
+                  <InfoSubtext>{translate('available', TextTransform.NONE)}</InfoSubtext>
+                </InfoWrapper>
+              </IconsContainer>
+            </TopContainer>
+
+            <CarSelectorButton disabled />
+
+            <TimeSelector
+              selectedId={timeSelected.id}
+              onTimeSelected={setTimeSelected}
             />
-          </MapContainer>
 
-          <TopContainer>
-            <Title>{parkingName}</Title>
-            <Subtitle>{streetLocation}</Subtitle>
-            <IconsContainer>
-              <InfoWrapper>
-                <IconContainer>
-                  <DollarIcon />
-                </IconContainer>
-                <InfoText>{price.amount}</InfoText>
-                <InfoSubtext>/hr</InfoSubtext>
-              </InfoWrapper>
-
-              <InfoWrapper>
-                <IconContainer>
-                  <DollarIcon />
-                </IconContainer>
-                <InfoText>{parkingAvailable}</InfoText>
-                <InfoSubtext>{translate('available', TextTransform.NONE)}</InfoSubtext>
-              </InfoWrapper>
-            </IconsContainer>
-          </TopContainer>
-          <CarSelectorButton disabled />
-        </Content>
-        <BottomButtonsContainer>
-          <CustomText
-            size={Typography.FONT_SIZE_20}
-            weight="700"
-            style={{ marginRight: 30 }}
-            color={DEFAULT_THEME.white}>
-            {`$2.10`}
-          </CustomText>
-          <BottomButton onPress={() => { }} style={styles.continueButton}>
-            <CustomText
-              size={Typography.FONT_SIZE_16}
-              weight="700"
-              color={DEFAULT_THEME.black}>
-              {translate('continue', TextTransform.CAPITALIZE)}
-            </CustomText>
-          </BottomButton>
-        </BottomButtonsContainer>
+            <BottomButtonsContainer>
+              <PriceText>$2.10</PriceText>
+              <BottomButton
+                onPress={() => { }}
+                style={{
+                  backgroundColor: timeSelected.id ? DEFAULT_THEME.primary : DEFAULT_THEME.darkPrimary,
+                }}
+                disabled={!timeSelected.id}
+                title={translate('continue', TextTransform.CAPITALIZE)}
+                textStyle={{
+                  fontSize: Typography.FONT_SIZE_16,
+                  fontWeight: '700',
+                  color: DEFAULT_THEME.black,
+                }}
+              />
+            </BottomButtonsContainer>
+          </Content>
+        </PaddingContainer>
       </Container>
     </ViewContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  continueButton: {
-    borderColor: DEFAULT_THEME.primary,
-    backgroundColor: DEFAULT_THEME.primary,
-  },
   map: {
     width: '100%',
     height: 160,

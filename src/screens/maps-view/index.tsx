@@ -1,5 +1,5 @@
 // Modules
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { FlatList } from 'react-native-gesture-handler';
@@ -14,15 +14,16 @@ import MapsParkingCards from 'components/molecules/maps-parking-card';
 // Utils
 import { parking_dummy_list } from 'utils/dummy-data';
 import { IParkingProps } from 'core/interface/parking.interface';
+import { useNavigation } from '@react-navigation/native';
 
 interface IMapsViewProps {
-
+  navigation: any;
 }
 
 const MapsView = (props: IMapsViewProps) => {
 
   const {
-    navigation
+    navigation,
   } = props;
 
   // States

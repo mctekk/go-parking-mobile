@@ -8,36 +8,59 @@ import { DEFAULT_THEME } from 'styles/theme';
 import Header from 'components/molecules/header';
 import Text from 'components/atoms/text';
 import { Typography } from 'styles';
+import Button from 'components/atoms/button';
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
   border-radius: 25px;
-  padding-horizontal: 20px;
+`;
+
+export const PaddingContainer = styled.View`
+  padding-horizontal: 16px;
 `;
 
 export const ScreenHeader = styled(Header)`
   background-color: ${DEFAULT_THEME.transparent};
 `;
 
-export const Content = styled.ScrollView``;
-
-export const BottomButton = styled.TouchableOpacity`
-  width: 38%;
-  border-width: 1px;
-  padding-vertical: 14px;
-  align-items: center;
-  border-radius: 50px;
+export const Content = styled.ScrollView`
+  padding-bottom: 160px;
 `;
 
-export const BottomButtonsContainer = styled.TouchableOpacity`
+export const BottomButtonsContainer = styled.View`
   width: 100%;
-  align-items: center;
   flex-direction: row;
-  justify-content: center;
-  position: absolute;
   align-self: center;
-  bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  shadow-color: #000;
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.23;
+  shadow-radius: 2.62px;
+`;
+
+export const BottomButton = styled(Button)`
+  width: 38%;
+  height: 48px;
+  border-radius: 50px;
+  margin-top: 0px;
+  margin-left: 15px;
+`;
+
+export const PriceContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+`;
+
+export const PriceText = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_20}px;
+  line-height: ${Typography.FONT_SIZE_24}px;
+  font-weight: 700;
+  color: ${DEFAULT_THEME.white};
+  margin-right: 15px;
 `;
 
 export const TopContainer = styled.View`

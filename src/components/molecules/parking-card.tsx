@@ -26,6 +26,7 @@ interface IParkingCardProps {
   parkingLeft: number;
   price: number;
   tags: string[];
+  onPress: () => void;
 }
 
 interface ITagsProps {
@@ -150,12 +151,19 @@ const ParkingCard = (props: IParkingCardProps) => {
     duration_time,
     price,
     tags,
+    onPress,
   } = props;
 
   const { latitude, longitude } = location;
 
+  const onCarPress = () => {
+    onPress?.();
+  };
+
   return (
-    <Container>
+    <Container
+      onPress={onCarPress}
+    >
       <TopContainer>
         <MapContainer>
           <MapView
