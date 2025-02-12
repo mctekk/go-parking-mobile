@@ -5,16 +5,19 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import useCountDown from 'react-countdown-hook';
 import moment from 'moment';
 
 // Atoms
 import CustomText from 'atoms/text';
+import { TextTransform, translate } from 'components/atoms/localized-label';
 
 // Styles
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
-import { TextTransform, translate } from 'components/atoms/localized-label';
+
+// Hooks
+import useCountDown from 'hooks/useCountDown';
+
 
 const ARC_ANGLE_LENGTH = 260;
 const BAR_WIDTH = 25;
