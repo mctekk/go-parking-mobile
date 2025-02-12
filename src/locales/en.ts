@@ -86,4 +86,5 @@ export default {
   booking: 'Booking',
   howLong: 'how long?',
   bookingNow: 'Booking Now',
+  payNow: 'Pay now',
 };
