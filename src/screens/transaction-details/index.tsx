@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 // Modules
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
@@ -34,17 +34,47 @@ import DashLine from 'components/atoms/dash-line';
 // Utils
 import { ShareUtil } from 'utils';
 
+// Interfaces
+import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
+
+enum TRANSACTION_TYPE {
+  BOOKING = 'booking',
+  HISTORY = 'history',
+}
 interface ITransactionDetailsScreenProps {
   navigation: any;
-  route: any;
+  route: {
+    params: ITransactionDetailsParamsProps;
+  };
+}
+
+interface ITransactionDetailsParamsProps {
+  parking_id: number;
+  location: IParkingLocation;
+  parkingName: string;
+  parkingAvailable: number;
+  streetLocation: string;
+  price: IParkingPrice;
+  durationTime: number;
+  timeSelected: any;
+  type?: TRANSACTION_TYPE;
 }
 
 export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   // Props
-  const { navigation, route } = props;
+  const {
+    route
+  } = props;
 
   // Params
-  const order = route?.params?.transactionData;
+  const {
+    location,
+    parkingName,
+    streetLocation,
+    price,
+    timeSelected,
+    type = TRANSACTION_TYPE.HISTORY,
+  } = route.params;
 
   const rowsData = [
     {
@@ -74,16 +104,24 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
     {
       id: 5,
       titleLocale: 'duration',
-      subtitle: order?.duration_time,
+      subtitle: timeSelected?.label,
       bottomDashLine: true,
     },
     {
       id: 6,
       titleLocale: 'subtotal',
-      subtitle: `$${order?.price?.amount}`,
+      subtitle: `$${price?.amount}`,
       bottomDashLine: true,
     },
   ];
+
+  const onShareButtonPress = () => {
+    ShareUtil('', 'https://www.google.com');
+  };
+
+  const onBookingButtonPress = () => {
+
+  };
 
   return (
     <ViewContainer>
@@ -105,8 +143,8 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
                 zoomEnabled={false}
                 zoomTapEnabled={false}
                 region={{
-                  latitude: order?.locations?.latitude,
-                  longitude: order?.locations?.longitude,
+                  latitude: location?.latitude,
+                  longitude: location?.longitude,
                   latitudeDelta: 0.015,
                   longitudeDelta: 0.0121,
                 }}
@@ -118,14 +156,14 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
                 weight="700"
                 style={{ marginBottom: 8 }}
                 color={DEFAULT_THEME.white}>
-                {order?.name}
+                {parkingName}
               </CustomText>
               <CustomText
                 size={Typography.FONT_SIZE_10}
                 weight="500"
                 lineHeight={Typography.FONT_SIZE_14}
                 color={DEFAULT_THEME.white}>
-                {order?.street}
+                {streetLocation}
               </CustomText>
             </TopSectionContainer>
           </TopContainer>
@@ -170,18 +208,22 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
               size={Typography.FONT_SIZE_16}
               weight="600"
               color={DEFAULT_THEME.titleGray}>
-              {`$${order?.price?.amount}`}
+              {`$${price.amount}`}
             </CustomText>
           </DetailRowContent>
         </Content>
-        <BottomButton onPress={() => ShareUtil('', 'https://www.google.com')}>
-          <CustomText
-            size={Typography.FONT_SIZE_16}
-            weight="600"
-            color={DEFAULT_THEME.black}>
-            {translate('share', TextTransform.CAPITALIZE)}
-          </CustomText>
-        </BottomButton>
+
+        <BottomButton
+          onPress={type === TRANSACTION_TYPE.BOOKING ? onBookingButtonPress : onShareButtonPress}
+          title={translate(type === TRANSACTION_TYPE.BOOKING ? 'bookingNow' : 'share', TextTransform.CAPITALIZE)}
+          textStyle={{
+            fontSize: Typography.FONT_SIZE_16,
+            lineHeight: Typography.FONT_SIZE_20,
+            fontWeight: '700',
+            color: DEFAULT_THEME.black,
+          }}
+        />
+
       </Container>
     </ViewContainer>
   );

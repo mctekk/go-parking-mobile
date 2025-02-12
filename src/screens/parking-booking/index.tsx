@@ -70,11 +70,16 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     durationTime,
   } = route.params;
 
-  // Params
-  const sessionData = route?.params?.sessionData;
-
   // States
   const [timeSelected, setTimeSelected] = useState<{ id?: string }>({});
+
+  const onBookPress = () => {
+    navigation.navigate('TransactionDetails', {
+      ...route.params,
+      timeSelected,
+      type: 'booking',
+    });
+  };
 
   return (
     <ViewContainer>
@@ -138,7 +143,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
             <BottomButtonsContainer>
               <PriceText>$2.10</PriceText>
               <BottomButton
-                onPress={() => { }}
+                onPress={onBookPress}
                 style={{
                   backgroundColor: timeSelected.id ? DEFAULT_THEME.primary : DEFAULT_THEME.darkPrimary,
                 }}
