@@ -63,6 +63,7 @@ interface ITransactionDetailsParamsProps {
 export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   // Props
   const {
+    navigation,
     route
   } = props;
 
@@ -120,8 +121,11 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   };
 
   const onBookingButtonPress = () => {
-
-  };
+    navigation.replace('BookingConfirmationScreen', {
+      price: price,
+      timeSelected: timeSelected,
+    });
+  };  
 
   return (
     <ViewContainer>

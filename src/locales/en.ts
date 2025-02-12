@@ -86,4 +86,12 @@ export default {
   booking: 'Booking',
   howLong: 'how long?',
   bookingNow: 'Booking Now',
+  bookingSuccess: 'Booking Success',
+  orderDetail: 'Order Detail',
+  invoiceNumber: 'Invoice Number',
+  vehicle: 'Vehicle',
+  time: 'Time',
+  timeRemaining: 'Time Remaining',
+  extends: 'Extends',
+  done: 'Done',
 };
