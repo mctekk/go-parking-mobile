@@ -228,7 +228,16 @@ const HistoryList = (props: IHistoryListProps) => {
   };
 
   const onCardPress = (item: object) => {
-    navigation.navigate('TransactionDetails', { transactionData: item });
+    navigation.navigate('TransactionDetails', {
+      parking_id: item.id,
+      location: item.locations,
+      parkingName: item.name,
+      parkingAvailable: item.parkingsLeft,
+      streetLocation: item.street,
+      price: item.price,
+      durationTime: item.duration_time,
+      timeSelected: { label: '1 hour' },
+    });
   };
 
   const renderItem = useCallback(

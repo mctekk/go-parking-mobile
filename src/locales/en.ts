@@ -85,4 +85,5 @@ export default {
   continue: 'continue',
   booking: 'Booking',
   howLong: 'how long?',
+  bookingNow: 'Booking Now',
 };
