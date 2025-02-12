@@ -30,6 +30,7 @@ interface IParkingCardProps {
   price: number;
   tags: string[];
   isFromMaps?: boolean;
+  onBookNowPress: () => void;
 }
 
 interface ITagsProps {
@@ -176,6 +177,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
     price,
     tags,
     isFromMaps,
+    onBookNowPress,
   } = props;
 
   const { latitude, longitude } = location;
@@ -258,7 +260,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
 
       <BookNowButton
         title='Book Now'
-        onPress={() => console.log('Book Now')}
+        onPress={onBookNowPress}
         textStyle={{
           fontSize: Typography.FONT_SIZE_16,
           lineHeight: Typography.FONT_SIZE_18,

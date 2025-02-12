@@ -37,6 +37,9 @@ const MapsView = (props: IMapsViewProps) => {
     console.log('Search:', keyword);
   }, [keyword]);
 
+  const onBookNowPress = () => {
+    console.log('Book Now Pressed');
+  };
 
   const renderItem = useCallback(({ item }) => {
     return (
@@ -50,6 +53,7 @@ const MapsView = (props: IMapsViewProps) => {
         price={item.price}
         tags={item.tags}
         isFromMaps={true}
+        onBookNowPress={onBookNowPress}
       />
     )
   }, []);
