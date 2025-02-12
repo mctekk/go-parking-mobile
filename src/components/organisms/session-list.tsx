@@ -28,6 +28,7 @@ import { EventRegister } from 'react-native-event-listeners';
 
 // Interface
 import { RefreshControl } from 'react-native-gesture-handler';
+import { parking_dummy_list } from 'utils/dummy-data';
 
 const Container = styled.View`
   flex: 1;
@@ -113,7 +114,7 @@ const SessionList = (props: ISessionListProps) => {
       //   pageNumber,
       // );
       // const { paginatorInfo, data } = response?.orders;
-      const data: any = session_dummy_list;
+      const data: any = parking_dummy_list;
       if (pageNumber > 1) {
         items.current.push(...data);
       } else {
@@ -200,7 +201,15 @@ const SessionList = (props: ISessionListProps) => {
   };
 
   const onCardPress = (item: object) => {
-    navigation.navigate('SessionDetails', { sessionData: item });
+    navigation.navigate('SessionDetails', {
+      parking_id: item.id,
+      location: item.locations,
+      parkingName: item.name,
+      parkingAvailable: item.parkingsLeft,
+      streetLocation: item.street,
+      price: item.price,
+      durationTime: item.duration_time,
+    });
   };
 
   const renderItem = useCallback(({ item, index }) => {
@@ -280,58 +289,5 @@ const styles = {
     paddingHorizontal: 20,
   },
 };
-
-const session_dummy_list = [
-  {
-    id: 1,
-    name: 'Parking La Puntilla',
-    street: 'C. Arturo Schomburg, San Juan, 00901',
-    price: {
-      amount: 10,
-      currency: 'USD',
-    },
-    duration_time: '2 hours',
-    parkingsLeft: 10,
-    tags: [
-      {
-        id: 1,
-        name: 'Covered',
-      },
-      {
-        id: 2,
-        name: 'Security',
-      },
-    ],
-    locations: {
-      latitude: '18.4233',
-      longitude: '-66.0628',
-    },
-  },
-  {
-    id: 2,
-    name: 'Parking Covadonga',
-    street: 'C. Juan Antonio Corretjer 00901',
-    price: {
-      amount: 10,
-      currency: 'USD',
-    },
-    duration_time: '2 hours',
-    parkingsLeft: 10,
-    tags: [
-      {
-        id: 1,
-        name: 'Covered',
-      },
-      {
-        id: 2,
-        name: 'Security',
-      },
-    ],
-    locations: {
-      latitude: '37.7749',
-      longitude: '-122.4194',
-    },
-  },
-];
 
 export default memo(SessionList);
