@@ -2,15 +2,18 @@
 import React, { useCallback, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { FlatList } from 'react-native-gesture-handler';
 
 // Styles
 import { BottomContent, Container, Content, SearchContainer } from './styled';
-import SearchBar from 'components/molecules/search-bar';
+
+// Molecules
 import MapsSearch from 'components/molecules/maps-search';
-import { FlatList } from 'react-native-gesture-handler';
-import { parking_dummy_list } from 'utils/dummy-data';
-import ParkingCard from 'components/molecules/parking-card';
 import MapsParkingCards from 'components/molecules/maps-parking-card';
+
+// Utils
+import { parking_dummy_list } from 'utils/dummy-data';
+import { IParkingProps } from 'core/interface/parking.interface';
 
 interface IMapsViewProps {
 
@@ -37,8 +40,16 @@ const MapsView = (props: IMapsViewProps) => {
     console.log('Search:', keyword);
   }, [keyword]);
 
-  const onBookNowPress = () => {
-    console.log('Book Now Pressed');
+  const onBookNowPress = (item: IParkingProps) => {
+    navigation.navigate('ParkingBooking', {
+      parking_id: item.id,
+      location: item.locations,
+      parkingName: item.name,
+      parkingAvailable: item.parkingsLeft,
+      streetLocation: item.street,
+      price: item.price,
+      durationTime: item.duration_time,
+    });
   };
 
   const renderItem = useCallback(({ item }) => {
@@ -53,12 +64,12 @@ const MapsView = (props: IMapsViewProps) => {
         price={item.price}
         tags={item.tags}
         isFromMaps={true}
-        onBookNowPress={onBookNowPress}
+        onBookNowPress={() => onBookNowPress(item)}
       />
     )
   }, []);
 
-  const keyExtractor = useCallback((item: Parking) => item.id, []);
+  const keyExtractor = useCallback((item: IParkingProps) => item.id, []);
 
 
   return (

@@ -36,7 +36,6 @@ const ParkingList = (props: ParkingListProps) => {
   }, []);
 
   const renderItem = useCallback(({ item }: { item: Parking }) => {
-    console.log('Item:', item);
     return (
       <ParkingCard
         id={item.id}

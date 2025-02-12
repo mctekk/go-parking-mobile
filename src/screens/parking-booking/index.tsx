@@ -15,6 +15,14 @@ import {
   MapContainer,
   Row,
   IconContainer,
+  Title,
+  Subtitle,
+  CustomText,
+  IconsContainer,
+  InfoWrapper,
+  InfoText,
+  InfoSubtext,
+  Wrapper,
 } from './styles';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
@@ -27,18 +35,39 @@ import CarSelectorButton from 'components/molecules/car-selector-button';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
-import CustomText from 'atoms/text';
 import { CarIconOutline } from 'assets/icons';
 import DollarIcon from 'assets/icons/dollar-icon';
+import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
 
 interface IParkingBookingProps {
   navigation: any;
-  route: any;
+  route: {
+    params: IBookingScreenParamsProps;
+  };
+}
+
+interface IBookingScreenParamsProps {
+  parking_id: number;
+  location: IParkingLocation;
+  parkingName: string;
+  parkingAvailable: number;
+  streetLocation: string;
+  price: IParkingPrice;
+  durationTime: number;
 }
 
 export const ParkingBooking = (props: IParkingBookingProps) => {
   // Props
   const { navigation, route } = props;
+  const {
+    parking_id,
+    location,
+    parkingName,
+    parkingAvailable,
+    streetLocation,
+    price,
+    durationTime,
+  } = route.params;
 
   // Params
   const sessionData = route?.params?.sessionData;
@@ -57,65 +86,39 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
           <MapContainer>
             <MapView
               style={styles.map}
+              provider={'google'}
               scrollEnabled={false}
               zoomEnabled={false}
               zoomTapEnabled={false}
               region={{
-                latitude: sessionData?.locations?.latitude,
-                longitude: sessionData?.locations?.longitude,
+                latitude: location?.latitude,
+                longitude: location?.longitude,
                 latitudeDelta: 0.015,
                 longitudeDelta: 0.0121,
               }}
             />
           </MapContainer>
+
           <TopContainer>
-            <CustomText
-              size={Typography.FONT_SIZE_20}
-              weight="700"
-              color={DEFAULT_THEME.white}>
-              {sessionData?.name}
-            </CustomText>
-            <CustomText
-              size={Typography.FONT_SIZE_12}
-              weight="500"
-              style={{ marginVertical: 12 }}
-              lineHeight={Typography.FONT_SIZE_14}
-              color={DEFAULT_THEME.dashGray}>
-              {sessionData?.street}
-            </CustomText>
-            <Row>
-              <Row>
+            <Title>{parkingName}</Title>
+            <Subtitle>{streetLocation}</Subtitle>
+            <IconsContainer>
+              <InfoWrapper>
                 <IconContainer>
                   <DollarIcon />
                 </IconContainer>
-                <CustomText
-                  size={Typography.FONT_SIZE_12}
-                  weight="700"
-                  style={{ marginRight: 20 }}
-                  color={DEFAULT_THEME.white}>
-                  {`${sessionData?.price?.amount} /hr`}
-                </CustomText>
-              </Row>
-              <Row>
+                <InfoText>{price.amount}</InfoText>
+                <InfoSubtext>/hr</InfoSubtext>
+              </InfoWrapper>
+
+              <InfoWrapper>
                 <IconContainer>
-                  <CarIconOutline
-                    width={10}
-                    height={9}
-                    color={DEFAULT_THEME.black}
-                  />
+                  <DollarIcon />
                 </IconContainer>
-                <CustomText
-                  size={Typography.FONT_SIZE_12}
-                  weight="700"
-                  lineHeight={Typography.FONT_SIZE_14}
-                  color={DEFAULT_THEME.white}>
-                  {`${sessionData?.parkingsLeft} ${translate(
-                    'available',
-                    TextTransform.CAPITAL,
-                  )}`}
-                </CustomText>
-              </Row>
-            </Row>
+                <InfoText>{parkingAvailable}</InfoText>
+                <InfoSubtext>{translate('available', TextTransform.NONE)}</InfoSubtext>
+              </InfoWrapper>
+            </IconsContainer>
           </TopContainer>
           <CarSelectorButton disabled />
         </Content>
@@ -127,7 +130,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
             color={DEFAULT_THEME.white}>
             {`$2.10`}
           </CustomText>
-          <BottomButton onPress={() => {}} style={styles.continueButton}>
+          <BottomButton onPress={() => { }} style={styles.continueButton}>
             <CustomText
               size={Typography.FONT_SIZE_16}
               weight="700"
@@ -148,7 +151,7 @@ const styles = StyleSheet.create({
   },
   map: {
     width: '100%',
-    height: 150,
-    borderRadius: 20,
+    height: 160,
+    borderRadius: 10,
   },
 });
