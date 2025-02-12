@@ -1,8 +1,17 @@
-import ParkingCard from 'components/molecules/parking-card';
+// Modules
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { FlatList } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 import styled from 'styled-components/native';
+
+// Molecules
+import ParkingCard from 'components/molecules/parking-card';
+
+// Interfaces
+import { IParkingProps } from 'core/interface/parking.interface';
+
+// Utils
 import { parking_dummy_list } from 'utils/dummy-data';
 
 interface Parking {
@@ -29,14 +38,28 @@ const ParkingList = (props: ParkingListProps) => {
   // States
   const [loading, setLoading] = useState(true);
 
+  // Hooks
+  const navigation = useNavigation();
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
 
-  const renderItem = useCallback(({ item }: { item: Parking }) => {
-    console.log('Item:', item);
+  const onCardPress = (item: IParkingProps) => {
+    navigation.navigate('ParkingBooking', {
+      parking_id: item.id,
+      location: item.locations,
+      parkingName: item.name,
+      parkingAvailable: item.parkingsLeft,
+      streetLocation: item.street,
+      price: item.price,
+      durationTime: item.duration_time,
+    });
+  };
+
+  const renderItem = useCallback(({ item }: { item: IParkingProps }) => {
     return (
       <ParkingCard
         id={item.id}
@@ -47,6 +70,7 @@ const ParkingList = (props: ParkingListProps) => {
         duration_time={item.duration_time}
         price={item.price}
         tags={item.tags}
+        onPress={() => onCardPress(item)}
       />
     );
   }, []);

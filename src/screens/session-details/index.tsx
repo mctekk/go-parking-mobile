@@ -38,9 +38,27 @@ interface ISessionDetailsScreenProps {
 export const SessionDetails = (props: ISessionDetailsScreenProps) => {
   // Props
   const { navigation, route } = props;
+  const {
+    parking_id,
+    location,
+    parkingName,
+    parkingAvailable,
+    streetLocation,
+    price,
+    durationTime,
+  } = route.params;
 
-  // Params
-  const sessionData = route?.params?.sessionData;
+  const onExtentTimePress = () => {
+    navigation.navigate('ParkingBooking', {
+      parking_id: parking_id,
+      location: location,
+      parkingName: parkingName,
+      parkingAvailable: parkingAvailable,
+      streetLocation: streetLocation,
+      price: price,
+      durationTime: durationTime,
+    });
+  }
 
   return (
     <ViewContainer>
@@ -60,7 +78,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
                 size={Typography.FONT_SIZE_14}
                 weight="600"
                 color={DEFAULT_THEME.titleGray}>
-                {sessionData?.name}
+                {parkingName}
               </CustomText>
             </RowBetween>
             <CustomText
@@ -69,7 +87,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
               style={{}}
               lineHeight={Typography.FONT_SIZE_14}
               color={DEFAULT_THEME.dashGray}>
-              {sessionData?.street}
+              {streetLocation}
             </CustomText>
             <ModelRow>
               <Row style={{ width: '40%' }}>
@@ -105,11 +123,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
         </Content>
         <BottomButtonsContainer>
           <BottomButton
-            onPress={() =>
-              navigation.navigate('ParkingBooking', {
-                sessionData: sessionData,
-              })
-            }
+            onPress={onExtentTimePress}
             style={styles.extendButton}>
             <CustomText
               size={Typography.FONT_SIZE_16}

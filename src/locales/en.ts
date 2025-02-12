@@ -83,5 +83,6 @@ export default {
   extendTime: 'Extend time',
   endParking: 'End parking',
   continue: 'continue',
+  booking: 'Booking',
   howLong: 'how long?',
 };

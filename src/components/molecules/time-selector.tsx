@@ -25,7 +25,6 @@ const Container = styled.View`
 
 const Content = styled.ScrollView`
   flex-direction: row;
-  padding-horizontal: 20px;
 `;
 
 const ScrollerSpacer = styled.ScrollView`
@@ -34,7 +33,7 @@ const ScrollerSpacer = styled.ScrollView`
 
 const SelectionButton = styled.TouchableOpacity`
   padding-horizontal: 12px;
-  background-color: ${DEFAULT_THEME.cardGray};
+  background-color: ${DEFAULT_THEME.white};
   margin-right: 10px;
   padding-vertical: 10px;
   border-radius: 12px;
@@ -76,6 +75,8 @@ const dummyTimeList = [
 ];
 
 const TimeSelector = (props: ITimeSelectorProps) => {
+
+  // Props
   const { onTimeSelected, selectedId } = props;
 
   return (
@@ -85,33 +86,38 @@ const TimeSelector = (props: ITimeSelectorProps) => {
         lineHeight={Typography.LINE_HEIGHT_20}
         weight="600"
         style={styles.title}
-        color={DEFAULT_THEME.white}>
+        color={DEFAULT_THEME.white}
+      >
         {translate('howLong', TextTransform.CAPITAL)}
       </CustomText>
-      <Content horizontal showsHorizontalScrollIndicator={false}>
-        {dummyTimeList.map((time: any) => {
-          return (
-            <SelectionButton
-              onPress={() => onTimeSelected(time)}
-              style={{
-                backgroundColor:
-                  time.id === selectedId
-                    ? DEFAULT_THEME.primary
-                    : DEFAULT_THEME.cardGray,
-              }}>
-              <CustomText
-                size={Typography.FONT_SIZE_12}
-                weight="500"
-                color={
-                  time.id === selectedId
-                    ? DEFAULT_THEME.black
-                    : DEFAULT_THEME.dashGray
-                }>
-                {time.label}
-              </CustomText>
-            </SelectionButton>
-          );
-        })}
+      <Content
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      >
+        {dummyTimeList.map((time) => (
+          <SelectionButton
+            key={time.id}
+            onPress={() => onTimeSelected(time)}
+            style={{
+              backgroundColor:
+                time.id === selectedId
+                  ? DEFAULT_THEME.primary
+                  : DEFAULT_THEME.cardGray,
+            }}
+          >
+            <CustomText
+              size={Typography.FONT_SIZE_12}
+              weight="500"
+              color={
+                time.id === selectedId
+                  ? DEFAULT_THEME.black
+                  : DEFAULT_THEME.dashGray
+              }
+            >
+              {time.label}
+            </CustomText>
+          </SelectionButton>
+        ))}
         <ScrollerSpacer />
       </Content>
     </Container>
@@ -120,7 +126,6 @@ const TimeSelector = (props: ITimeSelectorProps) => {
 
 const styles = StyleSheet.create({
   title: {
-    marginLeft: 20,
     marginBottom: 12,
   },
 });

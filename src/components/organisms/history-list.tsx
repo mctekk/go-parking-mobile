@@ -28,6 +28,7 @@ import { EventRegister } from 'react-native-event-listeners';
 
 // Interface
 import { RefreshControl } from 'react-native-gesture-handler';
+import { parking_dummy_list } from 'utils/dummy-data';
 
 const Container = styled.View`
   flex: 1;
@@ -322,58 +323,5 @@ const styles = {
     paddingBottom: 50,
   },
 };
-
-const parking_dummy_list = [
-  {
-    id: 1,
-    name: 'Parking La Puntilla',
-    street: 'C. Arturo Schomburg, San Juan, 00901',
-    price: {
-      amount: 10,
-      currency: 'USD',
-    },
-    duration_time: '2 hours',
-    parkingsLeft: 10,
-    tags: [
-      {
-        id: 1,
-        name: 'Covered',
-      },
-      {
-        id: 2,
-        name: 'Security',
-      },
-    ],
-    locations: {
-      latitude: '18.4233',
-      longitude: '-66.0628',
-    },
-  },
-  {
-    id: 2,
-    name: 'Parking Covadonga',
-    street: 'C. Juan Antonio Corretjer 00901',
-    price: {
-      amount: 10,
-      currency: 'USD',
-    },
-    duration_time: '2 hours',
-    parkingsLeft: 10,
-    tags: [
-      {
-        id: 1,
-        name: 'Covered',
-      },
-      {
-        id: 2,
-        name: 'Security',
-      },
-    ],
-    locations: {
-      latitude: '37.7749',
-      longitude: '-122.4194',
-    },
-  },
-];
 
 export default memo(HistoryList);
