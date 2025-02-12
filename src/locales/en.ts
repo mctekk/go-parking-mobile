@@ -94,4 +94,5 @@ export default {
   timeRemaining: 'Time Remaining',
   extends: 'Extends',
   done: 'Done',
+  payNow: 'Pay now',
 };

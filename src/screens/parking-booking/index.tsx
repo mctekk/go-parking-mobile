@@ -38,7 +38,10 @@ import { TextTransform, translate } from 'components/atoms/localized-label';
 import DollarIcon from 'assets/icons/dollar-icon';
 
 // Interfaces
-import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
+import {
+  IParkingLocation,
+  IParkingPrice,
+} from 'core/interface/parking.interface';
 
 interface IParkingBookingProps {
   navigation: any;
@@ -55,6 +58,7 @@ interface IBookingScreenParamsProps {
   streetLocation: string;
   price: IParkingPrice;
   durationTime: number;
+  type: string;
 }
 
 export const ParkingBooking = (props: IParkingBookingProps) => {
@@ -68,6 +72,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     streetLocation,
     price,
     durationTime,
+    type = 'booking',
   } = route.params;
 
   // States
@@ -77,7 +82,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     navigation.navigate('TransactionDetails', {
       ...route.params,
       timeSelected,
-      type: 'booking',
+      type,
     });
   };
 
@@ -85,7 +90,6 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     <ViewContainer>
       <SafeAreaView />
       <Container>
-
         <PaddingContainer>
           <ScreenHeader
             title={''}
@@ -128,7 +132,9 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
                     <DollarIcon />
                   </IconContainer>
                   <InfoText>{parkingAvailable}</InfoText>
-                  <InfoSubtext>{translate('available', TextTransform.NONE)}</InfoSubtext>
+                  <InfoSubtext>
+                    {translate('available', TextTransform.NONE)}
+                  </InfoSubtext>
                 </InfoWrapper>
               </IconsContainer>
             </TopContainer>
@@ -145,7 +151,9 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
               <BottomButton
                 onPress={onBookPress}
                 style={{
-                  backgroundColor: timeSelected.id ? DEFAULT_THEME.primary : DEFAULT_THEME.darkPrimary,
+                  backgroundColor: timeSelected.id
+                    ? DEFAULT_THEME.primary
+                    : DEFAULT_THEME.darkPrimary,
                 }}
                 disabled={!timeSelected.id}
                 title={translate('continue', TextTransform.CAPITALIZE)}

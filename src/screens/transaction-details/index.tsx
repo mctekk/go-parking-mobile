@@ -35,11 +35,15 @@ import DashLine from 'components/atoms/dash-line';
 import { ShareUtil } from 'utils';
 
 // Interfaces
-import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
+import {
+  IParkingLocation,
+  IParkingPrice,
+} from 'core/interface/parking.interface';
 
-enum TRANSACTION_TYPE {
+export enum TRANSACTION_TYPE {
   BOOKING = 'booking',
   HISTORY = 'history',
+  EXTEND = 'extend',
 }
 interface ITransactionDetailsScreenProps {
   navigation: any;
@@ -64,9 +68,8 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   // Props
   const {
     navigation,
-    route
+    route,
   } = props;
-
   // Params
   const {
     location,
@@ -126,6 +129,30 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
       timeSelected: timeSelected,
     });
   };  
+  const getButtonLocale = () => {
+    if (type === TRANSACTION_TYPE.BOOKING) {
+      return 'bookingNow';
+    }
+    if (type === TRANSACTION_TYPE.HISTORY) {
+      return 'share';
+    }
+    if (type === TRANSACTION_TYPE.EXTEND) {
+      return 'payNow';
+    }
+    return '';
+  };
+
+  const handleButtonPress = () => {
+    if (type === TRANSACTION_TYPE.BOOKING) {
+      onBookingButtonPress();
+    }
+    if (type === TRANSACTION_TYPE.HISTORY) {
+      onShareButtonPress();
+    }
+    if (type === TRANSACTION_TYPE.EXTEND) {
+      onBookingButtonPress();
+    }
+  };
 
   return (
     <ViewContainer>
@@ -218,8 +245,8 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
         </Content>
 
         <BottomButton
-          onPress={type === TRANSACTION_TYPE.BOOKING ? onBookingButtonPress : onShareButtonPress}
-          title={translate(type === TRANSACTION_TYPE.BOOKING ? 'bookingNow' : 'share', TextTransform.CAPITALIZE)}
+          onPress={handleButtonPress}
+          title={translate(getButtonLocale(), TextTransform.CAPITALIZE)}
           textStyle={{
             fontSize: Typography.FONT_SIZE_16,
             lineHeight: Typography.FONT_SIZE_20,
@@ -227,7 +254,6 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
             color: DEFAULT_THEME.black,
           }}
         />
-
       </Container>
     </ViewContainer>
   );
