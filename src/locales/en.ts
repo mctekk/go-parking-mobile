@@ -79,4 +79,8 @@ export default {
   timeLeft: 'time left',
   remindMe: 'Remind me',
   manage: 'Manage',
+  remainingParkingTime: 'Remaining parking time',
+  extendTime: 'Extend time',
+  endParking: 'End parking',
+  continue: 'continue',
 };

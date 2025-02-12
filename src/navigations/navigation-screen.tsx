@@ -7,6 +7,8 @@ import { Notifications } from 'screens/notifications';
 import { SignIn } from 'screens/sign-in';
 import { SignUp } from 'screens/sign-up';
 import { TransactionDetails } from 'screens/transaction-details';
+import { SessionDetails } from 'screens/session-details';
+import { ParkingBooking } from 'screens/parking-booking';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -66,6 +68,20 @@ export const navigationScreen = [
   {
     name: 'MapView',
     screen: MapsView,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'SessionDetails',
+    screen: SessionDetails,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'ParkingBooking',
+    screen: ParkingBooking,
     options: {
       navigationDefaultOptions,
     },
