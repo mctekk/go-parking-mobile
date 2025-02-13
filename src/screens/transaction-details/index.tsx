@@ -97,7 +97,8 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
       id: 4,
       titleLocale: type === TRANSACTION_TYPE.EXTEND ? 'extendDuration' : 'exitBefore',
       subtitle: type === TRANSACTION_TYPE.EXTEND ? `+${timeSelected?.label}` : '11:00 AM',
-      subtitleColor: DEFAULT_THEME.primary,
+      subtitleColor:
+        type === TRANSACTION_TYPE.EXTEND ? DEFAULT_THEME.primary : DEFAULT_THEME.titleGray,
       bottomDashLine: false,
     },
     {
