@@ -15,6 +15,7 @@ interface IButtonProps {
   title?: string;
   textStyle?: StyleProp<Text>;
   loading?: boolean;
+  onPress?: () => void;
 }
 
 const ButtonContainer = styled.TouchableOpacity`
