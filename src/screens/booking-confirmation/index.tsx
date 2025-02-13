@@ -137,7 +137,7 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
                   )}
                 </InfoTitle>
                 <InfoSubtext>{`${
-                  type === TRANSACTION_TYPE.EXTEND && '+'
+                  type === TRANSACTION_TYPE.EXTEND ? '+' : ''
                 }30 minutes`}</InfoSubtext>
               </Wrapper>
               <IconContainer>
