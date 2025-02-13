@@ -26,7 +26,7 @@ export const CheckCircle = styled.View`
   height: 100px;
   border-radius: 50px;
   border-width: 7px;
-  border-color: rgba(255, 184, 0, 0.74)
+  border-color: rgba(255, 184, 0, 0.74);
 `;
 
 export const Title = styled(Text)`
@@ -36,7 +36,6 @@ export const Title = styled(Text)`
   font-weight: 700;
   margin-top: 20px;
 `;
-
 
 export const Content = styled.View`
   margin-top: 20px;
@@ -56,9 +55,7 @@ export const BackgroundContainer = styled.View`
   padding: 20px;
 `;
 
-export const Wrapper = styled.View`
-  
-`;
+export const Wrapper = styled.View``;
 
 export const InfoTitle = styled(Text)`
   font-size: ${Typography.FONT_SIZE_12}px;
@@ -68,7 +65,7 @@ export const InfoTitle = styled(Text)`
 `;
 
 export const InfoSubtext = styled(Text)`
-font-size: ${Typography.FONT_SIZE_14}px;
+  font-size: ${Typography.FONT_SIZE_14}px;
   line-height: ${Typography.FONT_SIZE_18}px;
   color: rgba(204, 204, 204, 1);
   font-weight: 600;
@@ -98,11 +95,9 @@ export const BottomButtonContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
 `;
 
 export const CustomButton = styled(Button)`
   width: 48%;
   border-radius: 50px;
-`
-
+`;

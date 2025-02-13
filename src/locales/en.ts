@@ -95,4 +95,9 @@ export default {
   extends: 'Extends',
   done: 'Done',
   payNow: 'Pay now',
+  remainingParkTime: 'Remaining Park Time',
+  extendDuration: 'Extend Duration',
+  newParkTime: 'New remaining park time',
+  paymentSuccess: 'Payment success',
+  extension: 'extension',
 };
