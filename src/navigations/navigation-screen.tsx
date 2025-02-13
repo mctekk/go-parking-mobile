@@ -9,8 +9,9 @@ import { SignUp } from 'screens/sign-up';
 import { TransactionDetails } from 'screens/transaction-details';
 import { SessionDetails } from 'screens/session-details';
 import { ParkingBooking } from 'screens/parking-booking';
-import  BookingScreen from 'screens/booking';
+import BookingScreen from 'screens/booking';
 import BookingConfirmationScreen from 'screens/booking-confirmation';
+import ParkingScreen from 'screens/parking';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -94,5 +95,5 @@ export const navigationScreen = [
     options: {
       navigationDefaultOptions,
     },
-  }
+  },
 ];

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 // Modules
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 
 // Styles
@@ -24,6 +24,7 @@ import ViewContainer from 'components/organisms/view-container';
 
 // Molecules
 import SessionTimeCounter from 'components/molecules/session-time-counter';
+import ConfirmationModal from 'molecules/modals/confirmation-modal';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
@@ -48,6 +49,9 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
     price,
     durationTime,
   } = route.params;
+
+  // States
+  const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
 
   const onExtentTimePress = () => {
     navigation.navigate('ParkingBooking', {
@@ -106,11 +110,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
               </Row>
               <Row style={{ width: '60%' }}>
                 <IconContainer>
-                  <CarIconOutline
-                    width={13}
-                    height={13}
-                    fill={DEFAULT_THEME.primary}
-                  />
+                  <CarIconOutline width={13} height={13} fill={DEFAULT_THEME.primary} />
                 </IconContainer>
                 <CustomText
                   size={Typography.FONT_SIZE_12}
@@ -132,7 +132,9 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
               {translate('extendTime', TextTransform.CAPITALIZE)}
             </CustomText>
           </BottomButton>
-          <BottomButton onPress={() => {}} style={styles.endButton}>
+          <BottomButton
+            onPress={() => setConfirmationModalVisible(true)}
+            style={styles.endButton}>
             <CustomText
               size={Typography.FONT_SIZE_16}
               weight="600"
@@ -142,6 +144,13 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
           </BottomButton>
         </BottomButtonsContainer>
       </Container>
+      <ConfirmationModal
+        visible={confirmationModalVisible}
+        onPressClose={() => setConfirmationModalVisible(false)}
+        onLeavePress={() => navigation.pop()}
+        titleLocale={'endParkingSession'}
+        subTitleLocale={'endSessionSubtitle'}
+      />
     </ViewContainer>
   );
 };

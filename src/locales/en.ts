@@ -100,4 +100,8 @@ export default {
   newParkTime: 'New remaining park time',
   paymentSuccess: 'Payment success',
   extension: 'extension',
+  cancel: 'cancel',
+  yes: 'yes',
+  endParkingSession: 'End your parking session?',
+  endSessionSubtitle: 'Are you sure you want to finish your parking session?',
 };
