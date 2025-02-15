@@ -182,31 +182,18 @@ const ParkingCard = (props: IParkingCardProps) => {
             scrollEnabled={false}
             zoomEnabled={false}
             zoomTapEnabled={false}
+            liteMode={true}
+            cacheEnabled
             region={{
               latitude: locations?.latitude,
               longitude: locations?.longitude,
               latitudeDelta: 0.0043,
               longitudeDelta: 0.0034,
             }}
-          >
-            <Marker
-              coordinate={{
-                latitude: locations?.latitude,
-                longitude: locations?.longitude,
-              }}
-            />
-          </MapView>
+          />
         </MapContainer>
 
         <Wrapper>
-          {/* <TagListContainer>
-            {tags.map((tag, index) => (
-              <Tags
-                key={index}
-                name={tag?.name}
-              />
-            ))}
-          </TagListContainer> */}
           <Title>{title}</Title>
           <Street>{street}</Street>
         </Wrapper>

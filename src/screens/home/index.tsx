@@ -48,11 +48,6 @@ export const Home = (props: IHomeProps) => {
   // References
   const scrollList = useRef(null);
 
-  useEffect(() => {
-    // TESTING PURPOSES
-    console.log('User Data:', userData);
-  }, []);
-
   const onSearch = (text: string) => {
     console.log('Search:', text);
   };
@@ -60,6 +55,10 @@ export const Home = (props: IHomeProps) => {
   const onMapPress = () => {
     navigation.navigate('MapView');
   };
+
+  const onSeeMorePress = () => {
+    navigation.navigate('AllParkingScreen');
+  }
 
   return (
     <ViewContainer
@@ -85,15 +84,17 @@ export const Home = (props: IHomeProps) => {
             <Title>{translate('nearbyPark', TextTransform.NONE)}</Title>
             <SubtitleContainer>
               <SubtitleText>{translate('theBestParkingSpaceNearYou', TextTransform.NONE)}</SubtitleText>
-              <ViewMoreButton>
+              <ViewMoreButton
+                onPress={onSeeMorePress}
+              >
                 <ViewMoreText>{translate('seeMore', TextTransform.CAPITALIZE)}</ViewMoreText>
               </ViewMoreButton>
             </SubtitleContainer>
 
-            <ParkingList 
-            
+            <ParkingList
+              scrollEnabled={false}
             />
-    
+
           </ListContainer>
         </Content>
       </ScrollContainer>
@@ -101,7 +102,7 @@ export const Home = (props: IHomeProps) => {
       <FloatingButton
         onPress={onMapPress}
       >
-        <FloatingButtonText>Map View</FloatingButtonText>
+        <FloatingButtonText>{translate('mapView', TextTransform.CAPITALIZE)}</FloatingButtonText>
         <IconContainer>
           <MapIcon />
         </IconContainer>

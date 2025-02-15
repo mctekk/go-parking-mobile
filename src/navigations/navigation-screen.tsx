@@ -12,6 +12,7 @@ import { ParkingBooking } from 'screens/parking-booking';
 import BookingScreen from 'screens/booking';
 import BookingConfirmationScreen from 'screens/booking-confirmation';
 import ParkingScreen from 'screens/parking';
+import AllParkings from 'screens/all-parkings';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -92,6 +93,13 @@ export const navigationScreen = [
   {
     name: 'BookingConfirmationScreen',
     screen: BookingConfirmationScreen,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'AllParkingScreen',
+    screen: AllParkings,
     options: {
       navigationDefaultOptions,
     },

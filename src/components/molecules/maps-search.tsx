@@ -144,7 +144,7 @@ const MapsSearch = (props: IMapsSearchProps) => {
         }}
       />
 
-      <TagListContainer>
+      {/* <TagListContainer>
         <FlatList
           data={vehicleTypes}
           extraData={vehicleTypes}
@@ -157,7 +157,7 @@ const MapsSearch = (props: IMapsSearchProps) => {
             paddingLeft: 15,
            }}
         />
-      </TagListContainer>
+      </TagListContainer> */}
 
     </Container>
   );

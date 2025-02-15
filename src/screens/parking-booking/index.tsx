@@ -120,6 +120,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
                 scrollEnabled={false}
                 zoomEnabled={false}
                 zoomTapEnabled={false}
+                cacheEnabled
                 region={{
                   latitude: location?.latitude,
                   longitude: location?.longitude,

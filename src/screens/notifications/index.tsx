@@ -54,7 +54,6 @@ export const Notifications = (props: IHomeProps) => {
   };
 
   useEffect(() => {
-    console.log('User Data:', userData);
     getNotifications();
   }, []);
 

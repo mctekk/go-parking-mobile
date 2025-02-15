@@ -12,7 +12,7 @@ import MapsSearch from 'components/molecules/maps-search';
 import MapsParkingCards from 'components/molecules/maps-parking-card';
 
 // Utils
-import { parking_dummy_list } from 'utils/dummy-data';
+import { Original_DummyData, parking_dummy_list } from 'utils/dummy-data';
 import { IParkingProps } from 'core/interface/parking.interface';
 import { useNavigation } from '@react-navigation/native';
 
@@ -44,12 +44,13 @@ const MapsView = (props: IMapsViewProps) => {
   const onBookNowPress = (item: IParkingProps) => {
     navigation.navigate('ParkingBooking', {
       parking_id: item.id,
-      location: item.locations,
+      location: item.coordinates,
+      streetLocation: item.address,
       parkingName: item.name,
-      parkingAvailable: item.parkingsLeft,
-      streetLocation: item.street,
+      occupiedParkingSpaces: item.occupiedParkingSpaces,
+      totalParkingSpaces: item.totalParkingSpaces,
       price: item.price,
-      durationTime: item.duration_time,
+      isParkingPrivate: item.isPrivate,
     });
   };
 
@@ -58,12 +59,13 @@ const MapsView = (props: IMapsViewProps) => {
       <MapsParkingCards
         id={item.id}
         title={item.name}
-        street={item.street}
-        location={item.locations}
-        parkingLeft={item.parkingsLeft}
-        duration_time={item.duration_time}
+        street={item.address}
+        location={item.coordinates}
+        totalParkingSpaces={item.totalParkingSpaces}
+        occupiedParkingSpaces={item.occupiedParkingSpaces}
+        parkingHours={item.parkingHours}
+        isParkingPrivate={item.isPrivate}
         price={item.price}
-        tags={item.tags}
         isFromMaps={true}
         onBookNowPress={() => onBookNowPress(item)}
       />
@@ -97,8 +99,8 @@ const MapsView = (props: IMapsViewProps) => {
 
       <BottomContent>
         <FlatList
-          data={parking_dummy_list}
-          extraData={parking_dummy_list}
+          data={Original_DummyData.slice(0, 3)}
+          extraData={Original_DummyData.slice(0, 3)}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
           horizontal

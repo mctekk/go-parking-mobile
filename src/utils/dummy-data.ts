@@ -33,6 +33,7 @@ export const dummyVehicleTypes = [
   },
 ];
 
+// Data used for past transactions
 export const parking_dummy_list = [
   {
     id: 1,
@@ -59,14 +60,16 @@ export const parking_dummy_list = [
       },
     ],
     locations: {
-      latitude: '37.7749',
-      longitude: '-122.4194',
+      latitude: 18.463449,
+      longitude: -66.117866,
     },
+    totalParkingSpaces: 100,
+    occupiedParkingSpaces: 37,
   },
   {
     id: 2,
-    name: 'Parking Plaza Las Americas',
-    street: '525 Av. Franklin Delano Roosevelt, San Juan, 00918',
+    name: 'Calle 04 - 250 plazas',
+    street: '1310 Av. Ashford & 55 Calle Caribe. San Juan, PR 00907',
     price: {
       amount: 15,
       currency: 'USD',
@@ -88,14 +91,16 @@ export const parking_dummy_list = [
       },
     ],
     locations: {
-      latitude: '18.4233',
-      longitude: '-66.0628',
+      latitude: 18.455481,
+      longitude: -66.070431,
     },
+    totalParkingSpaces: 100,
+    occupiedParkingSpaces: 27,
   },
   {
     id: 3,
-    name: 'Parking Condado',
-    street: 'Ashford Ave, San Juan, 00907',
+    name: 'Estacionamiento José de Diego Parking',
+    street: '405 Av. José de Diego, San Juan, PR 00912',
     price: {
       amount: 20,
       currency: 'USD',
@@ -117,9 +122,11 @@ export const parking_dummy_list = [
       },
     ],
     locations: {
-      latitude: '18.4568',
-      longitude: '-66.0852',
+      latitude: 18.4124865,
+      longitude: -66.1070241,
     },
+    totalParkingSpaces: 100,
+    occupiedParkingSpaces: 89,
   },
 ];
 

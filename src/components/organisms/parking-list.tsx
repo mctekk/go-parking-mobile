@@ -1,7 +1,7 @@
 // Modules
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { FlatList } from 'react-native';
+import { FlatList, FlatListProps } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 import styled from 'styled-components/native';
 
@@ -20,15 +20,17 @@ interface Parking {
   location: string;
 }
 
-interface ParkingListProps {
+interface ParkingListProps extends FlatListProps<Parking> {
   parkings: Parking[];
+  showAll?: boolean;
 }
 
 const ParkingList = (props: ParkingListProps) => {
 
   // Props
   const {
-    parkings,
+    showAll = false,
+    scrollEnabled = true,
   } = props;
 
   // References
@@ -40,6 +42,9 @@ const ParkingList = (props: ParkingListProps) => {
 
   // Hooks
   const navigation = useNavigation();
+
+  // Const 
+  const parkingLists = showAll ? Original_DummyData.slice(0, 6) : Original_DummyData.slice(0, 3);
 
   useEffect(() => {
     setTimeout(() => {
@@ -93,14 +98,15 @@ const ParkingList = (props: ParkingListProps) => {
   return (
     <FlatList
       ref={flatListRef}
-      data={Original_DummyData.slice(0, 3)}
-      extraData={Original_DummyData.slice(0, 3)}
+      data={parkingLists}
+      extraData={parkingLists}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
       ListEmptyComponent={ListEmptyComponent}
       showsVerticalScrollIndicator={false}
       nestedScrollEnabled
-      scrollEnabled={false}
+      scrollEnabled={scrollEnabled}
+      {...props}
     />
   );
 };

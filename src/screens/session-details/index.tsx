@@ -48,6 +48,8 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
     streetLocation,
     price,
     durationTime,
+    occupiedParkingSpaces,
+    totalParkingSpaces,
   } = route.params;
 
   // States
@@ -56,12 +58,14 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
   const onExtentTimePress = () => {
     navigation.navigate('ParkingBooking', {
       parking_id: parking_id,
-      location: location,
       parkingName: parkingName,
-      parkingAvailable: parkingAvailable,
       streetLocation: streetLocation,
+      location: location,
+      parkingAvailable: parkingAvailable,
       price: price,
       durationTime: durationTime,
+      occupiedParkingSpaces: occupiedParkingSpaces,
+      totalParkingSpaces: totalParkingSpaces,
       type: TRANSACTION_TYPE.EXTEND,
     });
   };
