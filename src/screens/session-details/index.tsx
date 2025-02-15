@@ -71,7 +71,11 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
   };
 
   return (
-    <ViewContainer>
+    <ViewContainer
+      headerViewStyles={{
+        paddingTop: 80,
+      }}
+    >
       <SafeAreaView />
       <Container>
         <ScreenHeader

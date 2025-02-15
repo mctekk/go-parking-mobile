@@ -21,7 +21,8 @@ export const ScreenHeader = styled(MainHeader)`
 export const Content = styled.SafeAreaView`
   flex: 1px;
   background-color: ${DEFAULT_THEME.background};
-  border-radius: 25px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 `;
 
 export const Title = styled.Text`

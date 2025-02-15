@@ -106,6 +106,7 @@ const ParkingList = (props: ParkingListProps) => {
       showsVerticalScrollIndicator={false}
       nestedScrollEnabled
       scrollEnabled={scrollEnabled}
+      ListHeaderComponent={props.ListHeaderComponent}
       {...props}
     />
   );

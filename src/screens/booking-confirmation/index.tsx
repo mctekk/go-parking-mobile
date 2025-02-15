@@ -92,7 +92,11 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
   const onExtendPress = () => { };
 
   return (
-    <ViewContainer>
+    <ViewContainer
+      headerViewStyles={{
+        paddingTop: 80,
+      }}
+    >
       <SafeAreaView />
       <Container>
         <SuccessContainer>

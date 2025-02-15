@@ -177,13 +177,17 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   };
 
   return (
-    <ViewContainer>
+    <ViewContainer
+      headerViewStyles={{
+        paddingTop: 80,
+      }}
+    >
       <SafeAreaView />
       <Container>
         <ScreenHeader
           title={translate('transactionDetails', TextTransform.CAPITALIZE)}
-          style={{ paddingHorizontal: 0 }}
-          titleProps={{ weight: '700' }}
+          style={{ paddingHorizontal: 0, justifyContent: null }}
+          titleProps={{ weight: '700', marginLeft: 10 }}
           backIconColor={DEFAULT_THEME.primary}
         />
         <Content>

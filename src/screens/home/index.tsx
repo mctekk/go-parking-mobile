@@ -60,44 +60,57 @@ export const Home = (props: IHomeProps) => {
     navigation.navigate('AllParkingScreen');
   }
 
+  const HeaderComponent = () => {
+    return (
+      <>
+        <ScreenHeader
+          title={translate('home', TextTransform.CAPITALIZE)}
+          subtitle={'Your Transactions at a Glance'}
+        />
+
+        <SearchCard
+          navigation={navigation}
+          onSearch={onSearch}
+        />
+      </>
+    )
+  };
+
+  const ListHeaderComponent = () => {
+    return (
+      <>
+        <Title>{translate('nearbyPark', TextTransform.NONE)}</Title>
+        <SubtitleContainer>
+          <SubtitleText>{translate('theBestParkingSpaceNearYou', TextTransform.NONE)}</SubtitleText>
+          <ViewMoreButton
+            onPress={onSeeMorePress}
+          >
+            <ViewMoreText>{translate('seeMore', TextTransform.CAPITALIZE)}</ViewMoreText>
+          </ViewMoreButton>
+        </SubtitleContainer>
+      </>
+    );
+  };
+
   return (
     <ViewContainer
-      headerViewStyles={{ height: '35%' }}
+      headerViewStyles={{ 
+        height: '35%',
+
+       }}
+       contentViewStyles={{
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+       }}
+      headerChildren={<HeaderComponent />}
     >
-      <ScreenHeader
-        title={translate('home', TextTransform.CAPITALIZE)}
-        subtitle={'Your Transactions at a Glance'}
+      <ParkingList
+        ListHeaderComponent={ListHeaderComponent}
+        contentContainerStyle={{ 
+          padding: 20,
+          paddingBottom: 80,
+         }}
       />
-
-      <ScrollContainer
-        ref={scrollList}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 80 }}
-      >
-        <Content>
-          <SearchCard
-            navigation={navigation}
-            onSearch={onSearch}
-          />
-
-          <ListContainer>
-            <Title>{translate('nearbyPark', TextTransform.NONE)}</Title>
-            <SubtitleContainer>
-              <SubtitleText>{translate('theBestParkingSpaceNearYou', TextTransform.NONE)}</SubtitleText>
-              <ViewMoreButton
-                onPress={onSeeMorePress}
-              >
-                <ViewMoreText>{translate('seeMore', TextTransform.CAPITALIZE)}</ViewMoreText>
-              </ViewMoreButton>
-            </SubtitleContainer>
-
-            <ParkingList
-              scrollEnabled={false}
-            />
-
-          </ListContainer>
-        </Content>
-      </ScrollContainer>
 
       <FloatingButton
         onPress={onMapPress}

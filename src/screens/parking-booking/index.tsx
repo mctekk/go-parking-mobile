@@ -101,14 +101,18 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
   };
 
   return (
-    <ViewContainer>
+    <ViewContainer
+      headerViewStyles={{
+        paddingTop: 80,
+      }}
+    >
       <SafeAreaView />
       <Container>
         <PaddingContainer>
           <ScreenHeader
             title={''}
             style={{ paddingHorizontal: 0, height: 90 }}
-            titleProps={{}}
+            titleProps={{ weight: '700', marginLeft: 10 }}
             backIconColor={DEFAULT_THEME.primary}
           />
 

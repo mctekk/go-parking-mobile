@@ -25,6 +25,7 @@ const CardContainer = styled.View`
   border-radius: 20px;
   background-color: #fff;
   elevation: 5;
+  margin-horizontal: 16px;
 `;
 
 const Title = styled.Text`

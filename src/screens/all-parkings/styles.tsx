@@ -15,5 +15,4 @@ export const Container = styled.View`
 `;
 
 export const ScreenHeader = styled(Header)`
-  background-color: ${DEFAULT_THEME.transparent};
 `;

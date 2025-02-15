@@ -17,13 +17,19 @@ interface IBackButtonProps extends TouchableOpacityProps {
 const BackButtonContainer = styled(TouchableOpacity)`
   flex-direction: row;
   align-items: center;
-  padding-right: 16px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
 `;
 
 const BackButton = (props: IBackButtonProps) => {
   const { onPress, backIconColor } = props;
   return (
-    <BackButtonContainer onPress={onPress} hitSlop={TOUCHABLE_AREA} {...props}>
+    <BackButtonContainer
+      onPress={onPress}
+      hitSlop={TOUCHABLE_AREA}
+      {...props}
+    >
       <BackArrowV2 fill={backIconColor} />
     </BackButtonContainer>
   );

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable @typescript-eslint/no-shadow */
 // Modules
 import React, { useState, useCallback } from 'react';
@@ -79,12 +80,19 @@ const ParkingScreen = (props: IParkingScreenProps) => {
     }
   }, []);
 
-  return (
-    <ViewContainer>
+  const HeaderComponent = () => {
+    return (
       <ScreenHeader
         title={translate('parkingSesion', TextTransform.CAPITALIZE)}
         subtitle={translate('parkingSesionMsg', TextTransform.NONE)}
       />
+    );
+  };
+
+  return (
+    <ViewContainer
+      headerChildren={HeaderComponent()}
+    >
       <Content>
         <TabView
           renderTabBar={renderTabBar}

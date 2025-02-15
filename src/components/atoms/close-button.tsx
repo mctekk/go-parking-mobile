@@ -16,7 +16,7 @@ interface ICloseButtonProps extends BorderlessButtonProperties {
 const CloseButtonContainer = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  padding-right: 16px;
+  justify-content: center;
 `;
 
 const CloseButton = (props: ICloseButtonProps) => {
