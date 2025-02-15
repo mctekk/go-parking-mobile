@@ -145,26 +145,27 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
               selectedId={timeSelected.id}
               onTimeSelected={setTimeSelected}
             />
-
-            <BottomButtonsContainer>
-              <PriceText>$2.10</PriceText>
-              <BottomButton
-                onPress={onBookPress}
-                style={{
-                  backgroundColor: timeSelected.id
-                    ? DEFAULT_THEME.primary
-                    : DEFAULT_THEME.darkPrimary,
-                }}
-                disabled={!timeSelected.id}
-                title={translate('continue', TextTransform.CAPITALIZE)}
-                textStyle={{
-                  fontSize: Typography.FONT_SIZE_16,
-                  fontWeight: '700',
-                  color: DEFAULT_THEME.black,
-                }}
-              />
-            </BottomButtonsContainer>
           </Content>
+
+          <BottomButtonsContainer>
+            <PriceText>$2.10</PriceText>
+            <BottomButton
+              onPress={onBookPress}
+              style={{
+                backgroundColor: timeSelected.id
+                  ? DEFAULT_THEME.primary
+                  : DEFAULT_THEME.darkPrimary,
+              }}
+              disabled={!timeSelected.id}
+              title={translate('continue', TextTransform.CAPITALIZE)}
+              textStyle={{
+                fontSize: Typography.FONT_SIZE_16,
+                fontWeight: '700',
+                color: DEFAULT_THEME.black,
+              }}
+            />
+          </BottomButtonsContainer>
+
         </PaddingContainer>
       </Container>
     </ViewContainer>

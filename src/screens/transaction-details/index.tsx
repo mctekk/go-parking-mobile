@@ -128,7 +128,7 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
       price: price,
       timeSelected: timeSelected,
     });
-  };  
+  };
   const getButtonLocale = () => {
     if (type === TRANSACTION_TYPE.BOOKING) {
       return 'bookingNow';

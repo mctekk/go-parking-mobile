@@ -17,6 +17,7 @@ export const Container = styled.View`
 `;
 
 export const PaddingContainer = styled.View`
+  flex: 1px;
   padding-horizontal: 16px;
 `;
 
@@ -25,7 +26,7 @@ export const ScreenHeader = styled(Header)`
 `;
 
 export const Content = styled.ScrollView`
-  padding-bottom: 160px;
+  flex: 1;
 `;
 
 export const BottomButtonsContainer = styled.View`
@@ -35,10 +36,9 @@ export const BottomButtonsContainer = styled.View`
   align-items: center;
   justify-content: center;
   margin-top: 30px;
-  shadow-color: #000;
-  shadow-offset: 0px 2px;
-  shadow-opacity: 0.23;
-  shadow-radius: 2.62px;
+  position: absolute;
+  align-self: center;
+  bottom: 50px;
 `;
 
 export const BottomButton = styled(Button)`
@@ -52,7 +52,6 @@ export const BottomButton = styled(Button)`
 export const PriceContainer = styled.View`
   justify-content: center;
   align-items: center;
-  background-color: red;
 `;
 
 export const PriceText = styled(Text)`

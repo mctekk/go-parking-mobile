@@ -4,7 +4,7 @@ import styled from 'styled-components/native';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
   border-radius: 25px;
@@ -99,6 +99,9 @@ export const BottomButtonContainer = styled.View`
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
+  position: absolute;
+  bottom: 50px;
+  align-self: center;
 `;
 
 export const CustomButton = styled(Button)`

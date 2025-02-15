@@ -166,24 +166,24 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
             <TimeText>{getFormattedRemainingTime(timeLeft)}</TimeText>
             <InfoSubtext style={styles.expiredDate}>Expires 28 July 2024, 15:14</InfoSubtext>
           </BackgroundContainer>
-
-          <BottomButtonContainer>
-            <CustomButton
-              onPress={onExtendPress}
-              title={translate('extends', TextTransform.CAPITALIZE)}
-              style={{ backgroundColor: 'rgba(170, 170, 170, 1)' }}
-              textStyle={styles.buttonTextStyles}
-            />
-            <CustomButton
-              onPress={onDonePress}
-              title={translate('done', TextTransform.CAPITALIZE)}
-              style={{ backgroundColor: DEFAULT_THEME.primary }}
-              textStyle={styles.buttonTextStyles}
-            />
-          </BottomButtonContainer>
-
         </Content>
       </Container>
+
+      <BottomButtonContainer>
+        <CustomButton
+          onPress={onExtendPress}
+          title={translate('extends', TextTransform.CAPITALIZE)}
+          style={{ backgroundColor: 'rgba(170, 170, 170, 1)' }}
+          textStyle={styles.buttonTextStyles}
+        />
+        <CustomButton
+          onPress={onDonePress}
+          title={translate('done', TextTransform.CAPITALIZE)}
+          style={{ backgroundColor: DEFAULT_THEME.primary }}
+          textStyle={styles.buttonTextStyles}
+        />
+      </BottomButtonContainer>
+
     </ViewContainer>
   );
 };
