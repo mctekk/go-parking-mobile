@@ -2,7 +2,7 @@
 // Modules
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 // Styles
 import {
@@ -68,22 +68,36 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     parking_id,
     location,
     parkingName,
-    parkingAvailable,
     streetLocation,
     price,
     durationTime,
     type = 'booking',
+    occupiedParkingSpaces,
+    totalParkingSpaces,
   } = route.params;
+  const parkingLeft = totalParkingSpaces - occupiedParkingSpaces;
 
   // States
   const [timeSelected, setTimeSelected] = useState<{ id?: string }>({});
+  const [pricePerHour, setPricePerHour] = useState<number>(price.amount ?? 0);
 
   const onBookPress = () => {
     navigation.navigate('TransactionDetails', {
       ...route.params,
+      price: { amount: pricePerHour, currency: price.currency },
       timeSelected,
       type,
     });
+  };
+
+  const onTimeSelected = (timeInfo: any) => {
+    setTimeSelected(timeInfo);
+    handlePriceperHour(price.amount, timeInfo.value);
+  };
+
+  const handlePriceperHour = (price: number, duration: number) => {
+    const total = (price * duration);
+    setPricePerHour(total);
   };
 
   return (
@@ -109,10 +123,17 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
                 region={{
                   latitude: location?.latitude,
                   longitude: location?.longitude,
-                  latitudeDelta: 0.015,
-                  longitudeDelta: 0.0121,
+                  latitudeDelta: 0.0043,
+                  longitudeDelta: 0.0034,
                 }}
-              />
+              >
+                <Marker
+                  coordinate={{
+                    latitude: location?.latitude,
+                    longitude: location?.longitude,
+                  }}
+                />
+              </MapView>
             </MapContainer>
 
             <TopContainer>
@@ -123,7 +144,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
                   <IconContainer>
                     <DollarIcon />
                   </IconContainer>
-                  <InfoText>{price.amount}</InfoText>
+                  <InfoText>{price?.amount}</InfoText>
                   <InfoSubtext>/hr</InfoSubtext>
                 </InfoWrapper>
 
@@ -131,7 +152,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
                   <IconContainer>
                     <DollarIcon />
                   </IconContainer>
-                  <InfoText>{parkingAvailable}</InfoText>
+                  <InfoText>{parkingLeft}</InfoText>
                   <InfoSubtext>
                     {translate('available', TextTransform.NONE)}
                   </InfoSubtext>
@@ -143,12 +164,12 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
 
             <TimeSelector
               selectedId={timeSelected.id}
-              onTimeSelected={setTimeSelected}
+              onTimeSelected={onTimeSelected}
             />
           </Content>
 
           <BottomButtonsContainer>
-            <PriceText>$2.10</PriceText>
+            <PriceText>${pricePerHour}</PriceText>
             <BottomButton
               onPress={onBookPress}
               style={{

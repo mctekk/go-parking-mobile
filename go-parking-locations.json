@@ -1,6 +1,7 @@
 {
   "parkingLocations": [
     {
+      "id": 1,
       "name": "Parking Multipiso Covadonga",
       "address": "104 Paseo Covadonga, PR-38 Calle Juan Antonio Corretjer, San Juan, PR 00901",
       "phone": "(787) 721-0115",
@@ -17,6 +18,7 @@
       "isPrivate": true
     },
     {
+      "id": 2,
       "name": "Estacionamiento La Puntilla",
       "address": "Paseo de la Princesa, FV7M+57M, Calle C. Arturo Schomburg, San Juan, PR 00901",
       "phone": null,
@@ -33,6 +35,7 @@
       "isPrivate": true
     },
     {
+      "id": 3,
       "name": "Parking Doña Fela",
       "address": "Calle del Recinto Sur 318, San Juan, Puerto Rico. 00901",
       "phone": "(787) 722-3558",
@@ -49,6 +52,7 @@
       "isPrivate": true
     },
     {
+      "id": 4,
       "name": "Parking Plaza de la Convalecencia",
       "address": "9XW2+Q5C, C. Georgetti, San Juan, 00925",
       "phone": null,
@@ -65,6 +69,7 @@
       "isPrivate": true
     },
     {
+      "id": 5,
       "name": "Estacionamiento Av. Magdalena",
       "address": "1361 Av. Magdalena, San Juan, PR 00907",
       "phone": null,
@@ -81,6 +86,7 @@
       "isPrivate": true
     },
     {
+      "id": 6,
       "name": "Public Parking Ashford",
       "address": "1390 Av. Ashford, San Juan, PR 00907",
       "phone": null,
@@ -97,6 +103,7 @@
       "isPrivate": true
     },
     {
+      "id": 7,
       "name": "Estacionamiento Parroquia Stella Maris",
       "address": "1359 Calle Luchetti San Juan, PR 00907",
       "phone": null,
@@ -113,6 +120,7 @@
       "isPrivate": true
     },
     {
+      "id": 8,
       "name": "Estacionamiento Ashford Laguna Lot",
       "address": "1309 Ave. Ashford, San Juan, PR 00907",
       "phone": null,
@@ -129,6 +137,7 @@
       "isPrivate": true
     },
     {
+      "id": 9,
       "name": "Estacionamiento Terra Luna Parking",
       "address": "1050 Ave. Ashford, San Juan, PR 00907",
       "phone": null,
@@ -145,6 +154,7 @@
       "isPrivate": true
     },
     {
+      "id": 10,
       "name": "Estacionamiento 1019 Ahford Lot",
       "address": "1019 Avenida Ashford, San Juan, PR 00907",
       "phone": null,
@@ -161,6 +171,7 @@
       "isPrivate": true
     },
     {
+      "id": 11,
       "name": "Estacionamiento José de Diego Parking",
       "address": "405 Av. José de Diego, San Juan, PR 00912",
       "phone": null,
@@ -177,8 +188,8 @@
       "isPrivate": true
     },
     {
-      "name": "Calle 01",
-      "capacity": "125 plazas",
+      "id": 12,
+      "name": "Calle 01 - 125 plazas",
       "address": "Av. Ashford, Esquina 1305 Av. Magdalena. San Juan, PR 00907",
       "phone": null,
       "coordinates": {
@@ -192,8 +203,8 @@
       "isPrivate": false
     },
     {
-      "name": "Calle 02",
-      "capacity": "200 plazas",
+      "id": 13,
+      "name": "Calle 02 - 200 plazas",
       "address": "1369 Av. Ashford, San Juan, 00907, Esq. 13 Calle Candina. San Juan, PR 00907",
       "phone": null,
       "coordinates": {
@@ -207,8 +218,8 @@
       "isPrivate": false
     },
     {
-      "name": "Calle 03",
-      "capacity": "100 plazas",
+      "id": 14,
+      "name": "Calle 03 - 100 plazas",
       "address": "1337 Av. Ashford, Esq. 53 Calle Cervantes. San Juan, PR 00907",
       "phone": null,
       "coordinates": {
@@ -222,8 +233,8 @@
       "isPrivate": false
     },
     {
-      "name": "Calle 04",
-      "capacity": "250 plazas",
+      "id": 15,
+      "name": "Calle 04 - 250 plazas",
       "address": "1310 Av. Ashford & 55 Calle Caribe. San Juan, PR 00907",
       "phone": null,
       "coordinates": {
@@ -237,8 +248,8 @@
       "isPrivate": false
     },
     {
-      "name": "Calle 05",
-      "capacity": "250 plazas",
+      "id": 16,
+      "name": "Calle 05 - 250 plazas",
       "address": "Intersección Av. Ashford & 13 Calle Delcasse. San Juan, PR 00907",
       "phone": null,
       "coordinates": {
@@ -252,8 +263,8 @@
       "isPrivate": false
     },
     {
-      "name": "Calle 06",
-      "capacity": "233 plazas",
+      "id": 17,
+      "name": "Calle 06 - 233 plazas",
       "address": "1504 Ave. Ashford & 57 C. F. Krug. San Juan, PR 00907",
       "phone": null,
       "coordinates": {

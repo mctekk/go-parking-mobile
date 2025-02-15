@@ -75,14 +75,14 @@ export const SearchCard = (props: ISearchCardProps) => {
     <CardContainer>
       <Title>{translate('parkEasySafety', TextTransform.NONE)}</Title>
 
-      <FilterList
+      {/* <FilterList
         data={dummyVehicleTypes}
         extraData={dummyVehicleTypes}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         horizontal
         contentContainerStyle={styles.listContainer}
-      />
+      /> */}
 
       <SearchBar
         value={keyword}

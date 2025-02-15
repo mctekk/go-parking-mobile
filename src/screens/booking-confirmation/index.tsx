@@ -25,25 +25,30 @@ import {
 // Organisms
 import ViewContainer from 'components/organisms/view-container';
 
-// Molecules
-
 // Atoms
+import { TextTransform, translate } from 'components/atoms/localized-label';
 
 // Utils
 
 // Interfaces
 import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
+
+// Icons
 import CheckIcon from 'assets/icons/check-icon';
-import { TextTransform, translate } from 'components/atoms/localized-label';
-import styled from 'styled-components/native';
-import { CarIcon, ClockIcon } from 'assets/icons';
 import ClockIconV2 from 'assets/icons/clock-icon-v2';
 import CarIconV2 from 'assets/icons/car-icon-v2';
+
+// Hooks
 import useCountDown from 'hooks/useCountDown';
+
+// Styles
 import { DEFAULT_THEME } from 'styles/theme';
 import { Typography } from 'styles';
+
+// Utils
 import { getFormattedRemainingTime } from 'utils';
-import NavigationService from 'navigations/navigation-service';
+
+// Constants
 import { TRANSACTION_TYPE } from 'screens/transaction-details';
 
 interface ITransactionDetailsScreenProps {
@@ -55,13 +60,8 @@ interface ITransactionDetailsScreenProps {
 
 interface ITransactionDetailsParamsProps {
   parking_id: number;
-  location: IParkingLocation;
-  parkingName: string;
-  parkingAvailable: number;
-  streetLocation: string;
   price: IParkingPrice;
-  durationTime: number;
-  timeSelected: any;
+  parkingTime: { start: string; end: string };
   type?: TRANSACTION_TYPE;
 }
 
@@ -70,7 +70,13 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
   const { navigation, route } = props;
 
   // Params
-  const { price, timeSelected, remainingTime = 1800000, type } = route.params;
+  const {
+    price,
+    timeSelected,
+    remainingTime = 1800000,
+    type,
+    parkingTime,
+  } = route.params;
 
   // Hooks
   const [timeLeft, { start }] = useCountDown(remainingTime);
@@ -111,7 +117,7 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
               <InfoTitle style={{ textAlign: 'right' }}>
                 {translate('total', TextTransform.CAPITALIZE)}
               </InfoTitle>
-              <InfoSubtext>$2.10</InfoSubtext>
+              <InfoSubtext>${price?.amount}</InfoSubtext>
             </Wrapper>
           </BackgroundContainer>
 
@@ -136,8 +142,7 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
                     TextTransform.CAPITALIZE,
                   )}
                 </InfoTitle>
-                <InfoSubtext>{`${type === TRANSACTION_TYPE.EXTEND ? '+' : ''
-                  }30 minutes`}</InfoSubtext>
+                <InfoSubtext>{`${type === TRANSACTION_TYPE.EXTEND ? '+' : ''}${timeSelected.label}`}</InfoSubtext>
               </Wrapper>
               <IconContainer>
                 <ClockIconV2 />
@@ -153,7 +158,7 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
               <BackgroundContainer style={styles.timeContainer}>
                 <TimeText>{getFormattedRemainingTime(timeLeft)}</TimeText>
                 <InfoSubtext style={styles.expiredDate}>
-                  Expires 28 July 2024, 15:14
+                  Expires 28 July 2024, {parkingTime?.exit}
                 </InfoSubtext>
               </BackgroundContainer>
             </>
