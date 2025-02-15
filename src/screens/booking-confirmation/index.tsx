@@ -44,11 +44,8 @@ import { DEFAULT_THEME } from 'styles/theme';
 import { Typography } from 'styles';
 import { getFormattedRemainingTime } from 'utils';
 import NavigationService from 'navigations/navigation-service';
+import { TRANSACTION_TYPE } from 'screens/transaction-details';
 
-enum TRANSACTION_TYPE {
-  BOOKING = 'booking',
-  HISTORY = 'history',
-}
 interface ITransactionDetailsScreenProps {
   navigation: any;
   route: {
@@ -68,21 +65,12 @@ interface ITransactionDetailsParamsProps {
   type?: TRANSACTION_TYPE;
 }
 
-
-
 export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps) => {
   // Props
-  const {
-    navigation,
-    route
-  } = props;
+  const { navigation, route } = props;
 
   // Params
-  const {
-    price,
-    timeSelected,
-    remainingTime = 1800000,
-  } = route.params;
+  const { price, timeSelected, remainingTime = 1800000, type } = route.params;
 
   // Hooks
   const [timeLeft, { start }] = useCountDown(remainingTime);
@@ -92,12 +80,10 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
   }, []);
 
   const onDonePress = () => {
-    navigation.pop(3);
+    type === TRANSACTION_TYPE.EXTEND ? navigation.pop(2) : navigation.pop(3);
   };
 
-  const onExtendPress = () => {
-
-  };
+  const onExtendPress = () => { };
 
   return (
     <ViewContainer>
@@ -107,15 +93,16 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
           <CheckCircle>
             <CheckIcon />
           </CheckCircle>
-          <Title>{translate('bookingSuccess', TextTransform.CAPITALIZE)}</Title>
+          <Title>{`${translate(
+            type === TRANSACTION_TYPE.EXTEND ? 'paymentSuccess' : 'bookingSuccess',
+            TextTransform.CAPITALIZE,
+          )}!`}</Title>
         </SuccessContainer>
 
         <Content>
           <SubText>{translate('orderDetail', TextTransform.NONE)}</SubText>
 
-          <BackgroundContainer
-            style={styles.infoContainer}
-          >
+          <BackgroundContainer style={styles.infoContainer}>
             <Wrapper>
               <InfoTitle>{translate('invoiceNumber', TextTransform.CAPITALIZE)}</InfoTitle>
               <InfoSubtext>GP - 2302884399</InfoSubtext>
@@ -130,8 +117,7 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
 
           <ContainerWrapper>
             <BackgroundContainer
-              style={[styles.infoContainer, styles.iconContainerV2, { marginRight: 5 }]}
-            >
+              style={[styles.infoContainer, styles.iconContainerV2, { marginRight: 5 }]}>
               <Wrapper>
                 <InfoTitle>{translate('vehicle', TextTransform.CAPITALIZE)}</InfoTitle>
                 <InfoSubtext>EF479379</InfoSubtext>
@@ -142,44 +128,55 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
             </BackgroundContainer>
 
             <BackgroundContainer
-              style={[styles.infoContainer, styles.iconContainerV2, { marginLeft: 5 }]}
-            >
+              style={[styles.infoContainer, styles.iconContainerV2, { marginLeft: 5 }]}>
               <Wrapper>
-                <InfoTitle>{translate('time', TextTransform.CAPITALIZE)}</InfoTitle>
-                <InfoSubtext>30 minutes</InfoSubtext>
+                <InfoTitle>
+                  {translate(
+                    type === TRANSACTION_TYPE.EXTEND ? 'extension' : 'time',
+                    TextTransform.CAPITALIZE,
+                  )}
+                </InfoTitle>
+                <InfoSubtext>{`${type === TRANSACTION_TYPE.EXTEND ? '+' : ''
+                  }30 minutes`}</InfoSubtext>
               </Wrapper>
               <IconContainer>
                 <ClockIconV2 />
               </IconContainer>
             </BackgroundContainer>
           </ContainerWrapper>
+          {type !== TRANSACTION_TYPE.EXTEND && (
+            <>
+              <SubText style={styles.subTextStyles}>
+                {translate('timeRemaining', TextTransform.CAPITALIZE)}
+              </SubText>
 
-          <SubText
-            style={styles.subTextStyles}
-          >
-            {translate('timeRemaining', TextTransform.CAPITALIZE)}
-          </SubText>
-
-          <BackgroundContainer
-            style={styles.timeContainer}
-          >
-            <TimeText>{getFormattedRemainingTime(timeLeft)}</TimeText>
-            <InfoSubtext style={styles.expiredDate}>Expires 28 July 2024, 15:14</InfoSubtext>
-          </BackgroundContainer>
+              <BackgroundContainer style={styles.timeContainer}>
+                <TimeText>{getFormattedRemainingTime(timeLeft)}</TimeText>
+                <InfoSubtext style={styles.expiredDate}>
+                  Expires 28 July 2024, 15:14
+                </InfoSubtext>
+              </BackgroundContainer>
+            </>
+          )}
         </Content>
       </Container>
 
       <BottomButtonContainer>
-        <CustomButton
-          onPress={onExtendPress}
-          title={translate('extends', TextTransform.CAPITALIZE)}
-          style={{ backgroundColor: 'rgba(170, 170, 170, 1)' }}
-          textStyle={styles.buttonTextStyles}
-        />
+        {type !== TRANSACTION_TYPE.EXTEND && (
+          <CustomButton
+            onPress={onExtendPress}
+            title={translate('extends', TextTransform.CAPITALIZE)}
+            style={{ backgroundColor: 'rgba(170, 170, 170, 1)' }}
+            textStyle={styles.buttonTextStyles}
+          />
+        )}
         <CustomButton
           onPress={onDonePress}
           title={translate('done', TextTransform.CAPITALIZE)}
-          style={{ backgroundColor: DEFAULT_THEME.primary }}
+          style={[
+            { backgroundColor: DEFAULT_THEME.primary },
+            type === TRANSACTION_TYPE.EXTEND && styles.doneButtonExtend,
+          ]}
           textStyle={styles.buttonTextStyles}
         />
       </BottomButtonContainer>
@@ -213,7 +210,10 @@ const styles = StyleSheet.create({
     lineHeight: Typography.FONT_SIZE_18,
     fontWeight: '700',
     color: 'rgba(45, 45, 45, 1)',
-  }
+  },
+  doneButtonExtend: {
+    width: '100%',
+  },
 });
 
 export default BookingConfirmationScreen;

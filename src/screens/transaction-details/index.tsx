@@ -35,10 +35,7 @@ import DashLine from 'components/atoms/dash-line';
 import { ShareUtil } from 'utils';
 
 // Interfaces
-import {
-  IParkingLocation,
-  IParkingPrice,
-} from 'core/interface/parking.interface';
+import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
 
 export enum TRANSACTION_TYPE {
   BOOKING = 'booking',
@@ -66,10 +63,7 @@ interface ITransactionDetailsParamsProps {
 
 export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   // Props
-  const {
-    navigation,
-    route,
-  } = props;
+  const { navigation, route } = props;
   // Params
   const {
     location,
@@ -95,20 +89,22 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
     },
     {
       id: 3,
-      titleLocale: 'arriveAfter',
-      subtitle: '10:00 AM',
+      titleLocale: type === TRANSACTION_TYPE.EXTEND ? 'remainingParkTime' : 'arriveAfter',
+      subtitle: type === TRANSACTION_TYPE.EXTEND ? '00:20:15' : '10:00 AM',
       bottomDashLine: false,
     },
     {
       id: 4,
-      titleLocale: 'exitBefore',
-      subtitle: '11:00 AM',
+      titleLocale: type === TRANSACTION_TYPE.EXTEND ? 'extendDuration' : 'exitBefore',
+      subtitle: type === TRANSACTION_TYPE.EXTEND ? `+${timeSelected?.label}` : '11:00 AM',
+      subtitleColor:
+        type === TRANSACTION_TYPE.EXTEND ? DEFAULT_THEME.primary : DEFAULT_THEME.titleGray,
       bottomDashLine: false,
     },
     {
       id: 5,
-      titleLocale: 'duration',
-      subtitle: timeSelected?.label,
+      titleLocale: type === TRANSACTION_TYPE.EXTEND ? 'newParkTime' : 'duration',
+      subtitle: type === TRANSACTION_TYPE.EXTEND ? '00:50:15' : timeSelected?.label,
       bottomDashLine: true,
     },
     {
@@ -127,6 +123,7 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
     navigation.replace('BookingConfirmationScreen', {
       price: price,
       timeSelected: timeSelected,
+      type: type,
     });
   };
   const getButtonLocale = () => {
@@ -145,12 +142,15 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   const handleButtonPress = () => {
     if (type === TRANSACTION_TYPE.BOOKING) {
       onBookingButtonPress();
+      return;
     }
     if (type === TRANSACTION_TYPE.HISTORY) {
       onShareButtonPress();
+      return;
     }
     if (type === TRANSACTION_TYPE.EXTEND) {
       onBookingButtonPress();
+      return;
     }
   };
 
@@ -208,21 +208,18 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
                       size={Typography.FONT_SIZE_10}
                       weight="500"
                       color={DEFAULT_THEME.dashGray}>
-                      {translate(
-                        rowData?.titleLocale,
-                        TextTransform.CAPITALIZE,
-                      )}
+                      {translate(rowData?.titleLocale, TextTransform.CAPITALIZE)}
                     </CustomText>
                     <CustomText
                       size={Typography.FONT_SIZE_12}
                       weight="600"
-                      color={DEFAULT_THEME.titleGray}>
+                      color={
+                        rowData.subtitleColor ? rowData.subtitleColor : DEFAULT_THEME.titleGray
+                      }>
                       {rowData?.subtitle}
                     </CustomText>
                   </DetailRowContent>
-                  {rowData?.bottomDashLine && (
-                    <DashLine color={DEFAULT_THEME.cardGray} />
-                  )}
+                  {rowData?.bottomDashLine && <DashLine color={DEFAULT_THEME.cardGray} />}
                 </DetailRow>
               );
             })}

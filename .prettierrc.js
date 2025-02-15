@@ -10,4 +10,5 @@ module.exports = {
   requirePragma: false,
   insertPragma: false,
   proseWrap: 'preserve',
+  printWidth: 95,
 };

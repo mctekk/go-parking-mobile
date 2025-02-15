@@ -95,4 +95,13 @@ export default {
   extends: 'Extends',
   done: 'Done',
   payNow: 'Pay now',
+  remainingParkTime: 'Remaining Park Time',
+  extendDuration: 'Extend Duration',
+  newParkTime: 'New remaining park time',
+  paymentSuccess: 'Payment success',
+  extension: 'extension',
+  cancel: 'cancel',
+  yes: 'yes',
+  endParkingSession: 'End your parking session?',
+  endSessionSubtitle: 'Are you sure you want to finish your parking session?',
 };
