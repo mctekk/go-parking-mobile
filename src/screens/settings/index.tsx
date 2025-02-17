@@ -55,10 +55,6 @@ export const Settings = (props: ISettingsProps) => {
   const { signOut } = useContext(AuthContext);
   const { userData } = useContext(UserContext);
 
-  useEffect(() => {
-    console.log('User Data:', userData);
-  }, []);
-
   const handleLogout = async () => {
     try {
       signOut();

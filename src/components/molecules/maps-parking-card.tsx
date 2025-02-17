@@ -1,14 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 // Models
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/native';
-import is from 'styled-is';
 import { StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 // Atoms
 import Text from 'components/atoms/text';
 import { TextTransform, translate } from 'components/atoms/localized-label';
+import Button from 'components/atoms/button';
 
 // Styles
 import { DEFAULT_THEME } from 'styles/theme';
@@ -18,17 +18,22 @@ import { Typography } from 'styles';
 import DollarIcon from 'assets/icons/dollar-icon';
 import ClockIcon from 'assets/icons/clock-icon';
 import CarIcon from 'assets/icons/car-icon';
-import Button from 'components/atoms/button';
 import BookmarkIcon from 'assets/icons/bookmark-icon';
+
+// Interfaces
+import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
 
 interface IParkingCardProps {
   id: number;
   title: string;
   street: string;
-  location: string;
-  parkingLeft: number;
-  price: number;
-  tags: string[];
+  location: IParkingLocation;
+  totalParkingSpaces: number;
+  occupiedParkingSpaces: number;
+  duration_time: number;
+  parkingHours: string;
+  isParkingPrivate: boolean;
+  price: IParkingPrice;
   isFromMaps?: boolean;
   onBookNowPress: () => void;
 }
@@ -172,34 +177,34 @@ const MapsParkingCards = (props: IParkingCardProps) => {
     title,
     street,
     location,
-    parkingLeft,
+    totalParkingSpaces,
+    occupiedParkingSpaces,
     duration_time,
+    parkingHours,
+    isParkingPrivate,
     price,
-    tags,
     isFromMaps,
     onBookNowPress,
   } = props;
 
   const { latitude, longitude } = location;
+  const parksLeft = totalParkingSpaces - occupiedParkingSpaces;
+
+  // States
+  const [locations, setLocations] = useState({ latitude: latitude, longitude: longitude });
+
+  useEffect(() => {
+    setLocations({ latitude: latitude, longitude: longitude });
+  }, [location]);
+
 
   return (
     <Container
       isFromMaps={isFromMaps}
     >
-
-      <TagListContainer>
-        {tags.map((tag, index) => (
-          <Tags
-            key={index}
-            name={tag?.name}
-            isFromMaps={isFromMaps}
-          />
-        ))}
-      </TagListContainer>
-
-        <BookmarksContainer>
-          <BookmarkIcon />
-        </BookmarksContainer>
+      <BookmarksContainer>
+        <BookmarkIcon />
+      </BookmarksContainer>
 
       <TopContainer>
         <MapContainer>
@@ -208,6 +213,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
             scrollEnabled={false}
             zoomEnabled={false}
             zoomTapEnabled={false}
+            cacheEnabled={true}
             region={{
               latitude: parseFloat(latitude),
               longitude: parseFloat(longitude),
@@ -253,7 +259,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
           <IconContainer>
             <CarIcon width={13} height={10} fill={'#000'} />
           </IconContainer>
-          <BottomText>{parkingLeft}</BottomText>
+          <BottomText>{parksLeft}</BottomText>
           <BottomSubtitle>{translate('available', TextTransform.NONE)}</BottomSubtitle>
         </BottomContent>
       </BottomContainer>

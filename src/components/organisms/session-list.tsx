@@ -209,6 +209,8 @@ const SessionList = (props: ISessionListProps) => {
       streetLocation: item.street,
       price: item.price,
       durationTime: item.duration_time,
+      occupiedParkingSpaces: item.occupiedParkingSpaces,
+      totalParkingSpaces: item.totalParkingSpaces,
     });
   };
 

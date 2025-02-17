@@ -1,9 +1,9 @@
 // Models
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/native';
 import is from 'styled-is';
 import { StyleSheet } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 // Atoms
 import Text from 'components/atoms/text';
@@ -17,6 +17,7 @@ import { Typography } from 'styles';
 import DollarIcon from 'assets/icons/dollar-icon';
 import ClockIcon from 'assets/icons/clock-icon';
 import CarIcon from 'assets/icons/car-icon';
+import { deltaCoordinates } from 'utils';
 
 interface IParkingCardProps {
   id: number;
@@ -147,14 +148,24 @@ const ParkingCard = (props: IParkingCardProps) => {
     title,
     street,
     location,
-    parkingLeft,
+    totalParkingSpaces,
+    occupiedParkingSpaces,
     duration_time,
+    parkingHours,
+    isParkingPrivate,
     price,
-    tags,
     onPress,
   } = props;
 
   const { latitude, longitude } = location;
+  const parksLeft = totalParkingSpaces - occupiedParkingSpaces;
+
+  // States
+  const [locations, setLocations] = useState({ latitude: latitude, longitude: longitude });
+
+  useEffect(() => {
+    setLocations({ latitude: latitude, longitude: longitude });
+  }, [location]);
 
   const onCarPress = () => {
     onPress?.();
@@ -171,24 +182,18 @@ const ParkingCard = (props: IParkingCardProps) => {
             scrollEnabled={false}
             zoomEnabled={false}
             zoomTapEnabled={false}
+            liteMode={true}
+            cacheEnabled
             region={{
-              latitude: parseFloat(latitude),
-              longitude: parseFloat(longitude),
-              latitudeDelta: 0.015,
-              longitudeDelta: 0.0121,
+              latitude: parseFloat(locations?.latitude),
+              longitude: parseFloat(locations?.longitude),
+              latitudeDelta: 0.0043,
+              longitudeDelta: 0.0034,
             }}
           />
         </MapContainer>
 
         <Wrapper>
-          <TagListContainer>
-            {tags.map((tag, index) => (
-              <Tags
-                key={index}
-                name={tag?.name}
-              />
-            ))}
-          </TagListContainer>
           <Title>{title}</Title>
           <Street>{street}</Street>
         </Wrapper>
@@ -208,7 +213,7 @@ const ParkingCard = (props: IParkingCardProps) => {
           <IconContainer>
             <ClockIcon />
           </IconContainer>
-          <BottomText>{duration_time}</BottomText>
+          <BottomText>5</BottomText>
           <BottomSubtitle>min</BottomSubtitle>
         </BottomContent>
 
@@ -216,7 +221,7 @@ const ParkingCard = (props: IParkingCardProps) => {
           <IconContainer>
             <CarIcon width={13} height={10} fill={'#000'} />
           </IconContainer>
-          <BottomText>{parkingLeft}</BottomText>
+          <BottomText>{parksLeft}</BottomText>
           <BottomSubtitle>{translate('available', TextTransform.NONE)}</BottomSubtitle>
         </BottomContent>
 
