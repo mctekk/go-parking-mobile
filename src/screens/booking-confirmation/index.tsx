@@ -83,7 +83,7 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
     type === TRANSACTION_TYPE.EXTEND ? navigation.pop(2) : navigation.pop(3);
   };
 
-  const onExtendPress = () => {};
+  const onExtendPress = () => { };
 
   return (
     <ViewContainer>
@@ -136,9 +136,8 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
                     TextTransform.CAPITALIZE,
                   )}
                 </InfoTitle>
-                <InfoSubtext>{`${
-                  type === TRANSACTION_TYPE.EXTEND ? '+' : ''
-                }30 minutes`}</InfoSubtext>
+                <InfoSubtext>{`${type === TRANSACTION_TYPE.EXTEND ? '+' : ''
+                  }30 minutes`}</InfoSubtext>
               </Wrapper>
               <IconContainer>
                 <ClockIconV2 />
@@ -159,28 +158,29 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
               </BackgroundContainer>
             </>
           )}
-
-          <BottomButtonContainer>
-            {type !== TRANSACTION_TYPE.EXTEND && (
-              <CustomButton
-                onPress={onExtendPress}
-                title={translate('extends', TextTransform.CAPITALIZE)}
-                style={{ backgroundColor: 'rgba(170, 170, 170, 1)' }}
-                textStyle={styles.buttonTextStyles}
-              />
-            )}
-            <CustomButton
-              onPress={onDonePress}
-              title={translate('done', TextTransform.CAPITALIZE)}
-              style={[
-                { backgroundColor: DEFAULT_THEME.primary },
-                type === TRANSACTION_TYPE.EXTEND && styles.doneButtonExtend,
-              ]}
-              textStyle={styles.buttonTextStyles}
-            />
-          </BottomButtonContainer>
         </Content>
       </Container>
+
+      <BottomButtonContainer>
+        {type !== TRANSACTION_TYPE.EXTEND && (
+          <CustomButton
+            onPress={onExtendPress}
+            title={translate('extends', TextTransform.CAPITALIZE)}
+            style={{ backgroundColor: 'rgba(170, 170, 170, 1)' }}
+            textStyle={styles.buttonTextStyles}
+          />
+        )}
+        <CustomButton
+          onPress={onDonePress}
+          title={translate('done', TextTransform.CAPITALIZE)}
+          style={[
+            { backgroundColor: DEFAULT_THEME.primary },
+            type === TRANSACTION_TYPE.EXTEND && styles.doneButtonExtend,
+          ]}
+          textStyle={styles.buttonTextStyles}
+        />
+      </BottomButtonContainer>
+
     </ViewContainer>
   );
 };
