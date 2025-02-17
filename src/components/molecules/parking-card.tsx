@@ -18,6 +18,7 @@ import DollarIcon from 'assets/icons/dollar-icon';
 import ClockIcon from 'assets/icons/clock-icon';
 import CarIcon from 'assets/icons/car-icon';
 import { deltaCoordinates } from 'utils';
+import { isAndroid } from 'utils/constants';
 
 interface IParkingCardProps {
   id: number;
@@ -183,7 +184,7 @@ const ParkingCard = (props: IParkingCardProps) => {
             zoomEnabled={false}
             zoomTapEnabled={false}
             liteMode={true}
-            cacheEnabled
+            cacheEnabled={isAndroid ? false : true}
             region={{
               latitude: parseFloat(locations?.latitude),
               longitude: parseFloat(locations?.longitude),

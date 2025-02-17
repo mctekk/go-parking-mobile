@@ -1,8 +1,10 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 
 const TOUCH_PADDING = 18;
 
 export const deviceWidth = Dimensions.get('window').width;
+
+export const isAndroid = Platform.OS === 'android';
 
 export const TOUCHABLE_AREA = {
   top: TOUCH_PADDING,
