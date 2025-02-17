@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 // Modules
 import React from 'react';
@@ -13,18 +14,25 @@ import HistoryList from 'components/organisms/history-list';
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
 
-interface IParkingHistoryScreenProps {}
+interface IParkingHistoryScreenProps { }
 
 const ParkingHistory = (props: IParkingHistoryScreenProps) => {
   // Props
   const { navigation } = props;
 
-  return (
-    <ViewContainer>
+  const HeaderComponent = () => {
+    return (
       <ScreenHeader
         title={translate('history', TextTransform.CAPITALIZE)}
         subtitle={translate('historyMsg', TextTransform.NONE)}
       />
+    );
+  };
+
+  return (
+    <ViewContainer
+      headerChildren={<HeaderComponent />}
+    >
       <Content>
         <HistoryList />
       </Content>

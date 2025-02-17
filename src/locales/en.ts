@@ -69,7 +69,7 @@ export default {
   share: 'share',
   parkEasySafety: 'Park Easy & Safety',
   findParkingSpace: 'Find Parking Space',
-  nearbyPark: 'Nearby Park',
+  nearbyPark: 'Nearby Parks',
   theBestParkingSpaceNearYou: 'The Best Parking Space Near You',
   seeMore: 'See More',
   available: 'Available',
@@ -104,4 +104,5 @@ export default {
   yes: 'yes',
   endParkingSession: 'End your parking session?',
   endSessionSubtitle: 'Are you sure you want to finish your parking session?',
+  mapView: 'Map View',
 };

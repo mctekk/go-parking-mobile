@@ -25,6 +25,7 @@ const CardContainer = styled.View`
   border-radius: 20px;
   background-color: #fff;
   elevation: 5;
+  margin-horizontal: 16px;
 `;
 
 const Title = styled.Text`
@@ -75,14 +76,14 @@ export const SearchCard = (props: ISearchCardProps) => {
     <CardContainer>
       <Title>{translate('parkEasySafety', TextTransform.NONE)}</Title>
 
-      <FilterList
+      {/* <FilterList
         data={dummyVehicleTypes}
         extraData={dummyVehicleTypes}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         horizontal
         contentContainerStyle={styles.listContainer}
-      />
+      /> */}
 
       <SearchBar
         value={keyword}

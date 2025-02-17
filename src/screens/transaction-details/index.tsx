@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 // Modules
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 // Styles
 import {
@@ -74,6 +74,26 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
     type = TRANSACTION_TYPE.HISTORY,
   } = route.params;
 
+  // States
+  const [parkingTime, setParkingTime] = useState({ arrive: '', exit: '' });
+
+  const handleParkingTime = () => {
+    const date = new Date();
+    const arrive = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const [hours, minutes] = timeSelected?.label.split('hour').map(Number);
+    date.setHours(date.getHours() + hours, date.getMinutes() + minutes);
+    const exit = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    console.log('Arrive:', arrive);
+    console.log('Exit:', exit);
+
+    setParkingTime({ arrive, exit });
+  };
+
+  useEffect(() => {
+    handleParkingTime();
+  }, []);
+
   const rowsData = [
     {
       id: 1,
@@ -90,13 +110,13 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
     {
       id: 3,
       titleLocale: type === TRANSACTION_TYPE.EXTEND ? 'remainingParkTime' : 'arriveAfter',
-      subtitle: type === TRANSACTION_TYPE.EXTEND ? '00:20:15' : '10:00 AM',
+      subtitle: type === TRANSACTION_TYPE.EXTEND ? '00:20:15' : parkingTime?.arrive,
       bottomDashLine: false,
     },
     {
       id: 4,
       titleLocale: type === TRANSACTION_TYPE.EXTEND ? 'extendDuration' : 'exitBefore',
-      subtitle: type === TRANSACTION_TYPE.EXTEND ? `+${timeSelected?.label}` : '11:00 AM',
+      subtitle: type === TRANSACTION_TYPE.EXTEND ? `+${timeSelected?.label}` : parkingTime?.exit,
       subtitleColor:
         type === TRANSACTION_TYPE.EXTEND ? DEFAULT_THEME.primary : DEFAULT_THEME.titleGray,
       bottomDashLine: false,
@@ -124,8 +144,10 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
       price: price,
       timeSelected: timeSelected,
       type: type,
+      parkingTime: parkingTime,
     });
   };
+
   const getButtonLocale = () => {
     if (type === TRANSACTION_TYPE.BOOKING) {
       return 'bookingNow';
@@ -155,31 +177,42 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   };
 
   return (
-    <ViewContainer>
+    <ViewContainer
+      headerViewStyles={{
+        paddingTop: 80,
+      }}
+    >
       <SafeAreaView />
       <Container>
         <ScreenHeader
           title={translate('transactionDetails', TextTransform.CAPITALIZE)}
-          style={{ paddingHorizontal: 0 }}
-          titleProps={{ weight: '700' }}
+          style={{ paddingHorizontal: 0, justifyContent: null }}
+          titleProps={{ weight: '700', marginLeft: 10 }}
           backIconColor={DEFAULT_THEME.primary}
         />
         <Content>
           <TopContainer>
             <MapContainer>
               <MapView
-                provider={PROVIDER_GOOGLE}
                 style={styles.map}
                 scrollEnabled={false}
                 zoomEnabled={false}
                 zoomTapEnabled={false}
+                cacheEnabled={true}
                 region={{
                   latitude: location?.latitude,
                   longitude: location?.longitude,
-                  latitudeDelta: 0.015,
-                  longitudeDelta: 0.0121,
+                  latitudeDelta: 0.0043,
+                  longitudeDelta: 0.0034,
                 }}
-              />
+              >
+                <Marker
+                  coordinate={{
+                    latitude: location?.latitude,
+                    longitude: location?.longitude,
+                  }}
+                />
+              </MapView>
             </MapContainer>
             <TopSectionContainer>
               <CustomText

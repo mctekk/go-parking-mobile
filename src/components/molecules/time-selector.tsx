@@ -43,34 +43,42 @@ const dummyTimeList = [
   {
     id: 1,
     label: '1 hour',
+    value: 1,
   },
   {
     id: 2,
     label: '1.5 hour',
+    value: 1.5,
   },
   {
     id: 3,
     label: '2 hour',
+    value: 2,
   },
   {
     id: 4,
     label: '2.5 hour',
+    value: 2.5,
   },
   {
     id: 5,
     label: '3 hour',
+    value: 3,
   },
   {
     id: 6,
     label: '4 hour',
+    value: 4,
   },
   {
     id: 7,
     label: '5 hour',
+    value: 5,
   },
   {
     id: 8,
     label: '6 hour',
+    value: 6,
   },
 ];
 

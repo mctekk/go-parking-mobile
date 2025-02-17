@@ -40,12 +40,12 @@ const HEADER_PADDING_TOP = Platform.OS === 'ios' ? 60 : 1;
 const Container = styled.View`
   width: 100%;
   height: ${HEADER_HEIGHT}px;
+  padding-bottom: ${SCREEN_MARGIN}px;
   padding-top: ${HEADER_PADDING_TOP}px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-horizontal: 20px;
-  padding-bottom: ${SCREEN_MARGIN}px;
   background-color: ${DEFAULT_THEME.primary};
 `;
 

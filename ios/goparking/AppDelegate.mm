@@ -5,6 +5,7 @@
 #import <SafariServices/SafariServices.h>
 #import <FBSDKCoreKit/FBSDKCoreKit-Swift.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import "RNSplashScreen.h"
 
 @implementation AppDelegate
 
@@ -16,7 +17,9 @@
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
   [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+  [super application:application didFinishLaunchingWithOptions:launchOptions];
+  [RNSplashScreen show];
+  return YES;
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
