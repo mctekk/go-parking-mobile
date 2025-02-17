@@ -172,8 +172,8 @@ const ParkingCard = (props: IParkingCardProps) => {
             zoomEnabled={false}
             zoomTapEnabled={false}
             region={{
-              latitude: latitude,
-              longitude: longitude,
+              latitude: parseFloat(latitude),
+              longitude: parseFloat(longitude),
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}

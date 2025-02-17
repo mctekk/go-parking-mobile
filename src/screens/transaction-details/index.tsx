@@ -174,8 +174,8 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
                 zoomEnabled={false}
                 zoomTapEnabled={false}
                 region={{
-                  latitude: location?.latitude,
-                  longitude: location?.longitude,
+                  latitude: parseFloat(location?.latitude),
+                  longitude: parseFloat(location?.longitude),
                   latitudeDelta: 0.015,
                   longitudeDelta: 0.0121,
                 }}
