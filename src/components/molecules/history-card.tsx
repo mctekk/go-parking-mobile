@@ -97,8 +97,8 @@ const HistoryCard = (props: IHistoryCardProps) => {
             zoomTapEnabled={false}
             cacheEnabled={true}
             region={{
-              latitude: order?.locations?.latitude,
-              longitude: order?.locations?.longitude,
+              latitude: parseFloat(order?.locations?.latitude),
+              longitude: parseFloat(order?.locations?.longitude),
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}

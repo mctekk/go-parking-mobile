@@ -215,10 +215,10 @@ const MapsParkingCards = (props: IParkingCardProps) => {
             zoomTapEnabled={false}
             cacheEnabled={true}
             region={{
-              latitude: locations?.latitude,
-              longitude: locations?.longitude,
-              latitudeDelta: 0.0043,
-              longitudeDelta: 0.0034,
+              latitude: parseFloat(latitude),
+              longitude: parseFloat(longitude),
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.0121,
             }}
           />
         </MapContainer>

@@ -32,6 +32,7 @@ import ViewContainer from 'components/organisms/view-container';
 import SearchCard from 'components/molecules/search-card';
 import ParkingList from 'components/organisms/parking-list';
 import MapIcon from 'assets/icons/map-icon';
+import { isAndroid } from 'utils/constants';
 
 // Interfaces
 interface IHomeProps {
@@ -95,7 +96,7 @@ export const Home = (props: IHomeProps) => {
   return (
     <ViewContainer
       headerViewStyles={{ 
-        height: '35%',
+        height: isAndroid ? '25%' : '35%',
 
        }}
        contentViewStyles={{
