@@ -1,4 +1,4 @@
-package com.kanvas_app
+package com.goparking
 
 import android.app.Application
 import com.facebook.react.PackageList

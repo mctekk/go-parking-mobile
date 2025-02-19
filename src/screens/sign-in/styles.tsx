@@ -10,25 +10,57 @@ import Text from 'components/atoms/text';
 import { DEFAULT_THEME } from 'styles/theme';
 import { Colors, Typography } from 'styles';
 
+export const Container = styled.SafeAreaView`
+  flex: 1px;
+  background-color: ${Colors.WHITE};
+`;
+
+export const LogoImage = styled.Image`
+`;
+
+export const Wrapper = styled.View`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
 export const Title = styled(Text)`
-  font-size: ${Typography.FONT_SIZE_24}px;
-  line-height: ${Typography.FONT_SIZE_32}px;
+  font-size: ${Typography.FONT_SIZE_36}px;
+  line-height: ${Typography.FONT_SIZE_40}px;
   font-weight: bold;
-  color: ${DEFAULT_THEME.text};
+  color: rgba(0, 0, 0, 1);
+`;
+
+export const SubTitle = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_16}px;
+  line-height: ${Typography.FONT_SIZE_22}px;
+  color: rgba(0, 0, 0, 1);
+  margin-top: 10px;
 `;
 
 export const Content = styled.View`
-  margin-top: 40px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
+export const InputsContainer = styled.View`
+  width: 100%;
+  padding-horizontal: 20px;
 `;
 
 export const Button = styled(CustomButton)`
   width: 100%;
-  height: 40px;
+  height: 50px;
+  border-radius: 50px;
 `;
 
 export const ForgotPasswordButton = styled(CustomButton)`
-  top: 20px;
-  background-color: 'rgba(52, 52, 52, 0)';
+  height: 25px;
+  width: 100%;
+  margin-top: 15px;
+  background-color: transparent;
 `;
 
 export const SignUpButton = styled.TouchableOpacity`
@@ -51,4 +83,12 @@ export const SocialContainer = styled.View`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+`;
+
+export const SocialTitle = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_14}px;
+  line-height: ${Typography.FONT_SIZE_18}px;
+  color: ${DEFAULT_THEME.text};
+  margin-top: 15px;
+  text-align: center;
 `;

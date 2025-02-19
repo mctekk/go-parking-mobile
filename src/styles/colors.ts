@@ -1,4 +1,5 @@
-export const PRIMARY = '#111827';
+export const PRIMARY = 'rgba(248, 215, 58, 1)';
+export const SECONDARY = 'rgba(45, 45, 45, 1)';
 export const PRIMARY_CLEAR = 'rgba(17, 24, 39, 0.2)';
 export const BLACK = '#000000';
 export const SOFT_BLACK = '#374151';

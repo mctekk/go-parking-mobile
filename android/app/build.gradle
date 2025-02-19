@@ -24,9 +24,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.kanvas_app"
+    namespace "com.goparking"
     defaultConfig {
-        applicationId "com.kanvas_app"
+        applicationId "com.goparking"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

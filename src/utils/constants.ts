@@ -17,6 +17,7 @@ export const SIGN_UP = 'SIGN_UP';
 export const SIGN_OUT = 'SIGN_OUT';
 export const USER_DATA_UPDATE = 'USER_DATA_UPDATE';
 export const UPDATE_TOKEN = 'UPDATE_TOKEN';
+export const HAS_INTERNET = 'HAS_INTERNET';
 
 // Prices list for in-app purchases in staging
 export const pricesIds = {
