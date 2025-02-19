@@ -240,7 +240,6 @@ const SavedList = (props: ISavedListProps) => {
 
   const renderItem = useCallback(
     ({ item, index }) => {
-      //return <HistoryCard key={item.id} order={item} onPress={() => onCardPress(item)} />;
       return (
         <MapsParkingCards
           id={item.id}
