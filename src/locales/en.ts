@@ -105,4 +105,5 @@ export default {
   endParkingSession: 'End your parking session?',
   endSessionSubtitle: 'Are you sure you want to finish your parking session?',
   mapView: 'Map View',
+  bookNow: 'book now',
 };
