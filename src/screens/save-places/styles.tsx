@@ -8,7 +8,6 @@ import { Colors, Typography } from 'styles';
 // Molecules
 import MainHeader from 'components/molecules/main-header';
 
-
 export const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
@@ -21,7 +20,9 @@ export const ScreenHeader = styled(MainHeader)`
 
 export const Content = styled.SafeAreaView`
   flex: 1px;
-  margin: 10px;
+  background-color: ${DEFAULT_THEME.background};
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 `;
 
 export const Title = styled.Text`
