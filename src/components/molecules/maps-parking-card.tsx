@@ -36,6 +36,7 @@ interface IParkingCardProps {
   price: IParkingPrice;
   isFromMaps?: boolean;
   onBookNowPress: () => void;
+  style?: any;
 }
 
 interface ITagsProps {
@@ -43,7 +44,6 @@ interface ITagsProps {
 }
 
 const Container = styled.View`
-  flex: 1;  
   margin-right: 10px;
   border-radius: 15px;
   background-color: rgba(45, 45, 45, 1);
@@ -161,16 +161,13 @@ const BookNowButton = styled(Button)`
 const Tags = (props: ITagsProps) => {
   const { name, isFromMaps } = props;
   return (
-    <TagContainer
-      isFromMaps={isFromMaps}
-    >
+    <TagContainer isFromMaps={isFromMaps}>
       <TagText>{name}</TagText>
     </TagContainer>
   );
 };
 
 const MapsParkingCards = (props: IParkingCardProps) => {
-
   // Props
   const {
     id,
@@ -185,6 +182,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
     price,
     isFromMaps,
     onBookNowPress,
+    style,
   } = props;
 
   const { latitude, longitude } = location;
@@ -197,11 +195,8 @@ const MapsParkingCards = (props: IParkingCardProps) => {
     setLocations({ latitude: latitude, longitude: longitude });
   }, [location]);
 
-
   return (
-    <Container
-      isFromMaps={isFromMaps}
-    >
+    <Container isFromMaps={isFromMaps} style={style}>
       <BookmarksContainer>
         <BookmarkIcon />
       </BookmarksContainer>
@@ -223,16 +218,10 @@ const MapsParkingCards = (props: IParkingCardProps) => {
           />
         </MapContainer>
         <Wrapper>
-          <Title
-            numberOfLines={2}
-            ellipsizeMode='tail'
-          >
+          <Title numberOfLines={2} ellipsizeMode="tail">
             {title}
           </Title>
-          <Street
-            numberOfLines={2}
-            ellipsizeMode='tail'
-          >
+          <Street numberOfLines={2} ellipsizeMode="tail">
             {street}
           </Street>
         </Wrapper>
@@ -265,7 +254,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
       </BottomContainer>
 
       <BookNowButton
-        title='Book Now'
+        title={translate('bookNow', TextTransform.CAPITALIZE)}
         onPress={onBookNowPress}
         textStyle={{
           fontSize: Typography.FONT_SIZE_16,
