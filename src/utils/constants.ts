@@ -1,6 +1,10 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 
 const TOUCH_PADDING = 18;
+
+export const deviceWidth = Dimensions.get('window').width;
+
+export const isAndroid = Platform.OS === 'android';
 
 export const TOUCHABLE_AREA = {
   top: TOUCH_PADDING,
@@ -21,10 +25,6 @@ export const HAS_INTERNET = 'HAS_INTERNET';
 
 // Prices list for in-app purchases in staging
 export const pricesIds = {
-  dev: [
-    'test_price_01',
-  ],
-  prod: [
-    'test_price_prod_01',
-  ],
+  dev: ['test_price_01'],
+  prod: ['test_price_prod_01'],
 };

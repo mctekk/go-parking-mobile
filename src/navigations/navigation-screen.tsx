@@ -2,10 +2,17 @@
 import { ChangePassword } from 'screens/change-password';
 import { EditProfile } from 'screens/edit-profile';
 import { Inventory } from 'screens/inventory';
+import MapsView from 'screens/maps-view';
 import { Notifications } from 'screens/notifications';
 import { SignIn } from 'screens/sign-in';
 import { SignUp } from 'screens/sign-up';
-
+import { TransactionDetails } from 'screens/transaction-details';
+import { SessionDetails } from 'screens/session-details';
+import { ParkingBooking } from 'screens/parking-booking';
+import BookingScreen from 'screens/booking';
+import BookingConfirmationScreen from 'screens/booking-confirmation';
+import ParkingScreen from 'screens/parking';
+import AllParkings from 'screens/all-parkings';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -53,6 +60,48 @@ export const navigationScreen = [
     options: {
       navigationDefaultOptions,
       presentation: 'modal',
+    },
+  },
+  {
+    name: 'TransactionDetails',
+    screen: TransactionDetails,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'MapView',
+    screen: MapsView,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'SessionDetails',
+    screen: SessionDetails,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'ParkingBooking',
+    screen: ParkingBooking,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'BookingConfirmationScreen',
+    screen: BookingConfirmationScreen,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'AllParkingScreen',
+    screen: AllParkings,
+    options: {
+      navigationDefaultOptions,
     },
   },
 ];

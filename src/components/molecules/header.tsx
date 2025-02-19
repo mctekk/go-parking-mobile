@@ -31,30 +31,27 @@ export interface IProps {
   hasBackButton?: boolean;
 }
 
-const SCREEN_MARGIN = 15;
-const HEADER_HEIGHT = Platform.OS === 'ios' ? 130 : 90;
+const SCREEN_MARGIN = 20;
+const HEADER_HEIGHT = Platform.OS === 'ios' ? 80 : 50;
 const HEADER_PADDING_TOP = Platform.OS === 'ios' ? 30 : 1;
 
 const Container = styled.View`
   width: 100%;
-  height: ${HEADER_HEIGHT}px;
   padding-top: ${HEADER_PADDING_TOP}px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-horizontal: ${SCREEN_MARGIN}px;
   padding-bottom: ${SCREEN_MARGIN}px;
-  background-color: ${DEFAULT_THEME.primary};
+  height: ${HEADER_HEIGHT}px;
 `;
 
 // @ts-ignore
 const Title = styled(Text)`
   color: ${Colors.WHITE};
   font-size: ${Typography.FONT_SIZE_20}px;
-  line-height: ${Typography.FONT_SIZE_24}px;
+  line-height: ${Typography.LINE_HEIGHT_24}px;
   width: 200px;
-  text-align: center;
-  padding-top: 10px;
 `;
 
 const CustomHeader = styled.View`
