@@ -255,6 +255,7 @@ const SavedList = (props: ISavedListProps) => {
           isFromMaps={true}
           onBookNowPress={() => onBookNowPress(item)}
           style={styles.cardContainerStyle}
+          isSaved={true}
         />
       );
     },
