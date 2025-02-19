@@ -19,6 +19,7 @@ import DollarIcon from 'assets/icons/dollar-icon';
 import ClockIcon from 'assets/icons/clock-icon';
 import CarIcon from 'assets/icons/car-icon';
 import BookmarkIcon from 'assets/icons/bookmark-icon';
+import BookmarkIconFilled from 'assets/icons/bookmark-icon-filled';
 
 // Interfaces
 import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
@@ -37,6 +38,7 @@ interface IParkingCardProps {
   isFromMaps?: boolean;
   onBookNowPress: () => void;
   style?: any;
+  isSaved?: boolean;
 }
 
 interface ITagsProps {
@@ -77,6 +79,7 @@ const BookmarksContainer = styled.TouchableOpacity`
   width: 40px;
   border-radius: 20px;
   position: absolute;
+  z-index: 999;
   top: 15px;
   right: 15px;
   justify-content: center;
@@ -183,6 +186,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
     isFromMaps,
     onBookNowPress,
     style,
+    isSaved,
   } = props;
 
   const { latitude, longitude } = location;
@@ -190,6 +194,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
 
   // States
   const [locations, setLocations] = useState({ latitude: latitude, longitude: longitude });
+  const [saved, setSaved] = useState(isSaved);
 
   useEffect(() => {
     setLocations({ latitude: latitude, longitude: longitude });
@@ -197,8 +202,8 @@ const MapsParkingCards = (props: IParkingCardProps) => {
 
   return (
     <Container isFromMaps={isFromMaps} style={style}>
-      <BookmarksContainer>
-        <BookmarkIcon />
+      <BookmarksContainer onPress={() => setSaved(!saved)}>
+        {saved ? <BookmarkIconFilled /> : <BookmarkIcon />}
       </BookmarksContainer>
 
       <TopContainer>
