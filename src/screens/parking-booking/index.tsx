@@ -38,10 +38,8 @@ import { TextTransform, translate } from 'components/atoms/localized-label';
 import DollarIcon from 'assets/icons/dollar-icon';
 
 // Interfaces
-import {
-  IParkingLocation,
-  IParkingPrice,
-} from 'core/interface/parking.interface';
+import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
+import { TRANSACTION_TYPE } from 'screens/transaction-details';
 
 interface IParkingBookingProps {
   navigation: any;
@@ -79,6 +77,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
 
   // States
   const [timeSelected, setTimeSelected] = useState<{ id?: string }>({});
+  const [carSelected, setCarSelected] = useState<{ id?: string }>({});
   const [pricePerHour, setPricePerHour] = useState<number>(price.amount ?? 0);
 
   const onBookPress = () => {
@@ -90,13 +89,17 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     });
   };
 
+  const onVehiclePress = () => {
+    navigation.navigate('MyVehicles', {});
+  };
+
   const onTimeSelected = (timeInfo: any) => {
     setTimeSelected(timeInfo);
     handlePriceperHour(price.amount, timeInfo.value);
   };
 
   const handlePriceperHour = (price: number, duration: number) => {
-    const total = (price * duration);
+    const total = price * duration;
     setPricePerHour(total);
   };
 
@@ -104,8 +107,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     <ViewContainer
       headerViewStyles={{
         paddingTop: 80,
-      }}
-    >
+      }}>
       <SafeAreaView />
       <Container>
         <PaddingContainer>
@@ -130,8 +132,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
                   longitude: parseFloat(location?.longitude),
                   latitudeDelta: 0.0043,
                   longitudeDelta: 0.0034,
-                }}
-              >
+                }}>
                 <Marker
                   coordinate={{
                     latitude: location?.latitude,
@@ -158,19 +159,17 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
                     <DollarIcon />
                   </IconContainer>
                   <InfoText>{parkingLeft}</InfoText>
-                  <InfoSubtext>
-                    {translate('available', TextTransform.NONE)}
-                  </InfoSubtext>
+                  <InfoSubtext>{translate('available', TextTransform.NONE)}</InfoSubtext>
                 </InfoWrapper>
               </IconsContainer>
             </TopContainer>
 
-            <CarSelectorButton disabled />
-
-            <TimeSelector
-              selectedId={timeSelected.id}
-              onTimeSelected={onTimeSelected}
+            <CarSelectorButton
+              disabled={type === TRANSACTION_TYPE.EXTEND}
+              onPress={onVehiclePress}
             />
+
+            <TimeSelector selectedId={timeSelected.id} onTimeSelected={onTimeSelected} />
           </Content>
 
           <BottomButtonsContainer>
@@ -191,7 +190,6 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
               }}
             />
           </BottomButtonsContainer>
-
         </PaddingContainer>
       </Container>
     </ViewContainer>

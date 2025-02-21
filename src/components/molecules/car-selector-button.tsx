@@ -16,6 +16,7 @@ import { DownArrow } from 'assets/icons';
 interface ICarSelectorButtonProps {
   onPress?: () => void;
   disabled?: boolean;
+  carSelected?: any;
 }
 
 const Container = styled.TouchableOpacity`
@@ -38,7 +39,7 @@ const Row = styled.View`
 `;
 
 const CarSelectorButton = (props: ICarSelectorButtonProps) => {
-  const { onPress, disabled } = props;
+  const { onPress, disabled, carSelected } = props;
 
   const onCardPress = () => {
     onPress?.();
@@ -49,9 +50,7 @@ const CarSelectorButton = (props: ICarSelectorButtonProps) => {
       onPress={onCardPress}
       disabled={disabled}
       style={{
-        backgroundColor: disabled
-          ? DEFAULT_THEME.darkPrimary
-          : DEFAULT_THEME.primary,
+        backgroundColor: disabled ? DEFAULT_THEME.darkPrimary : DEFAULT_THEME.primary,
       }}>
       <Content>
         <Row>
@@ -62,10 +61,7 @@ const CarSelectorButton = (props: ICarSelectorButtonProps) => {
             color={DEFAULT_THEME.black}>
             Tesla Model S
           </CustomText>
-          <CustomText
-            size={Typography.FONT_SIZE_12}
-            weight="400"
-            color={DEFAULT_THEME.black}>
+          <CustomText size={Typography.FONT_SIZE_12} weight="400" color={DEFAULT_THEME.black}>
             EF479379
           </CustomText>
         </Row>

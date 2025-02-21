@@ -106,4 +106,5 @@ export default {
   endSessionSubtitle: 'Are you sure you want to finish your parking session?',
   mapView: 'Map View',
   bookNow: 'book now',
+  addNewVehicle: 'Add new vehicle',
 };
