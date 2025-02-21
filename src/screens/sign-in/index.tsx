@@ -166,7 +166,7 @@ export const SignIn = (props: ISignInProps) => {
                   autoCapitalize: 'none',
                   value: props.values.email,
                 }}
-                customLeftIcon={() => <UserIcon /> }
+                customLeftIcon={() => <UserIcon />}
               />
 
               <TextInput
@@ -179,7 +179,7 @@ export const SignIn = (props: ISignInProps) => {
                   autoCapitalize: 'none',
                   value: props.values.password,
                 }}
-                customLeftIcon={() => <LockIcon /> }
+                customLeftIcon={() => <LockIcon />}
               />
 
               <ForgotPasswordButton
@@ -246,7 +246,9 @@ export const SignIn = (props: ISignInProps) => {
         </Formik>
       </Content>
 
-      <SignUpButton onPress={() => navigation.navigate('SignUp')}>
+      <SignUpButton
+        onPress={() => navigation.navigate('SignUp')}
+      >
         <SignUpText>
           {translate('notAMember', TextTransform.CAPITALIZE)} {' '}
           <SignUpText

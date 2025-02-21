@@ -12,6 +12,7 @@
     "setProduction": "ENVFILE=.env.prod",
     "bundle:ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
     "android:dev": "ENVFILE=.env.dev react-native run-android",
+    "android:dev:release": "cd android && ENVFILE=.env.dev ./gradlew assembleRelease",
     "android:prod": "ENVFILE=.env.prod react-native run-android"
   },
   "dependencies": {
