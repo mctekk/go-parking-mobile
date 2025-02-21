@@ -46,7 +46,7 @@ export const MyVehicles = (props: IMyVehiclesProps) => {
       <Container>
         <ScreenHeader
           title={''}
-          style={{ paddingHorizontal: 0, height: 90 }}
+          style={{ paddingHorizontal: 0, height: 90, paddingBottom: 0 }}
           titleProps={{ weight: '700', marginLeft: 10 }}
           backIconColor={DEFAULT_THEME.primary}
         />
