@@ -107,4 +107,8 @@ export default {
   mapView: 'Map View',
   bookNow: 'book now',
   addNewVehicle: 'Add new vehicle',
+  account: 'Account',
+  information: 'Information',
+  myCards: 'My Cards',
+  vehicles: 'Vehicles',
 };
