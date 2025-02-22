@@ -31,7 +31,7 @@ const UserProfile = (props: IUserProfileProps) => {
   const onOptionSelect = (option: string) => {
     switch (option) {
       case 'user':
-        navigation.navigate('UserProfile');
+        navigation.navigate('MyInformation');
         break;
       case 'car':
         navigation.navigate('MyVehicles');

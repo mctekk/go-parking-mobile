@@ -22,6 +22,7 @@ import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 import { UserContext } from 'components/context/user-context';
 import { TextTransform, translate } from 'components/atoms/localized-label';
+import { DUMMY_PROFILE_PICTURE } from 'utils/constants';
 
 
 interface UserProfileMenuProps {
@@ -73,7 +74,7 @@ const AuthorContainer = styled.View`
   border-bottom-color: rgba(102, 102, 102, 1);
 `;
 
-const AuthorImage = styled.View`
+const AuthorImage = styled.Image`
   height: 120px;
   width: 120px;
   border-radius: 60px;
@@ -243,7 +244,10 @@ export const UserProfileMenu = (props: UserProfileMenuProps) => {
       <TopContainer>
         <Title>{translate('account', TextTransform.CAPITALIZE)}</Title>
         <AuthorContainer>
-          <AuthorImage />
+          <AuthorImage
+            source={{ uri: DUMMY_PROFILE_PICTURE }}
+            resizeMode='cover'
+          />
           <Wrapper>
             <AuthorName>{userData?.firstname} {userData?.lastname}</AuthorName>
             <AuthorEmail>{userData?.email}</AuthorEmail>
@@ -256,10 +260,10 @@ export const UserProfileMenu = (props: UserProfileMenuProps) => {
         extraData={profile_list}
         renderItem={({ item }) => renderItem(item)}
         keyExtractor={item => item.id.toString()}
-        contentContainerStyle={{ 
+        contentContainerStyle={{
           flex: 1,
           paddingHorizontal: 5,
-         }}
+        }}
       />
 
       <LogoutContainer>

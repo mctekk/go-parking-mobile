@@ -114,4 +114,12 @@ export default {
   myVehicles: 'My Vehicles',
   addNewPaymentMethod: 'Add new payment method',
   saveCard: 'Save Card',
+  myInformation: 'My Information',
+  myInformationMsg: 'Manage you personal information',
+  editPersonalInfo: 'Edit Personal Information',
+  changeProfilePicture: 'Change Profile Picture',
+  save: 'Save',
+  fullName: 'Full Name',
+  driveLicense: 'Drive License',
+  emailAddress: 'Email Address',
 };

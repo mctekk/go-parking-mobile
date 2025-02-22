@@ -16,6 +16,7 @@ import ParkingScreen from 'screens/parking';
 import AllParkings from 'screens/all-parkings';
 import { Settings } from 'screens/settings';
 import MyCardsScreen from 'screens/my-cards';
+import MyInformation from 'screens/my-information';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -124,6 +125,13 @@ export const navigationScreen = [
   {
     name: 'MyCardsScreen',
     screen: MyCardsScreen,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'MyInformation',
+    screen: MyInformation,
     options: {
       navigationDefaultOptions,
     },
