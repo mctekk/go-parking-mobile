@@ -47,6 +47,7 @@ const Container = styled.View`
   align-self: center;
   border-radius: 20px;
   padding: 16px;
+  justify-content: center;
 `;
 
 const TopContainer = styled.View`

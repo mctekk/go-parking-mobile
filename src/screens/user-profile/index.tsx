@@ -37,7 +37,7 @@ const UserProfile = (props: IUserProfileProps) => {
         navigation.navigate('MyVehicles');
         break;
       case 'credit-card':
-        navigation.navigate('CreditCardProfile');
+        navigation.navigate('MyCardsScreen');
         break;
       case 'settings':
         navigation.navigate('Settings');

@@ -112,4 +112,5 @@ export default {
   myCards: 'My Cards',
   vehicles: 'Vehicles',
   myVehicles: 'My Vehicles',
+  addNewPaymentMethod: 'Add new payment method',
 };
