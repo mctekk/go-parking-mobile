@@ -1,9 +1,9 @@
-import Button from "components/atoms/button";
-import Text from "components/atoms/text";
-import Header from "components/molecules/header";
-import styled from "styled-components/native";
-import { Typography } from "styles";
-import { DEFAULT_THEME } from "styles/theme";
+import Button from 'components/atoms/button';
+import Text from 'components/atoms/text';
+import Header from 'components/molecules/header';
+import styled from 'styled-components/native';
+import { Typography } from 'styles';
+import { DEFAULT_THEME } from 'styles/theme';
 
 export const Container = styled.View`
   flex: 1;

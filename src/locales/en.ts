@@ -113,4 +113,5 @@ export default {
   vehicles: 'Vehicles',
   myVehicles: 'My Vehicles',
   addNewPaymentMethod: 'Add new payment method',
+  saveCard: 'Save Card',
 };

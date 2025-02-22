@@ -34,7 +34,7 @@ export interface IProps {
 }
 
 const SCREEN_MARGIN = 20;
-const HEADER_HEIGHT = !isAndroid ? 80 : 70;
+const HEADER_HEIGHT = !isAndroid ? 80 : 80;
 const HEADER_PADDING_TOP = !isAndroid ? 30 : 30;
 
 const Container = styled.View`
@@ -51,10 +51,10 @@ const Container = styled.View`
 
 // @ts-ignore
 const Title = styled(Text)`
+  width: 100%;
   color: ${Colors.WHITE};
   font-size: ${Typography.FONT_SIZE_20}px;
-  line-height: ${Typography.LINE_HEIGHT_24}px;
-  width: 200px;
+  line-height: ${Typography.FONT_SIZE_27}px;
 `;
 
 const CustomHeader = styled.View`

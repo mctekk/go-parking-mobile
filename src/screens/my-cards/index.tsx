@@ -3,7 +3,7 @@
 // Modules
 import React, { useCallback, useState } from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import styled from 'styled-components/native';
+import { FlatList } from 'react-native-gesture-handler';
 
 // Styles
 import { AddCardButton, ButtonText, Container, Content, IconContainer, ScreenHeader } from './styles';
@@ -17,9 +17,13 @@ import { TextTransform, translate } from 'components/atoms/localized-label';
 
 // Utils
 import { isAndroid } from 'utils/constants';
-import { FlatList } from 'react-native-gesture-handler';
 import { dummyCardsList } from 'utils/dummy-data';
+
+// Molecules
 import { CreditCardCards } from 'components/molecules/credit-card-cards';
+import { AddCreditCardModal } from 'components/molecules/modals/add-credit-card-modal';
+
+// Icons
 import BackArrow from 'assets/icons/back-arrow';
 
 interface IMyCardsScreenProps {
@@ -32,7 +36,11 @@ const MyCardsScreen = (props: IMyCardsScreenProps) => {
   const { navigation } = props;
 
   // States
-  const [addCardModal, setAddCardModal] = useState(false); 
+  const [addCardModal, setAddCardModal] = useState(false);
+
+  const onAddCardPressed = () => {
+    setAddCardModal(true);
+  };
 
   const renderItem = useCallback(({ item }) => {
     return (
@@ -43,7 +51,7 @@ const MyCardsScreen = (props: IMyCardsScreenProps) => {
         cardHolder={item.cardHolder}
         expiryDate={item.expirationDate}
       />
-    )
+    );
   }, []);
 
   const ketExtractor = useCallback((item: any, index: number) => index.toString(), []);
@@ -63,7 +71,6 @@ const MyCardsScreen = (props: IMyCardsScreenProps) => {
           backIconColor={DEFAULT_THEME.primary}
         />
         <Content>
-
           <FlatList
             data={dummyCardsList}
             extraData={dummyCardsList}
@@ -72,7 +79,7 @@ const MyCardsScreen = (props: IMyCardsScreenProps) => {
           />
 
           <AddCardButton
-            // onPress={() => navigation.navigate('AddCardScreen')}
+            onPress={() => onAddCardPressed()}
           >
             <ButtonText>
               {translate('addNewPaymentMethod', TextTransform.CAPITALIZE)}
@@ -81,9 +88,16 @@ const MyCardsScreen = (props: IMyCardsScreenProps) => {
               <BackArrow height={16} width={16} />
             </IconContainer>
           </AddCardButton>
-
         </Content>
       </Container>
+
+      {/* Modals */}
+
+      <AddCreditCardModal
+        visible={addCardModal}
+        onClose={() => setAddCardModal(false)}
+      />
+
     </ViewContainer>
   );
 };
