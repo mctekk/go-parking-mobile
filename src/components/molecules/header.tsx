@@ -15,6 +15,7 @@ import CloseButton from 'components/atoms/close-button';
 import { Colors, Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 import { isAndroid } from 'utils/constants';
+import { scaleSize } from 'styles/mixins';
 
 export interface IProps {
   title?: string;
@@ -33,9 +34,9 @@ export interface IProps {
   hasBackButton?: boolean;
 }
 
-const SCREEN_MARGIN = 20;
-const HEADER_HEIGHT = !isAndroid ? 80 : 80;
-const HEADER_PADDING_TOP = !isAndroid ? 30 : 30;
+const SCREEN_MARGIN = 0;
+const HEADER_HEIGHT = !isAndroid ? 60 : scaleSize(50);
+const HEADER_PADDING_TOP = 0;
 
 const Container = styled.View`
   width: 100%;
@@ -46,7 +47,6 @@ const Container = styled.View`
   padding-horizontal: ${SCREEN_MARGIN}px;
   padding-bottom: ${SCREEN_MARGIN}px;
   height: ${HEADER_HEIGHT}px;
-  background-color: ${DEFAULT_THEME.transparent};
 `;
 
 // @ts-ignore

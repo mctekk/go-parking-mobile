@@ -10,7 +10,7 @@ import { TextTransform, translate } from 'components/atoms/localized-label';
 import VehicleIcon from 'components/atoms/vehicle-icon';
 
 // Utils
-import { dummyVehicleTypes } from 'utils/dummy-data';
+import { isAndroid } from 'utils/constants';
 
 // Molecules
 import SearchBar from './search-bar';
@@ -24,7 +24,7 @@ interface ISearchCardProps {
 };
 
 const CardContainer = styled.View`
-  padding: 16px;
+  padding: ${isAndroid ? '10px' : '16px'};
   border-radius: 20px;
   background-color: #fff;
   elevation: 5;

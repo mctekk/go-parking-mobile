@@ -14,6 +14,8 @@ import CloseButton from 'components/atoms/close-button';
 import { Colors, Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 import BellV2 from 'assets/icons/bell';
+import { isAndroid } from 'utils/constants';
+import { margin, scaleSize } from 'styles/mixins';
 
 export interface IProps {
   title?: string;
@@ -34,8 +36,8 @@ export interface IProps {
 }
 
 const SCREEN_MARGIN = 15;
-const HEADER_HEIGHT = Platform.OS === 'ios' ? 150 : 90;
-const HEADER_PADDING_TOP = Platform.OS === 'ios' ? 60 : 1;
+const HEADER_HEIGHT = !isAndroid ? 150 : scaleSize(80);
+const HEADER_PADDING_TOP = !isAndroid ? 60 : 10;
 
 const Container = styled.View`
   width: 100%;
@@ -46,7 +48,6 @@ const Container = styled.View`
   justify-content: space-between;
   align-items: center;
   padding-horizontal: 20px;
-  background-color: ${DEFAULT_THEME.primary};
 `;
 
 // @ts-ignore

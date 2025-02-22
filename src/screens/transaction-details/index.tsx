@@ -233,9 +233,12 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
                 {streetLocation}
               </CustomText>
             </TopSectionContainer>
-
           </TopContainer>
-          <DashLine color={DEFAULT_THEME.cardGray} />
+
+          <DashLine
+            color={DEFAULT_THEME.cardGray}
+          />
+
           <DetailsContainer>
             {rowsData?.map((rowData: any, index: number) => {
               return (
@@ -276,18 +279,19 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
               {`$${price.amount}`}
             </CustomText>
           </DetailRowContent>
-        </Content>
 
-        <BottomButton
-          onPress={handleButtonPress}
-          title={translate(getButtonLocale(), TextTransform.CAPITALIZE)}
-          textStyle={{
-            fontSize: Typography.FONT_SIZE_16,
-            lineHeight: Typography.FONT_SIZE_20,
-            fontWeight: '700',
-            color: DEFAULT_THEME.black,
-          }}
-        />
+          <BottomButton
+            onPress={handleButtonPress}
+            title={translate(getButtonLocale(), TextTransform.CAPITALIZE)}
+            textStyle={{
+              fontSize: Typography.FONT_SIZE_16,
+              lineHeight: Typography.FONT_SIZE_20,
+              fontWeight: '700',
+              color: DEFAULT_THEME.black,
+            }}
+          />
+
+        </Content>
       </Container>
     </ViewContainer>
   );

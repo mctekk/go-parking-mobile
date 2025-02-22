@@ -22,7 +22,10 @@ import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 import { UserContext } from 'components/context/user-context';
 import { TextTransform, translate } from 'components/atoms/localized-label';
-import { DUMMY_PROFILE_PICTURE } from 'utils/constants';
+import { DUMMY_PROFILE_PICTURE, isAndroid } from 'utils/constants';
+import { Dimensions } from 'react-native';
+import { hasNotch } from 'utils/iphone-helpers';
+import { scaleSize } from 'styles/mixins';
 
 
 interface UserProfileMenuProps {
@@ -38,11 +41,14 @@ interface IListItmeProps {
   onItemPress: (key: string) => void;
 }
 
+const TOP_MARGIN = isAndroid ? 25 : hasNotch() ? 70 : 30;
+const CARD_HEIGHT = isAndroid ? '95%' : hasNotch() ? '85%' : '80%';
+
 const Container = styled.View`
   width: 90%;
-  height: 85%;
+  height: ${CARD_HEIGHT};
   position: absolute;
-  top: 75px;
+  top: ${TOP_MARGIN}px;
   background-color: rgba(34, 34, 34, 1);
   margin-horizontal: 16px;
   align-self: center;
@@ -75,9 +81,9 @@ const AuthorContainer = styled.View`
 `;
 
 const AuthorImage = styled.Image`
-  height: 120px;
-  width: 120px;
-  border-radius: 60px;
+  height: ${scaleSize(120)}px;
+  width: ${scaleSize(120)}px;
+  border-radius: 70px;
   border-width: 3px;
   border-color: ${DEFAULT_THEME.primary};
   margin-bottom: 8px;
@@ -263,6 +269,7 @@ export const UserProfileMenu = (props: UserProfileMenuProps) => {
         contentContainerStyle={{
           flex: 1,
           paddingHorizontal: 5,
+          paddingBottom: 50,
         }}
       />
 

@@ -154,6 +154,7 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
               </IconContainer>
             </BackgroundContainer>
           </ContainerWrapper>
+
           {type !== TRANSACTION_TYPE.EXTEND && (
             <>
               <SubText style={styles.subTextStyles}>
@@ -168,29 +169,29 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
               </BackgroundContainer>
             </>
           )}
+
+          <BottomButtonContainer>
+            {type !== TRANSACTION_TYPE.EXTEND && (
+              <CustomButton
+                onPress={onExtendPress}
+                title={translate('extends', TextTransform.CAPITALIZE)}
+                style={{ backgroundColor: 'rgba(170, 170, 170, 1)' }}
+                textStyle={styles.buttonTextStyles}
+              />
+            )}
+            <CustomButton
+              onPress={onDonePress}
+              title={translate('done', TextTransform.CAPITALIZE)}
+              style={[
+                { backgroundColor: DEFAULT_THEME.primary },
+                type === TRANSACTION_TYPE.EXTEND && styles.doneButtonExtend,
+              ]}
+              textStyle={styles.buttonTextStyles}
+            />
+          </BottomButtonContainer>
+
         </Content>
       </Container>
-
-      <BottomButtonContainer>
-        {type !== TRANSACTION_TYPE.EXTEND && (
-          <CustomButton
-            onPress={onExtendPress}
-            title={translate('extends', TextTransform.CAPITALIZE)}
-            style={{ backgroundColor: 'rgba(170, 170, 170, 1)' }}
-            textStyle={styles.buttonTextStyles}
-          />
-        )}
-        <CustomButton
-          onPress={onDonePress}
-          title={translate('done', TextTransform.CAPITALIZE)}
-          style={[
-            { backgroundColor: DEFAULT_THEME.primary },
-            type === TRANSACTION_TYPE.EXTEND && styles.doneButtonExtend,
-          ]}
-          textStyle={styles.buttonTextStyles}
-        />
-      </BottomButtonContainer>
-
     </ViewContainer>
   );
 };

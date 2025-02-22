@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 
 // Styles
 import { Colors, Typography } from 'styles';
+import { scaleFont } from 'styles/mixins';
 import { DEFAULT_THEME } from 'styles/theme';
 
 // Utils
@@ -20,8 +21,8 @@ export interface ITextProps extends TextProps {
 }
 
 const CustomText = styled.Text`
-  font-size: ${(props: ITextProps) => props.size || '14'}px;
-  line-height: ${(props: ITextProps) => (props.lineHeight || props.size + 2.5 || 15)}px;
+  font-size: ${(props: ITextProps) => props.size || Typography.FONT_SIZE_14}px;
+  line-height: ${(props: ITextProps) => (props.lineHeight || props.size + 2.5 || scaleFont(15))}px;
   color: ${(props: ITextProps) => props.color || DEFAULT_THEME.text};
   text-align: ${(props: ITextProps) => props.align || 'auto'};
   font-weight: ${(props: ITextProps) => props.weight || 'normal'};

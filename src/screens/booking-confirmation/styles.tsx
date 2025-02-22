@@ -2,6 +2,7 @@ import Button from 'components/atoms/button';
 import Text from 'components/atoms/text';
 import styled from 'styled-components/native';
 import { Typography } from 'styles';
+import { scaleSize } from 'styles/mixins';
 import { DEFAULT_THEME } from 'styles/theme';
 
 export const Container = styled.ScrollView`
@@ -10,6 +11,7 @@ export const Container = styled.ScrollView`
   border-radius: 25px;
   padding-horizontal: 20px;
   padding: 16px;
+  padding-bottom: 100px;
 `;
 
 export const SuccessContainer = styled.View`
@@ -22,9 +24,9 @@ export const CheckCircle = styled.View`
   justify-content: center;
   align-items: center;
   background-color: ${DEFAULT_THEME.primary};
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
+  width: ${scaleSize(100)}px;
+  height:${scaleSize(100)}px;
+  border-radius: 80px;
   border-width: 7px;
   border-color: rgba(255, 184, 0, 0.74);
 `;
@@ -95,13 +97,11 @@ export const BottomButtonContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  position: absolute;
-  bottom: 50px;
-  align-self: center;
+  margin-top: 25px;
 `;
 
 export const CustomButton = styled(Button)`
   width: 48%;
   border-radius: 50px;
+  margin-top: 0px;
 `;

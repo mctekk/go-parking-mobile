@@ -1,51 +1,44 @@
-import {Dimensions, Platform, StatusBar} from 'react-native';
+import { Dimensions, Platform, StatusBar } from 'react-native';
+
+const isIOS = Platform.OS === 'ios' && !Platform.isPad && !Platform.isTV;
+
+const dimensionCheck = (heights: number[], widths: number[]) => {
+  const dimen = Dimensions.get('window');
+  return heights.includes(dimen.height) || widths.includes(dimen.width);
+};
 
 export function isIphoneX() {
-  const dimen = Dimensions.get('window');
-  return (
-    Platform.OS === 'ios' &&
-    !Platform.isPad &&
-    !Platform.isTV &&
-    (dimen.height === 780 ||
-      dimen.width === 780 ||
-      dimen.height === 812 ||
-      dimen.width === 812 ||
-      dimen.height === 844 ||
-      dimen.width === 844 ||
-      dimen.height === 844 ||
-      dimen.width === 390 ||
-      dimen.height === 896 ||
-      dimen.width === 896 ||
-      dimen.height === 926 ||
-      dimen.width === 428 ||
-      dimen.height === 852 ||
-      dimen.width === 393 || // iPhone 14 Pro
-      dimen.height === 932 ||
-      dimen.width === 430) // iPhone 14 Pro Max
-  );
+  const heights = [780, 812, 844, 896, 926, 852, 932];
+  const widths = [780, 812, 844, 390, 896, 428, 393, 430];
+  return isIOS && dimensionCheck(heights, widths);
+}
+
+export function isIphoneMax() {
+  const heights = [896, 926, 932, 956, 980];
+  const widths = [414, 428, 430, 440, 460];
+  return isIOS && dimensionCheck(heights, widths);
+}
+
+export function isIphone16() {
+  const heights = [956, 874];
+  const widths = [440, 402];
+  return isIOS && dimensionCheck(heights, widths);
+}
+
+export function hasNotch() {
+  return isIphoneX() || isIphone16();
 }
 
 export function isIphone14Pro() {
-  const dimen = Dimensions.get('window');
-  return (
-    Platform.OS === 'ios' &&
-    !Platform.isPad &&
-    !Platform.isTV &&
-    (dimen.height === 852 ||
-      dimen.width === 393 || // iPhone 14 Pro
-      dimen.height === 932 ||
-      dimen.width === 430) // iPhone 14 Pro Max
-  );
+  const heights = [852, 932];
+  const widths = [393, 430];
+  return isIOS && dimensionCheck(heights, widths);
 }
 
 export function isIphone14() {
-  const dimen = Dimensions.get('window');
-  return (
-    Platform.OS === 'ios' &&
-    !Platform.isPad &&
-    !Platform.isTV &&
-    (dimen.height === 844 || dimen.width === 390) // iPhone 14
-  );
+  const heights = [844];
+  const widths = [390];
+  return isIOS && dimensionCheck(heights, widths);
 }
 
 export function ifIphoneX(iphoneXStyle: any, regularStyle: any) {
@@ -65,4 +58,12 @@ export function getStatusBarHeight(safe: any) {
 
 export function getBottomSpace() {
   return isIphoneX() ? 34 : 0;
+}
+
+export function isIphoneSE() {
+  const dimen = Dimensions.get('window');
+  return (
+    dimen.height <= 667 &&
+    dimen.width <= 375
+  );
 }
