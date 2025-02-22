@@ -79,9 +79,9 @@ const CustomHeader = styled.View`
 `;
 
 const IconContainer = styled.TouchableOpacity`
-  height: 50px;
-  width: 50px;
-  border-radius: 15px;
+  height: ${scaleSize(45)}px;
+  width: ${scaleSize(45)}px;
+  border-radius: 12px;
   align-items: center;
   justify-content: center;
   background-color: ${DEFAULT_THEME.background};

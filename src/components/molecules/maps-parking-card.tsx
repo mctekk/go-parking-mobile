@@ -23,6 +23,7 @@ import BookmarkIconFilled from 'assets/icons/bookmark-icon-filled';
 
 // Interfaces
 import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
+import { scaleSize } from 'styles/mixins';
 
 interface IParkingCardProps {
   id: number;
@@ -41,49 +42,13 @@ interface IParkingCardProps {
   isSaved?: boolean;
 }
 
-interface ITagsProps {
-  name: string;
-}
-
 const Container = styled.View`
+  background-color: rgba(45, 45, 45, 1);
   margin-right: 10px;
   border-radius: 15px;
-  background-color: rgba(45, 45, 45, 1);
   padding: 20px;
   margin-bottom: 10px;
   width: 350px;
-`;
-
-const TagListContainer = styled.View`
-  flex-direction: row;
-  margin-bottom: 10px;
-`;
-
-const TagContainer = styled.View`
-  background-color: rgba(66, 66, 66, 1);
-  border-radius: 5px;
-  padding: 5px 10px;
-  margin-horizontal: 2px;
-`;
-
-const TagText = styled(Text)`
-  font-size: ${Typography.FONT_SIZE_10}px;
-  line-height: ${Typography.FONT_SIZE_12}px;
-  color: white;
-  font-weight: 700;
-`;
-
-const BookmarksContainer = styled.TouchableOpacity`
-  background-color: rgba(66, 66, 66, 1);
-  height: 40px;
-  width: 40px;
-  border-radius: 20px;
-  position: absolute;
-  z-index: 999;
-  top: 15px;
-  right: 15px;
-  justify-content: center;
-  align-items: center;
 `;
 
 const TopContainer = styled.View`
@@ -91,10 +56,21 @@ const TopContainer = styled.View`
 `;
 
 const Wrapper = styled.View`
+  flex: 1;
   margin-left: 10px;
   justify-content: space-evenly;
   align-items: flex-start;
 `;
+
+const BookmarksContainer = styled.TouchableOpacity`
+  background-color: rgba(66, 66, 66, 1);
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+`;
+
 
 const Title = styled(Text)`
   font-size: ${Typography.FONT_SIZE_16}px;
@@ -102,14 +78,12 @@ const Title = styled(Text)`
   font-weight: 700;
   color: white;
   margin-bottom: 15px;
-  width: 220px;
 `;
 
 const Street = styled(Text)`
   font-size: ${Typography.FONT_SIZE_12}px;
   line-height: ${Typography.FONT_SIZE_20}px;
   color: white;
-  width: 220px;
 `;
 
 const MapContainer = styled.View`
@@ -159,16 +133,8 @@ const IconContainer = styled.View`
 const BookNowButton = styled(Button)`
   border-radius: 25px;
   margin-top: 15px;
+  height: ${scaleSize(43)}px;
 `;
-
-const Tags = (props: ITagsProps) => {
-  const { name, isFromMaps } = props;
-  return (
-    <TagContainer isFromMaps={isFromMaps}>
-      <TagText>{name}</TagText>
-    </TagContainer>
-  );
-};
 
 const MapsParkingCards = (props: IParkingCardProps) => {
   // Props
@@ -201,12 +167,12 @@ const MapsParkingCards = (props: IParkingCardProps) => {
   }, [location]);
 
   return (
-    <Container isFromMaps={isFromMaps} style={style}>
-      <BookmarksContainer onPress={() => setSaved(!saved)}>
-        {saved ? <BookmarkIconFilled /> : <BookmarkIcon />}
-      </BookmarksContainer>
-
+    <Container
+      isFromMaps={isFromMaps}
+      style={style}
+    >
       <TopContainer>
+
         <MapContainer>
           <MapView
             style={styles.map}
@@ -222,6 +188,7 @@ const MapsParkingCards = (props: IParkingCardProps) => {
             }}
           />
         </MapContainer>
+
         <Wrapper>
           <Title numberOfLines={2} ellipsizeMode="tail">
             {title}
@@ -230,6 +197,12 @@ const MapsParkingCards = (props: IParkingCardProps) => {
             {street}
           </Street>
         </Wrapper>
+
+        <BookmarksContainer
+          onPress={() => setSaved(!saved)}
+        >
+          {saved ? <BookmarkIconFilled /> : <BookmarkIcon />}
+        </BookmarksContainer>
       </TopContainer>
 
       <BottomContainer>

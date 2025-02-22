@@ -31,6 +31,7 @@ import { TextTransform, translate } from 'components/atoms/localized-label';
 import CustomText from 'atoms/text';
 import { CarIconOutline, LocationIcon } from 'assets/icons';
 import { TRANSACTION_TYPE } from 'screens/transaction-details';
+import { isAndroid } from 'utils/constants';
 
 interface ISessionDetailsScreenProps {
   navigation: any;
@@ -73,7 +74,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
   return (
     <ViewContainer
       headerViewStyles={{
-        paddingTop: 80,
+        paddingTop: isAndroid ? 50 : 80,
       }}
     >
       <SafeAreaView />
@@ -84,8 +85,13 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
           titleProps={{}}
           backIconColor={DEFAULT_THEME.primary}
         />
+
         <Content>
-          <SessionTimeCounter totalTime={1800000} remainingTime={1800000} />
+          <SessionTimeCounter
+            totalTime={1800000}
+            remainingTime={1800000}
+          />
+
           <CardContainer>
             <RowBetween style={{ marginBottom: 8 }}>
               <CustomText
@@ -130,28 +136,38 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
               </Row>
             </ModelRow>
           </CardContainer>
+
+
+          <BottomButtonsContainer>
+            <BottomButton
+              onPress={onExtentTimePress}
+              style={styles.extendButton}
+            >
+              <CustomText
+                size={Typography.FONT_SIZE_16}
+                weight="600"
+                color={DEFAULT_THEME.dashGray}>
+                {translate('extendTime', TextTransform.CAPITALIZE)}
+              </CustomText>
+            </BottomButton>
+
+            <BottomButton
+              onPress={() => setConfirmationModalVisible(true)}
+              style={styles.endButton}>
+              <CustomText
+                size={Typography.FONT_SIZE_16}
+                weight="600"
+                color={DEFAULT_THEME.black}>
+                {translate('endParking', TextTransform.CAPITALIZE)}
+              </CustomText>
+            </BottomButton>
+          </BottomButtonsContainer>
+
         </Content>
-        <BottomButtonsContainer>
-          <BottomButton onPress={onExtentTimePress} style={styles.extendButton}>
-            <CustomText
-              size={Typography.FONT_SIZE_16}
-              weight="600"
-              color={DEFAULT_THEME.dashGray}>
-              {translate('extendTime', TextTransform.CAPITALIZE)}
-            </CustomText>
-          </BottomButton>
-          <BottomButton
-            onPress={() => setConfirmationModalVisible(true)}
-            style={styles.endButton}>
-            <CustomText
-              size={Typography.FONT_SIZE_16}
-              weight="600"
-              color={DEFAULT_THEME.black}>
-              {translate('endParking', TextTransform.CAPITALIZE)}
-            </CustomText>
-          </BottomButton>
-        </BottomButtonsContainer>
       </Container>
+
+      {/* Modals */}
+
       <ConfirmationModal
         visible={confirmationModalVisible}
         onPressClose={() => setConfirmationModalVisible(false)}

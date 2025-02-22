@@ -42,9 +42,7 @@ export const BottomButtonsContainer = styled.TouchableOpacity`
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  position: absolute;
-  align-self: center;
-  bottom: 50px;
+  margin-top: 20px;
 `;
 
 export const CardContainer = styled.View`
