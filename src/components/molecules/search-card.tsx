@@ -14,6 +14,9 @@ import { dummyVehicleTypes } from 'utils/dummy-data';
 
 // Molecules
 import SearchBar from './search-bar';
+import Text from 'components/atoms/text';
+import { Typography } from 'styles';
+import { DEFAULT_THEME } from 'styles/theme';
 
 interface ISearchCardProps {
   onSearch: (text: string) => void;
@@ -28,9 +31,11 @@ const CardContainer = styled.View`
   margin-horizontal: 16px;
 `;
 
-const Title = styled.Text`
-  font-size: 18px;
-  font-weight: bold;
+const Title = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_18}px;
+  line-height: ${Typography.LINE_HEIGHT_24}px;
+  color: ${DEFAULT_THEME.black};
+  font-weight: 700;
   margin-bottom: 8px;
 `;
 
@@ -94,6 +99,9 @@ export const SearchCard = (props: ISearchCardProps) => {
         onSubmitEditing={onSubmitEditing}
         searchInputStyle={{
           backgroundColor: 'rgba(238, 238, 238, 1)',
+        }}
+        style={{
+          color: DEFAULT_THEME.black,
         }}
       />
 

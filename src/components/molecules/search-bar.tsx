@@ -145,7 +145,7 @@ const SearchBar = forwardRef((props: IProps, ref: any) => {
     return (
       <SearchInput
         placeholder={placeholder || translate('findParkingSpace', TextTransform.CAPITAL)}
-        placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
+        placeholderTextColor={'grey'}
         autoCapitalize="none"
         onFocus={() => setIsFocused(true)}
         {...props}

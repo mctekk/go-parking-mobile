@@ -111,4 +111,5 @@ export default {
   information: 'Information',
   myCards: 'My Cards',
   vehicles: 'Vehicles',
+  myVehicles: 'My Vehicles',
 };

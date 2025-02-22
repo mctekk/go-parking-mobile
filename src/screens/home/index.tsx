@@ -107,7 +107,7 @@ export const Home = (props: IHomeProps) => {
     >
       <ParkingList
         ListHeaderComponent={ListHeaderComponent}
-        contentContainerStyle={{ 
+        contentContainerStyle={{
           padding: 20,
           paddingBottom: 80,
          }}

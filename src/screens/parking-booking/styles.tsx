@@ -89,8 +89,8 @@ export const Title = styled(Text)`
 `;
 
 export const Subtitle = styled(Text)`
-  font-size: ${Typography.FONT_SIZE_12}px;
-  line-height: ${Typography.FONT_SIZE_14}px;
+  font-size: ${Typography.FONT_SIZE_14}px;
+  line-height: ${Typography.FONT_SIZE_22}px;
   color: ${DEFAULT_THEME.white};
   margin-vertical: 15px;
 `;

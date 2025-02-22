@@ -34,13 +34,13 @@ const UserProfile = (props: IUserProfileProps) => {
         navigation.navigate('UserProfile');
         break;
       case 'car':
-        navigation.navigate('CarProfile');
+        navigation.navigate('MyVehicles');
         break;
       case 'credit-card':
         navigation.navigate('CreditCardProfile');
         break;
       case 'settings':
-        navigation.navigate('SettingsProfile');
+        navigation.navigate('Settings');
         break;
       default:
         break;

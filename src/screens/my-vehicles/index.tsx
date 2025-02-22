@@ -20,6 +20,7 @@ import VehiclesList from 'components/organisms/vehicles-list';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
+import { isAndroid } from 'utils/constants';
 
 interface IMyVehiclesProps {
   navigation: any;
@@ -34,19 +35,21 @@ interface IBookingScreenParamsProps {
 
 export const MyVehicles = (props: IMyVehiclesProps) => {
   // Props
-  const { navigation, route } = props;
-  const {} = route.params;
+  const {
+    navigation,
+    route,
+  } = props;
 
   return (
     <ViewContainer
       headerViewStyles={{
-        paddingTop: 80,
+        paddingTop: isAndroid ? 50 : 80,
       }}>
       <SafeAreaView />
       <Container>
         <ScreenHeader
-          title={''}
-          style={{ paddingHorizontal: 0, height: 90, paddingBottom: 0 }}
+          title={translate('myVehicles', TextTransform.CAPITALIZE)}
+          style={{ paddingHorizontal: 0, justifyContent: null }}
           titleProps={{ weight: '700', marginLeft: 10 }}
           backIconColor={DEFAULT_THEME.primary}
         />
@@ -56,7 +59,7 @@ export const MyVehicles = (props: IMyVehiclesProps) => {
         </Content>
         <BottomButtonsContainer>
           <BottomButton
-            onPress={() => {}}
+            onPress={() => { }}
             style={{
               backgroundColor: DEFAULT_THEME.primary,
             }}

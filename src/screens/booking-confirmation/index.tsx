@@ -50,6 +50,7 @@ import { getFormattedRemainingTime } from 'utils';
 
 // Constants
 import { TRANSACTION_TYPE } from 'screens/transaction-details';
+import { isAndroid } from 'utils/constants';
 
 interface ITransactionDetailsScreenProps {
   navigation: any;
@@ -94,7 +95,7 @@ export const BookingConfirmationScreen = (props: ITransactionDetailsScreenProps)
   return (
     <ViewContainer
       headerViewStyles={{
-        paddingTop: 80,
+        paddingTop: isAndroid ? 50 : 80,
       }}
     >
       <SafeAreaView />

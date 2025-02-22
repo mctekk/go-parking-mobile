@@ -71,6 +71,7 @@ export const MapContainer = styled.View`
 `;
 
 export const TopSectionContainer = styled.View`
+  flex: 1;
   margin-left: 20px;
 `;
 

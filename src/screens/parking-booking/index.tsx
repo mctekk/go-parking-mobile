@@ -40,6 +40,7 @@ import DollarIcon from 'assets/icons/dollar-icon';
 // Interfaces
 import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
 import { TRANSACTION_TYPE } from 'screens/transaction-details';
+import { isAndroid } from 'utils/constants';
 
 interface IParkingBookingProps {
   navigation: any;
@@ -77,7 +78,6 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
 
   // States
   const [timeSelected, setTimeSelected] = useState<{ id?: string }>({});
-  const [carSelected, setCarSelected] = useState<{ id?: string }>({});
   const [pricePerHour, setPricePerHour] = useState<number>(price.amount ?? 0);
 
   const onBookPress = () => {
@@ -106,14 +106,15 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
   return (
     <ViewContainer
       headerViewStyles={{
-        paddingTop: 80,
-      }}>
+        paddingTop: isAndroid ? 50 : 80,
+      }}
+    >
       <SafeAreaView />
       <Container>
         <PaddingContainer>
           <ScreenHeader
             title={''}
-            style={{ paddingHorizontal: 0, height: 90 }}
+            style={{ paddingHorizontal: 0, justifyContent: null }}
             titleProps={{ weight: '700', marginLeft: 10 }}
             backIconColor={DEFAULT_THEME.primary}
           />
