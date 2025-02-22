@@ -16,17 +16,13 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
   border-radius: 25px;
+  padding-horizontal: 16px;
+
 `;
 
-export const PaddingContainer = styled.View`
-  flex: 1px;
-`;
-
-export const ScreenHeader = styled(Header)`
-`;
+export const ScreenHeader = styled(Header)``;
 
 export const Content = styled.ScrollView`
-  padding-horizontal: 16px;
   padding-bottom: 150px;
 `;
 

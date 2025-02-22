@@ -42,7 +42,7 @@ interface IListItmeProps {
 }
 
 const TOP_MARGIN = isAndroid ? 25 : hasNotch() ? 70 : 30;
-const CARD_HEIGHT = isAndroid ? '95%' : hasNotch() ? '85%' : '80%';
+const CARD_HEIGHT = isAndroid ? '95%' : hasNotch() ? '87%' : '80%';
 
 const Container = styled.View`
   width: 90%;

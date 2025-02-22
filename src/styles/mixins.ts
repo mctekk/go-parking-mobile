@@ -1,43 +1,73 @@
-import { Dimensions, PixelRatio } from 'react-native';
+import { Dimensions, PixelRatio, ViewStyle, ScaledSize } from 'react-native';
 
-const WINDOW_WIDTH = Dimensions.get('window').width;
-const guidelineBaseWidth = 375;
+// Constants can be frozen to prevent modification
+const WINDOW_DIMENSIONS: Readonly<ScaledSize> = Dimensions.get('window');
+const GUIDELINE_BASE_WIDTH = 375;
+const MAX_FONT_SIZE = 30;
 
-export const scaleSize = (size) => (WINDOW_WIDTH / guidelineBaseWidth) * size;
+// Add memoization for better performance
+let lastWindowWidth = WINDOW_DIMENSIONS.width;
+let lastScaleSize: { [key: number]: number } = {};
 
-// export const scaleFont = (size) => Math.min(PixelRatio.getFontScale() * size, 28)
-export const scaleFont = (size) => size * PixelRatio.getFontScale();
+export const scaleSize = (size: number): number => {
+  if (lastScaleSize[size] && lastWindowWidth === WINDOW_DIMENSIONS.width) {
+    return lastScaleSize[size];
+  }
+  lastWindowWidth = WINDOW_DIMENSIONS.width;
+  lastScaleSize[size] = (WINDOW_DIMENSIONS.width / GUIDELINE_BASE_WIDTH) * size;
+  return lastScaleSize[size];
+};
 
-function dimensions(top, right = top, bottom = top, left = right, property) {
-  const styles = {};
+export const scaleFont = (size: number): number => 
+  Math.min(PixelRatio.getFontScale() * size, MAX_FONT_SIZE);
 
-  styles[`${property}Top`] = top;
-  styles[`${property}Right`] = right;
-  styles[`${property}Bottom`] = bottom;
-  styles[`${property}Left`] = left;
+type SpacingProperty = 'margin' | 'padding';
 
-  return styles;
+function dimensions(
+  top: number,
+  right: number = top,
+  bottom: number = top,
+  left: number = right,
+  property: SpacingProperty
+): ViewStyle {
+  return {
+    [`${property}Top`]: top,
+    [`${property}Right`]: right,
+    [`${property}Bottom`]: bottom,
+    [`${property}Left`]: left,
+  } as ViewStyle;
 }
 
-export function margin(top, right, bottom, left) {
-  return dimensions(top, right, bottom, left, 'margin');
+export const margin = (
+  top: number,
+  right?: number,
+  bottom?: number,
+  left?: number
+): ViewStyle => dimensions(top, right, bottom, left, 'margin');
+
+export const padding = (
+  top: number,
+  right?: number,
+  bottom?: number,
+  left?: number
+): ViewStyle => dimensions(top, right, bottom, left, 'padding');
+
+interface BoxShadowOptions {
+  color: string;
+  offset?: { height: number; width: number };
+  radius?: number;
+  opacity?: number;
 }
 
-export function padding(top, right, bottom, left) {
-  return dimensions(top, right, bottom, left, 'padding');
-}
-
-export function boxShadow(
+export const boxShadow = ({
   color,
   offset = { height: 2, width: 2 },
   radius = 8,
   opacity = 0.2,
-) {
-  return {
-    shadowColor: color,
-    shadowOffset: offset,
-    shadowOpacity: opacity,
-    shadowRadius: radius,
-    elevation: radius,
-  };
-}
+}: BoxShadowOptions): ViewStyle => ({
+  shadowColor: color,
+  shadowOffset: offset,
+  shadowOpacity: opacity,
+  shadowRadius: radius,
+  elevation: radius,
+});

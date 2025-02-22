@@ -20,7 +20,6 @@ import {
   InfoWrapper,
   InfoText,
   InfoSubtext,
-  PaddingContainer,
   PriceText,
 } from './styles';
 import { Typography } from 'styles';
@@ -111,91 +110,88 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     >
       <SafeAreaView />
       <Container>
-        <PaddingContainer>
-          <ScreenHeader
-            title={''}
-            style={{ paddingHorizontal: 0, justifyContent: null }}
-            titleProps={{ weight: '700', marginLeft: 10 }}
-            backIconColor={DEFAULT_THEME.primary}
-          />
-
-          <Content>
-            <MapContainer>
-              <MapView
-                style={styles.map}
-                provider={'google'}
-                scrollEnabled={false}
-                zoomEnabled={false}
-                zoomTapEnabled={false}
-                cacheEnabled
-                region={{
-                  latitude: parseFloat(location?.latitude),
-                  longitude: parseFloat(location?.longitude),
-                  latitudeDelta: 0.0043,
-                  longitudeDelta: 0.0034,
-                }}>
-                <Marker
-                  coordinate={{
-                    latitude: location?.latitude,
-                    longitude: location?.longitude,
-                  }}
-                />
-              </MapView>
-            </MapContainer>
-
-            <TopContainer>
-              <Title>{parkingName}</Title>
-              <Subtitle>{streetLocation}</Subtitle>
-              <IconsContainer>
-                <InfoWrapper>
-                  <IconContainer>
-                    <DollarIcon />
-                  </IconContainer>
-                  <InfoText>{price?.amount}</InfoText>
-                  <InfoSubtext>/hr</InfoSubtext>
-                </InfoWrapper>
-
-                <InfoWrapper>
-                  <IconContainer>
-                    <DollarIcon />
-                  </IconContainer>
-                  <InfoText>{parkingLeft}</InfoText>
-                  <InfoSubtext>{translate('available', TextTransform.NONE)}</InfoSubtext>
-                </InfoWrapper>
-              </IconsContainer>
-            </TopContainer>
-
-            <CarSelectorButton
-              disabled={type === TRANSACTION_TYPE.EXTEND}
-              onPress={onVehiclePress}
-            />
-
-            <TimeSelector
-              selectedId={timeSelected.id}
-              onTimeSelected={onTimeSelected}
-            />
-
-            <BottomButtonsContainer>
-              <PriceText>${pricePerHour}</PriceText>
-              <BottomButton
-                onPress={onBookPress}
-                style={{
-                  backgroundColor: timeSelected.id
-                    ? DEFAULT_THEME.primary
-                    : DEFAULT_THEME.darkPrimary,
-                }}
-                disabled={!timeSelected.id}
-                title={translate('continue', TextTransform.CAPITALIZE)}
-                textStyle={{
-                  fontSize: Typography.FONT_SIZE_16,
-                  fontWeight: '700',
-                  color: DEFAULT_THEME.black,
+        <ScreenHeader
+          title={''}
+          style={{ paddingHorizontal: 0, justifyContent: null }}
+          titleProps={{ weight: '700', marginLeft: 10 }}
+          backIconColor={DEFAULT_THEME.primary}
+        />
+        <Content>
+          <MapContainer>
+            <MapView
+              style={styles.map}
+              provider={'google'}
+              scrollEnabled={false}
+              zoomEnabled={false}
+              zoomTapEnabled={false}
+              cacheEnabled
+              region={{
+                latitude: parseFloat(location?.latitude),
+                longitude: parseFloat(location?.longitude),
+                latitudeDelta: 0.0043,
+                longitudeDelta: 0.0034,
+              }}>
+              <Marker
+                coordinate={{
+                  latitude: location?.latitude,
+                  longitude: location?.longitude,
                 }}
               />
-            </BottomButtonsContainer>
-          </Content>
+            </MapView>
+          </MapContainer>
 
-        </PaddingContainer>
+          <TopContainer>
+            <Title>{parkingName}</Title>
+            <Subtitle>{streetLocation}</Subtitle>
+            <IconsContainer>
+              <InfoWrapper>
+                <IconContainer>
+                  <DollarIcon />
+                </IconContainer>
+                <InfoText>{price?.amount}</InfoText>
+                <InfoSubtext>/hr</InfoSubtext>
+              </InfoWrapper>
+
+              <InfoWrapper>
+                <IconContainer>
+                  <DollarIcon />
+                </IconContainer>
+                <InfoText>{parkingLeft}</InfoText>
+                <InfoSubtext>{translate('available', TextTransform.NONE)}</InfoSubtext>
+              </InfoWrapper>
+            </IconsContainer>
+          </TopContainer>
+
+          <CarSelectorButton
+            disabled={type === TRANSACTION_TYPE.EXTEND}
+            onPress={onVehiclePress}
+          />
+
+          <TimeSelector
+            selectedId={timeSelected.id}
+            onTimeSelected={onTimeSelected}
+          />
+
+          <BottomButtonsContainer>
+            <PriceText>${pricePerHour}</PriceText>
+            <BottomButton
+              onPress={onBookPress}
+              style={{
+                backgroundColor: timeSelected.id
+                  ? DEFAULT_THEME.primary
+                  : DEFAULT_THEME.darkPrimary,
+              }}
+              disabled={!timeSelected.id}
+              title={translate('continue', TextTransform.CAPITALIZE)}
+              textStyle={{
+                fontSize: Typography.FONT_SIZE_16,
+                fontWeight: '700',
+                color: DEFAULT_THEME.black,
+              }}
+            />
+          </BottomButtonsContainer>
+        </Content>
+
       </Container>
     </ViewContainer>
   );
