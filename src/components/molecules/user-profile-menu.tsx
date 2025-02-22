@@ -211,6 +211,7 @@ export const UserProfileMenu = (props: UserProfileMenuProps) => {
   // Props
   const {
     onOptionSelect,
+    onUserLogout,
   } = props;
 
   // Context
@@ -263,6 +264,7 @@ export const UserProfileMenu = (props: UserProfileMenuProps) => {
       <LogoutContainer>
         <LogoutButton
           title={'Logout'}
+          onPress={onUserLogout}
           textStyle={{
             color: DEFAULT_THEME.black,
             fontWeight: 'bold',

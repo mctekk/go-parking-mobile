@@ -1,7 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 // Modules
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 
 // Styles
 import {
@@ -9,11 +8,10 @@ import {
   HeaderView,
 } from './styles';
 
-// Organisms
-import ViewContainer from 'components/organisms/view-container';
-
 // Atoms
 import UserProfileMenu from 'components/molecules/user-profile-menu';
+
+// Context
 import { UserContext } from 'components/context/user-context';
 import { AuthContext } from 'components/context/auth-context';
 
