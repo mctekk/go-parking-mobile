@@ -76,6 +76,10 @@ const MyCardsScreen = (props: IMyCardsScreenProps) => {
             extraData={dummyCardsList}
             renderItem={renderItem}
             keyExtractor={ketExtractor}
+            contentContainerStyle={{ 
+              paddingBottom: 100,
+              paddingTop: 20,
+             }}
           />
 
           <AddCardButton

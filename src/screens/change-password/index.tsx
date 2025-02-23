@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-shadow */
 // Modules
@@ -6,15 +7,12 @@ import styled from 'styled-components';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Alert } from 'react-native';
+import { Alert, SafeAreaView, StyleSheet } from 'react-native';
 
 // Molecules
-import Header from 'components/molecules/header';
-import TextInput from 'components/molecules/text-input';
 import LoadingModal from 'components/molecules/modals/loading-modal';
 
 // Styles
-import { Colors } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 import {
   Container,
@@ -23,7 +21,6 @@ import {
   Input,
   Button,
 } from './styles';
-
 
 // Atoms
 import CustomButton from 'components/atoms/button';
@@ -35,6 +32,13 @@ import { client } from 'core/kanvas_client';
 // Context
 import { AuthContext } from 'components/context/auth-context';
 import { UserContext } from 'components/context/user-context';
+
+// Organisms
+import ViewContainer from 'components/organisms/view-container';
+
+// Utils
+import { isAndroid } from 'utils/constants';
+import { Typography } from 'styles';
 
 
 // Interfaces
@@ -89,71 +93,120 @@ export const ChangePassword = (props: IChangePasswordProps) => {
   };
 
   return (
-    <Container>
-      <ScreenHeader
-        title={translate('changePassword', TextTransform.CAPITALIZE)}
-      />
+    <ViewContainer
+      headerViewStyles={{
+        paddingTop: isAndroid ? 50 : 80,
+      }}
+    >
+      <SafeAreaView />
+      <Container>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={(values, actions) => updatePassword(values, actions)}>
-        {props => (
-          <KeyboardAwareScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 50 }}>
-            <Content>
-              <Input
-                labelText={translate('currentPassword', TextTransform.CAPITALIZE)}
-                placeholderText={translate('currentPasswordPlaceHolder', TextTransform.CAPITALIZE)}
-                onChangeText={props.handleChange('current_password')}
-                error={props.errors.current_password}
-                secureTextEntry={true}
-                inputProps={{
-                  autoCapitalize: 'none',
-                  value: props.values.current_password,
-                }}
-              />
+        <ScreenHeader
+          title={translate('changePassword', TextTransform.CAPITALIZE)}
+          style={{ paddingHorizontal: 0, justifyContent: null }}
+          titleProps={{ weight: '700', marginLeft: 10 }}
+          backIconColor={DEFAULT_THEME.primary}
+        />
 
-              <Input
-                labelText={translate('newPassword', TextTransform.CAPITALIZE)}
-                placeholderText={translate('newPasswordPlaceHolder', TextTransform.CAPITALIZE)}
-                onChangeText={props.handleChange('new_password')}
-                error={props.errors.new_password}
-                secureTextEntry={true}
-                inputProps={{
-                  autoCapitalize: 'none',
-                  value: props.values.new_password,
-                }}
-              />
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={(values, actions) => updatePassword(values, actions)}>
+          {props => (
+            <KeyboardAwareScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingBottom: 50 }}>
+              <Content>
+                <Input
+                  labelText={translate('currentPassword', TextTransform.CAPITALIZE)}
+                  labelStyle={styles.labelStyle}
+                  placeholderText={translate('currentPasswordPlaceHolder', TextTransform.CAPITALIZE)}
+                  onChangeText={props.handleChange('current_password')}
+                  inputStyle={styles.inputStyleDisable}
+                  containerStyle={styles.containerStyleDisable}
+                  error={props.errors.current_password}
+                  secureTextEntry={true}
+                  inputProps={{
+                    autoCapitalize: 'none',
+                    value: props.values.current_password,
+                  }}
+                />
 
-              <Input
-                labelText={translate('confirmNewPassword', TextTransform.CAPITALIZE)}
-                placeholderText={translate('confirmNewPasswordPlaceHolder', TextTransform.CAPITALIZE)}
-                onChangeText={props.handleChange('new_password_confirmation')}
-                error={props.errors.new_password_confirmation}
-                secureTextEntry={true}
-                inputProps={{
-                  autoCapitalize: 'none',
-                  value: props.values.new_password_confirmation,
-                }}
-              />
+                <Input
+                  labelText={translate('newPassword', TextTransform.CAPITALIZE)}
+                  labelStyle={styles.labelStyle}
+                  placeholderText={translate('newPasswordPlaceHolder', TextTransform.CAPITALIZE)}
+                  onChangeText={props.handleChange('new_password')}
+                  inputStyle={styles.inputStyleDisable}
+                  containerStyle={styles.containerStyleDisable}
+                  error={props.errors.new_password}
+                  secureTextEntry={true}
+                  inputProps={{
+                    autoCapitalize: 'none',
+                    value: props.values.new_password,
+                  }}
+                />
 
-              <Button
-                title={translate('changePassword', TextTransform.CAPITALIZE)}
-                onPress={props.handleSubmit}
-                loading={isLoading}
-                disabled={isLoading}
-              />
-            </Content>
-          </KeyboardAwareScrollView>
-        )}
-      </Formik>
+                <Input
+                  labelText={translate('confirmNewPassword', TextTransform.CAPITALIZE)}
+                  labelStyle={styles.labelStyle}
+                  placeholderText={translate('confirmNewPasswordPlaceHolder', TextTransform.CAPITALIZE)}
+                  onChangeText={props.handleChange('new_password_confirmation')}
+                  error={props.errors.new_password_confirmation}
+                  inputStyle={styles.inputStyleDisable}
+                  containerStyle={styles.containerStyleDisable}
+                  secureTextEntry={true}
+                  inputProps={{
+                    autoCapitalize: 'none',
+                    value: props.values.new_password_confirmation,
+                  }}
+                />
+
+                <Button
+                  title={translate('changePassword', TextTransform.CAPITALIZE)}
+                  onPress={props.handleSubmit}
+                  loading={isLoading}
+                  disabled={isLoading}
+                  textStyle={{
+                    color: DEFAULT_THEME.black,
+                    fontWeight: '700',
+                  }}
+                />
+              </Content>
+            </KeyboardAwareScrollView>
+          )}
+        </Formik>
+      </Container>
 
       <LoadingModal
         visible={isLoading}
         title={translate('savingChanges', TextTransform.CAPITALIZE)}
       />
-    </Container>
+    </ViewContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  labelStyle: {
+    color: 'rgba(170, 170, 170, 1)',
+    fontSize: Typography.FONT_SIZE_16,
+    lineHeight: Typography.FONT_SIZE_22,
+    fontWeight: '700',
+  },
+  inputStyle: {
+    backgroundColor: 'rgba(45, 45, 45, 1)',
+    color: 'white',
+  },
+  containerStyle: {
+    backgroundColor: 'rgba(45, 45, 45, 1)',
+  },
+  inputStyleDisable: {
+    backgroundColor: 'rgba(68, 68, 68, 1)',
+    color: 'rgba(170, 170, 170, 1)',
+  },
+  containerStyleDisable: {
+    backgroundColor: 'rgba(68, 68, 68, 1)',
+  },
+});
+
+export default ChangePassword;

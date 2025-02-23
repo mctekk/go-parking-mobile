@@ -1,6 +1,6 @@
 // Modules
 import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 
 // Styles
 import { Colors, Typography } from 'styles';
@@ -12,30 +12,42 @@ import Text from 'components/atoms/text';
 // Icons
 import BackArrow from 'assets/icons/back-arrow';
 
-const Container = styled.TouchableOpacity`
-  background-color: ${DEFAULT_THEME.background};
-  border-width: 1px;
-  justify-content: space-between;
+const ItemContainer = styled.TouchableOpacity`
+  padding: 12px 0;
   align-items: center;
   flex-direction: row;
-  width: 100%;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  margin-vertical: 5px;
 `;
 
-const Title = styled(Text)`
+const ItemWrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const ItemIconContainer = styled.View`
+  width: 40px;
+  height: 40px;
+  background-color: rgba(66, 66, 66, 1);
+  border-radius: 15px;
+  margin-right: 16px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ItemText = styled(Text)`
   font-size: ${Typography.FONT_SIZE_16}px;
-  line-height: ${Typography.FONT_SIZE_18}px;
-  color: ${DEFAULT_THEME.text};
-  font-weight: 600;
+  line-height: ${Typography.FONT_SIZE_20}px;
+  color: ${DEFAULT_THEME.white};
+  font-weight: 600
 `;
 
 const IconContainer = styled.View`
-  height: 30px;
-  width: 30px;
   justify-content: center;
   align-items: center;
+  transform: rotate(180deg);
+  width: 34px;
+  height: 34px;
 `;
 
 // Interfaces
@@ -43,22 +55,38 @@ interface ISettingsItemsProps {
   name: string;
   route: string;
   navigation: any;
+  icon: any
+  item_key: string;
+  onItemPress: () => void;
 }
 
 export const SettingsItems = (props: ISettingsItemsProps) => {
+
   // Props
-  const { navigation, name, route } = props;
+  const {
+    navigation,
+    name,
+    icon,
+    route,
+    item_key,
+    onItemPress,
+  } = props;
+
+  const Icon = icon;
 
   return (
-    <Container {...props}>
-      <Title>{name}</Title>
-
-      <IconContainer
-        style={{
-          transform: [{ rotate: '180deg' }],
-        }}>
-        <BackArrow color={DEFAULT_THEME.primary} />
+    <ItemContainer
+      onPress={() => onItemPress()}
+    >
+      <ItemWrapper>
+        <ItemIconContainer>
+          <Icon fill={'#F8D73A'} />
+        </ItemIconContainer>
+        <ItemText>{name}</ItemText>
+      </ItemWrapper>
+      <IconContainer>
+        <BackArrow color={DEFAULT_THEME.primary} width={16} height={16} />
       </IconContainer>
-    </Container>
+    </ItemContainer>
   );
 };

@@ -2,25 +2,40 @@
 /* eslint-disable react/no-unstable-nested-components */
 import ViewContainer from 'components/organisms/view-container';
 import React, { useContext } from 'react';
-import styled from 'styled-components/native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { StyleSheet } from 'react-native';
 
 // Styles
-import { ScreenMainHeader, Content, Input, ScreenHeader, UserPictureContainer, UserPicture, ChangePictureButton, InputContainer, SummitButton } from './styles';
+import {
+  ScreenMainHeader,
+  Content,
+  Input,
+  ScreenHeader,
+  UserPictureContainer,
+  UserPicture,
+  ChangePictureButton,
+  InputContainer,
+  SummitButton,
+} from './styles';
+
+// Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
+
+// Styles
 import { DEFAULT_THEME } from 'styles/theme';
 import { Typography } from 'styles';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
+// Context
 import { UserContext } from 'components/context/user-context';
-import { StyleSheet } from 'react-native';
+
+// Utils
 import { DUMMY_PROFILE_PICTURE } from 'utils/constants';
 
 interface IMyInformationProps {
   navigation: any;
 }
-
-
 
 const validationSchema = {
   name: yup.string().required(translate('nameRequired', TextTransform.NONE)),
@@ -65,7 +80,7 @@ const MyInformation = (props: IMyInformationProps) => {
       />
       <Content>
         <UserPictureContainer>
-          <UserPicture 
+          <UserPicture
             source={{ uri: DUMMY_PROFILE_PICTURE }}
             resizeMode='cover'
           />

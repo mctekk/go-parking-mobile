@@ -34,6 +34,7 @@ export default {
   editProfile: 'Edit Profile',
   changePassword: 'Change Password',
   settings: 'Settings',
+  settingsMsg: 'Configure your app settings',
   logout: 'logout',
   currentPassword: 'current password',
   currentPasswordPlaceHolder: 'Enter your current password?',
@@ -122,4 +123,5 @@ export default {
   fullName: 'Full Name',
   driveLicense: 'Drive License',
   emailAddress: 'Email Address',
+  notifications: 'Notifications',
 };

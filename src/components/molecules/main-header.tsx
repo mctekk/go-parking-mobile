@@ -7,15 +7,17 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 // Atoms
 import Text from 'atoms/text';
-import BackButton from 'components/atoms/back-button';
-import CloseButton from 'components/atoms/close-button';
 
 // Styles
 import { Colors, Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
+import { scaleSize } from 'styles/mixins';
+
+// Icons
 import BellV2 from 'assets/icons/bell';
+
+// Utils
 import { isAndroid } from 'utils/constants';
-import { margin, scaleSize } from 'styles/mixins';
 
 export interface IProps {
   title?: string;
@@ -23,16 +25,12 @@ export interface IProps {
   customHeader?: any;
   titleProps?: any;
   rightButtonComponent?: any;
-  leftButtonComponent?: any;
-  rightButtonProps?: any;
   buttonTitleProps?: any;
   style?: object;
-  closeButtonType?: 'CLOSE' | 'BACK';
   onLeftButtonPress?: () => void;
   onBackDetail?: () => void;
-  diableBackButton?: boolean;
-  backIconColor?: string;
-  hasBackButton?: boolean;
+  subtitleProps?: any;
+  barStyle?: 'light-content' | 'dark-content';
 }
 
 const SCREEN_MARGIN = 15;
@@ -97,16 +95,11 @@ const MainHeader = (props: IProps) => {
     subtitleProps,
     customHeader,
     rightButtonComponent,
-    leftButtonComponent,
     onLeftButtonPress = () => navigation.goBack(),
     style,
-    closeButtonType = 'BACK',
     buttonTitleProps,
     onBackDetail,
-    diableBackButton = false,
-    hasBackButton = true,
-    backIconColor = Colors.WHITE,
-    barStyle = 'dark-content',
+    barStyle = isAndroid ? 'light-content' : 'dark-content',
   } = props;
 
   // Hooks

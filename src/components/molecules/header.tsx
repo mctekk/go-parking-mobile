@@ -36,7 +36,7 @@ export interface IProps {
 
 const SCREEN_MARGIN = 0;
 const HEADER_HEIGHT = !isAndroid ? 60 : scaleSize(50);
-const HEADER_PADDING_TOP = 0;
+const HEADER_PADDING_TOP = 5;
 
 const Container = styled.View`
   width: 100%;

@@ -16,17 +16,19 @@ import UserIcon from 'assets/icons/user-icon';
 // Atoms
 import Button from 'components/atoms/button';
 import Text from 'components/atoms/text';
+import { TextTransform, translate } from 'components/atoms/localized-label';
 
 // Styles
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
-import { UserContext } from 'components/context/user-context';
-import { TextTransform, translate } from 'components/atoms/localized-label';
-import { DUMMY_PROFILE_PICTURE, isAndroid } from 'utils/constants';
-import { Dimensions } from 'react-native';
-import { hasNotch } from 'utils/iphone-helpers';
 import { scaleSize } from 'styles/mixins';
 
+// Context
+import { UserContext } from 'components/context/user-context';
+
+// Utils
+import { DUMMY_PROFILE_PICTURE, isAndroid } from 'utils/constants';
+import { hasNotch } from 'utils/iphone-helpers';
 
 interface UserProfileMenuProps {
   onOptionSelect?: (option: string) => void;

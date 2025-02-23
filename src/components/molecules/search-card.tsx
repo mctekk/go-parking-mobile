@@ -2,7 +2,7 @@
 
 // Modules
 import React, { useCallback, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 // Atoms
@@ -24,11 +24,13 @@ interface ISearchCardProps {
 };
 
 const CardContainer = styled.View`
-  padding: ${isAndroid ? '10px' : '16px'};
+  padding: ${isAndroid ? Dimensions.get('window').height / 50 : '16'}px;
+  background-color: ${DEFAULT_THEME.white};
   border-radius: 20px;
-  background-color: #fff;
   elevation: 5;
   margin-horizontal: 16px;
+  height: ${Dimensions.get('window').height / 7.5}px;
+  justify-content: center;
 `;
 
 const Title = styled(Text)`
