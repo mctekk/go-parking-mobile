@@ -62,7 +62,11 @@ const Wrapper = styled.View`
   align-items: flex-start;
 `;
 
-const BookmarksContainer = styled.TouchableOpacity`
+const BookmarkContainer = styled.View`
+  flex: 0.2;
+`;
+
+const BookmarksButton = styled.TouchableOpacity`
   background-color: rgba(66, 66, 66, 1);
   height: 40px;
   width: 40px;
@@ -74,10 +78,10 @@ const BookmarksContainer = styled.TouchableOpacity`
 
 const Title = styled(Text)`
   font-size: ${Typography.FONT_SIZE_16}px;
-  line-height: ${Typography.FONT_SIZE_18}px;
+  line-height: ${Typography.FONT_SIZE_22}px;
   font-weight: 700;
   color: white;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 `;
 
 const Street = styled(Text)`
@@ -93,6 +97,7 @@ const MapContainer = styled.View`
 `;
 
 const BottomContainer = styled.View`
+  flex: 1;
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
@@ -190,19 +195,27 @@ const MapsParkingCards = (props: IParkingCardProps) => {
         </MapContainer>
 
         <Wrapper>
-          <Title numberOfLines={2} ellipsizeMode="tail">
+          <Title
+            numberOfLines={2}
+            ellipsizeMode="tail"
+          >
             {title}
           </Title>
-          <Street numberOfLines={2} ellipsizeMode="tail">
+          <Street
+            numberOfLines={2}
+            ellipsizeMode="tail"
+          >
             {street}
           </Street>
         </Wrapper>
 
-        <BookmarksContainer
-          onPress={() => setSaved(!saved)}
-        >
-          {saved ? <BookmarkIconFilled /> : <BookmarkIcon />}
-        </BookmarksContainer>
+        <BookmarkContainer>
+          <BookmarksButton
+            onPress={() => setSaved(!saved)}
+          >
+            {saved ? <BookmarkIconFilled /> : <BookmarkIcon />}
+          </BookmarksButton>
+        </BookmarkContainer>
       </TopContainer>
 
       <BottomContainer>

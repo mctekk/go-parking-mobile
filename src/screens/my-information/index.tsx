@@ -151,7 +151,7 @@ const MyInformation = (props: IMyInformationProps) => {
 
               <SummitButton
                 title={translate('save', TextTransform.CAPITALIZE)}
-                onPress={props.handleSubmit}
+                // onPress={props.handleSubmit}
                 textStyle={{
                   color: DEFAULT_THEME.black,
                   fontWeight: 'bold',

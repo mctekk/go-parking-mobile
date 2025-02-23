@@ -37,7 +37,7 @@ const data = [
   {
     key: 1,
     name: translate('notifications', TextTransform.CAPITALIZE),
-    goTo: 'EditProfile',
+    goTo: '',
     icon: BellV2,
   },
   {
