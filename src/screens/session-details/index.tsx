@@ -32,6 +32,7 @@ import CustomText from 'atoms/text';
 import { CarIconOutline, LocationIcon } from 'assets/icons';
 import { TRANSACTION_TYPE } from 'screens/transaction-details';
 import { isAndroid } from 'utils/constants';
+import { dummyVehicleList } from 'utils/dummy-data';
 
 interface ISessionDetailsScreenProps {
   navigation: any;
@@ -68,6 +69,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
       occupiedParkingSpaces: occupiedParkingSpaces,
       totalParkingSpaces: totalParkingSpaces,
       type: TRANSACTION_TYPE.EXTEND,
+      vehicle: dummyVehicleList[0],
     });
   };
 
@@ -75,8 +77,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
     <ViewContainer
       headerViewStyles={{
         paddingTop: isAndroid ? 50 : 80,
-      }}
-    >
+      }}>
       <SafeAreaView />
       <Container>
         <ScreenHeader
@@ -87,10 +88,7 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
         />
 
         <Content>
-          <SessionTimeCounter
-            totalTime={1800000}
-            remainingTime={1800000}
-          />
+          <SessionTimeCounter totalTime={1800000} remainingTime={1800000} />
 
           <CardContainer>
             <RowBetween style={{ marginBottom: 8 }}>
@@ -137,12 +135,8 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
             </ModelRow>
           </CardContainer>
 
-
           <BottomButtonsContainer>
-            <BottomButton
-              onPress={onExtentTimePress}
-              style={styles.extendButton}
-            >
+            <BottomButton onPress={onExtentTimePress} style={styles.extendButton}>
               <CustomText
                 size={Typography.FONT_SIZE_16}
                 weight="600"
@@ -162,7 +156,6 @@ export const SessionDetails = (props: ISessionDetailsScreenProps) => {
               </CustomText>
             </BottomButton>
           </BottomButtonsContainer>
-
         </Content>
       </Container>
 

@@ -31,14 +31,13 @@ interface IMyVehiclesProps {
 
 interface IBookingScreenParamsProps {
   parking_id: number;
+  onVehiclePress?: (vehicle: object) => void;
 }
 
 export const MyVehicles = (props: IMyVehiclesProps) => {
   // Props
-  const {
-    navigation,
-    route,
-  } = props;
+  const { navigation, route } = props;
+  const onVehiclePress = route?.params?.onVehiclePress;
 
   return (
     <ViewContainer
@@ -55,11 +54,11 @@ export const MyVehicles = (props: IMyVehiclesProps) => {
         />
 
         <Content>
-          <VehiclesList />
+          <VehiclesList onVehiclePress={onVehiclePress} />
         </Content>
         <BottomButtonsContainer>
           <BottomButton
-            onPress={() => { }}
+            onPress={() => {}}
             style={{
               backgroundColor: DEFAULT_THEME.primary,
             }}
