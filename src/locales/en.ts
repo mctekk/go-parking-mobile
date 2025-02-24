@@ -124,4 +124,5 @@ export default {
   driveLicense: 'Drive License',
   emailAddress: 'Email Address',
   notifications: 'Notifications',
+  selectVehicle: 'Select vehicle',
 };
