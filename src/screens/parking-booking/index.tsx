@@ -57,6 +57,7 @@ interface IBookingScreenParamsProps {
   price: IParkingPrice;
   durationTime: number;
   type: string;
+  vehicle: object;
 }
 
 export const ParkingBooking = (props: IParkingBookingProps) => {
@@ -70,6 +71,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     price,
     durationTime,
     type = 'booking',
+    vehicle,
     occupiedParkingSpaces,
     totalParkingSpaces,
   } = route.params;
@@ -77,6 +79,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
 
   // States
   const [timeSelected, setTimeSelected] = useState<{ id?: string }>({});
+  const [vehicleSelected, setVehicleSelected] = useState<{ id?: string }>(vehicle);
   const [pricePerHour, setPricePerHour] = useState<number>(price.amount ?? 0);
 
   const onBookPress = () => {
@@ -88,8 +91,13 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     });
   };
 
-  const onVehiclePress = () => {
-    navigation.navigate('MyVehicles', {});
+  const onSelectVehiclePress = () => {
+    navigation.navigate('MyVehicles', { onVehiclePress });
+  };
+
+  const onVehiclePress = (vehicle: any) => {
+    setVehicleSelected(vehicle);
+    navigation?.pop();
   };
 
   const onTimeSelected = (timeInfo: any) => {
@@ -106,8 +114,7 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
     <ViewContainer
       headerViewStyles={{
         paddingTop: isAndroid ? 50 : 80,
-      }}
-    >
+      }}>
       <SafeAreaView />
       <Container>
         <ScreenHeader
@@ -164,13 +171,11 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
 
           <CarSelectorButton
             disabled={type === TRANSACTION_TYPE.EXTEND}
-            onPress={onVehiclePress}
+            onPress={onSelectVehiclePress}
+            vehicleSelected={vehicleSelected}
           />
 
-          <TimeSelector
-            selectedId={timeSelected.id}
-            onTimeSelected={onTimeSelected}
-          />
+          <TimeSelector selectedId={timeSelected.id} onTimeSelected={onTimeSelected} />
 
           <BottomButtonsContainer>
             <PriceText>${pricePerHour}</PriceText>
@@ -191,7 +196,6 @@ export const ParkingBooking = (props: IParkingBookingProps) => {
             />
           </BottomButtonsContainer>
         </Content>
-
       </Container>
     </ViewContainer>
   );
