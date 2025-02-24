@@ -7,6 +7,7 @@ import { StyleSheet } from 'react-native';
 
 // Atoms
 import CustomText from 'atoms/text';
+import { TextTransform, translate } from 'components/atoms/localized-label';
 
 // Styles
 import { Typography } from 'styles';
@@ -16,7 +17,7 @@ import { DownArrow } from 'assets/icons';
 interface ICarSelectorButtonProps {
   onPress?: () => void;
   disabled?: boolean;
-  carSelected?: any;
+  vehicleSelected?: any;
 }
 
 const Container = styled.TouchableOpacity`
@@ -39,10 +40,20 @@ const Row = styled.View`
 `;
 
 const CarSelectorButton = (props: ICarSelectorButtonProps) => {
-  const { onPress, disabled, carSelected } = props;
+  const { onPress, disabled, vehicleSelected } = props;
 
   const onCardPress = () => {
     onPress?.();
+  };
+
+  const getBgColor = () => {
+    if (disabled) {
+      return DEFAULT_THEME.darkPrimary;
+    }
+    if (vehicleSelected?.id) {
+      return DEFAULT_THEME.primary;
+    }
+    return DEFAULT_THEME.cardGray;
   };
 
   return (
@@ -50,22 +61,39 @@ const CarSelectorButton = (props: ICarSelectorButtonProps) => {
       onPress={onCardPress}
       disabled={disabled}
       style={{
-        backgroundColor: disabled ? DEFAULT_THEME.darkPrimary : DEFAULT_THEME.primary,
+        backgroundColor: getBgColor(),
       }}>
       <Content>
         <Row>
-          <CustomText
-            size={Typography.FONT_SIZE_16}
-            weight="700"
-            style={{ marginRight: 5 }}
-            color={DEFAULT_THEME.black}>
-            Tesla Model S
-          </CustomText>
-          <CustomText size={Typography.FONT_SIZE_12} weight="400" color={DEFAULT_THEME.black}>
-            EF479379
-          </CustomText>
+          {vehicleSelected?.id ? (
+            <>
+              <CustomText
+                size={Typography.FONT_SIZE_16}
+                weight="700"
+                style={{ marginRight: 5 }}
+                color={DEFAULT_THEME.black}>
+                {`${vehicleSelected?.brand} ${vehicleSelected?.model}`}
+              </CustomText>
+              <CustomText
+                size={Typography.FONT_SIZE_12}
+                weight="400"
+                color={DEFAULT_THEME.black}>
+                {vehicleSelected?.plate}
+              </CustomText>
+            </>
+          ) : (
+            <CustomText
+              size={Typography.FONT_SIZE_16}
+              weight="700"
+              style={{ marginRight: 5 }}
+              color={DEFAULT_THEME.dashGray}>
+              {translate('selectVehicle', TextTransform.CAPITALIZE)}
+            </CustomText>
+          )}
         </Row>
-        <DownArrow />
+        <DownArrow
+          color={vehicleSelected?.id ? DEFAULT_THEME.selectArrow : DEFAULT_THEME.dashGray}
+        />
       </Content>
     </Container>
   );
