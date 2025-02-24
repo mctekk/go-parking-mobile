@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
-const UserIcon = (props: SvgProps) => {
+const TrashIcon = (props: SvgProps) => {
 
   const {
-    fill = '#424242',
-    width = 24,
-    height = 25,
+    width = 18,
+    height = 20,
+    fill = '#AAA',
   } = props;
 
   return (
@@ -15,15 +15,15 @@ const UserIcon = (props: SvgProps) => {
       width={width}
       height={height}
       fill="none"
-      viewBox='0 0 24 24'
       {...props}
     >
       <Path
         fill={fill}
-        d="M12 2.25a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1h2Z"
+        d="M2 18a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h2V4h-4V2a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2H0v2h2v12ZM6 2h6v2H6V2Zm8 4v12H4V6h10Z"
       />
+      <Path fill={fill} d="M6 8h2v8H6V8Zm4 0h2v8h-2V8Z" />
     </Svg>
   );
-};
+}
 
-export default UserIcon;
+export default TrashIcon;

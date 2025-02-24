@@ -526,3 +526,30 @@ export const dummyVehicleList = [
     plate: 'EF479379',
   },
 ];
+
+export const dummyCardsList = [
+  {
+    key: 1,
+    cardType: 'Visa',
+    cardTypeKey: 'visa',
+    cardNumber: '**** 1234',
+    cardHolder: 'John Doe',
+    expirationDate: '12/24',
+  },
+  {
+    key: 2,
+    cardType: 'Mastercard',
+    cardTypeKey: 'mastercard',
+    cardNumber: '**** 5678',
+    cardHolder: 'Jane Smith',
+    expirationDate: '03/25',
+  },
+  {
+    key: 3,
+    cardType: 'American Express',
+    cardTypeKey: 'amex',
+    cardNumber: '**** 9012',
+    cardHolder: 'Robert Johnson',
+    expirationDate: '08/26',
+  },
+];

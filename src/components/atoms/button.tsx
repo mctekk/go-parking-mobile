@@ -9,6 +9,7 @@ import Text from './text';
 import { Colors, Typography } from 'styles';
 import { ActivityIndicator, StyleProp } from 'react-native';
 import { DEFAULT_THEME } from 'styles/theme';
+import { scaleSize } from 'styles/mixins';
 
 interface IButtonProps {
   style?: Object;
@@ -24,7 +25,7 @@ const ButtonContainer = styled.TouchableOpacity`
   align-items: center;
   margin-top: 32px;
   border-radius: 2px;
-  height: 50px;
+  height: ${scaleSize(48)}px;
 `;
 
 const ButtonText = styled(Text)`

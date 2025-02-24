@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
-const UserIcon = (props: SvgProps) => {
+const CreditCardIcon = (props: SvgProps) => {
 
   const {
-    fill = '#424242',
+    fill = '#F8D73A',
     width = 24,
     height = 25,
   } = props;
@@ -15,15 +15,16 @@ const UserIcon = (props: SvgProps) => {
       width={width}
       height={height}
       fill="none"
-      viewBox='0 0 24 24'
+      viewBox='0 0 24 25'
       {...props}
     >
       <Path
         fill={fill}
-        d="M12 2.25a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1h2Z"
+        d="M20 4.75H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2v-12c0-1.103-.897-2-2-2Zm-16 2h16v2H4v-2Zm0 12v-6h16.001l.001 6H4Z"
       />
+      <Path fill={fill} d="M6 14.75h6v2H6v-2Z" />
     </Svg>
   );
 };
 
-export default UserIcon;
+export default CreditCardIcon;

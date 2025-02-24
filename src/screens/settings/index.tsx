@@ -3,31 +3,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 // Modules
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
-
-// Icons
-import MenuIcon from 'assets/icons/menu-icon';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
-
-// Context
-import { AuthContext } from 'components/context/auth-context';
-import { UserContext } from 'components/context/user-context';
 
 // Molecules
 import { SettingsItems } from 'components/molecules/settings-items';
 
 // Styles
-import { Colors, Typography } from 'styles';
-import { 
+import {
   Container,
   Content,
   ScreenHeader,
-  IconContainer,
-  LogoutButton,
- } from './styles';
+  MainScreenHeader,
+} from './styles';
+import { DEFAULT_THEME } from 'styles/theme';
+
+// Organisms
+import ViewContainer from 'components/organisms/view-container';
+
+// Icons
+import BellV2 from 'assets/icons/bell';
+import PasswordHideIcon from 'assets/icons/password-hide-icon';
 
 // Interfaces
 interface ISettingsProps {
@@ -37,13 +36,15 @@ interface ISettingsProps {
 const data = [
   {
     key: 1,
-    name: translate('editProfile', TextTransform.CAPITALIZE),
-    goTo: 'EditProfile',
+    name: translate('notifications', TextTransform.CAPITALIZE),
+    goTo: '',
+    icon: BellV2,
   },
   {
     key: 2,
-    name: translate('changePassword', TextTransform.CAPITALIZE),
+    name: translate('password', TextTransform.CAPITALIZE),
     goTo: 'ChangePassword',
+    icon: PasswordHideIcon,
   },
 ];
 
@@ -51,30 +52,22 @@ export const Settings = (props: ISettingsProps) => {
   // Props
   const { navigation } = props;
 
-  // Context
-  const { signOut } = useContext(AuthContext);
-  const { userData } = useContext(UserContext);
-
-  const handleLogout = async () => {
-    try {
-      signOut();
-    } catch (error) {
-      console.log('Logout Error:', error);
-    }
+  const HeaderComponent = () => {
+    return (
+      <MainScreenHeader
+        title={translate('settings', TextTransform.CAPITALIZE)}
+        subtitle={translate('settingsMsg', TextTransform.NONE)}
+      />
+    );
   };
-
-  const LeftButtonComponent = () => (
-    <IconContainer onPress={() => navigation.openDrawer()}>
-      <MenuIcon />
-    </IconContainer>
-  );
 
   const renderItem = useCallback(({ item }) => {
     return (
       <SettingsItems
-        key={item.key}
+        item_key={item.key}
         name={item.name}
-        onPress={() => navigation.navigate(item.goTo)}
+        icon={item.icon}
+        onItemPress={() => navigation.navigate(item.goTo)}
       />
     );
   }, []);
@@ -82,30 +75,25 @@ export const Settings = (props: ISettingsProps) => {
   const keyExtractor = useCallback(item => item.key.toString(), []);
 
   return (
-    <Container>
-      <ScreenHeader
-        title={translate('settings', TextTransform.CAPITALIZE)}
-        leftButtonComponent={<LeftButtonComponent />}
-      />
-
-      <Content>
-        <FlatList
-          data={data}
-          extraData={data}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
+    <ViewContainer
+      headerChildren={<HeaderComponent />}
+    >
+      <Container>
+        <ScreenHeader
+          title={translate('settings', TextTransform.CAPITALIZE)}
+          style={{ paddingHorizontal: 0, justifyContent: null }}
+          titleProps={{ weight: '700', marginLeft: 10 }}
+          backIconColor={DEFAULT_THEME.primary}
         />
-
-        <LogoutButton
-          onPress={handleLogout}
-          title={translate('logout', TextTransform.CAPITALIZE)}
-          textStyle={{
-            color: Colors.WHITE,
-            fontSize: Typography.FONT_SIZE_16,
-            fontWeight: 'bold',
-          }}
-        />
-      </Content>
-    </Container>
+        <Content>
+          <FlatList
+            data={data}
+            extraData={data}
+            renderItem={renderItem}
+            keyExtractor={keyExtractor}
+          />
+        </Content>
+      </Container>
+    </ViewContainer>
   );
 };

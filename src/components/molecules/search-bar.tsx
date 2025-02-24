@@ -26,6 +26,7 @@ import { DEFAULT_THEME } from 'styles/theme';
 import CircularClose from 'assets/icons/circle-close';
 import SearchIcon from 'assets/icons/search-icon';
 import BackArrowV2 from 'assets/icons/back-arrow-v2';
+import { isAndroid } from 'utils/constants';
 
 
 interface IProps extends TextInputProps {
@@ -44,8 +45,11 @@ interface IProps extends TextInputProps {
   searchInputStyle?: StyleProp<any>;
 }
 
+const SEARCH_HEIGHT = isAndroid ? 50 : 45;
+
 const Container = styled.View`
-  height: 40px;
+  height: ${SEARCH_HEIGHT}px;
+  elevation: 15;
 `;
 
 const SearchContainer = styled.View`
@@ -55,8 +59,13 @@ const SearchContainer = styled.View`
   justify-content: space-between;
   border-width: ${props => props.isFocused ? '0px' : '0px'};
   border-radius: 15px;
-  height: 40px;
+  height: ${SEARCH_HEIGHT}px;
   background-color: rgba(255, 255, 255, 1);
+  elevation: 15;
+  shadow-color: ${DEFAULT_THEME.black};
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.1;
+  shadow-radius: 2px;
 `;
 
 const BackContainer = styled.TouchableOpacity`
@@ -75,7 +84,7 @@ const IconContainer = styled.View`
 
 const SearchInput = styled.TextInput`
   flex: 1;
-  height: 40px;
+  height: ${SEARCH_HEIGHT}px;
   padding-left: 10px;
 `;
 
@@ -145,7 +154,7 @@ const SearchBar = forwardRef((props: IProps, ref: any) => {
     return (
       <SearchInput
         placeholder={placeholder || translate('findParkingSpace', TextTransform.CAPITAL)}
-        placeholderTextColor={'rgba(60, 60, 67, 0.6)'}
+        placeholderTextColor={'grey'}
         autoCapitalize="none"
         onFocus={() => setIsFocused(true)}
         {...props}

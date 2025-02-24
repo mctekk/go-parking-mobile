@@ -1,6 +1,5 @@
 // Screen
 import { ChangePassword } from 'screens/change-password';
-import { EditProfile } from 'screens/edit-profile';
 import { Inventory } from 'screens/inventory';
 import MapsView from 'screens/maps-view';
 import { Notifications } from 'screens/notifications';
@@ -10,10 +9,11 @@ import { TransactionDetails } from 'screens/transaction-details';
 import { SessionDetails } from 'screens/session-details';
 import { ParkingBooking } from 'screens/parking-booking';
 import { MyVehicles } from 'screens/my-vehicles';
-import BookingScreen from 'screens/booking';
 import BookingConfirmationScreen from 'screens/booking-confirmation';
-import ParkingScreen from 'screens/parking';
 import AllParkings from 'screens/all-parkings';
+import { Settings } from 'screens/settings';
+import MyCardsScreen from 'screens/my-cards';
+import MyInformation from 'screens/my-information';
 
 const navigationDefaultOptions = {
   headerShown: false,
@@ -30,13 +30,6 @@ export const navigationScreen = [
   {
     name: 'SignUp',
     screen: SignUp,
-    options: {
-      navigationDefaultOptions,
-    },
-  },
-  {
-    name: 'EditProfile',
-    screen: EditProfile,
     options: {
       navigationDefaultOptions,
     },
@@ -112,4 +105,25 @@ export const navigationScreen = [
       navigationDefaultOptions,
     },
   },
+  {
+    name: 'Settings',
+    screen: Settings,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'MyCardsScreen',
+    screen: MyCardsScreen,
+    options: {
+      navigationDefaultOptions,
+    },
+  },
+  {
+    name: 'MyInformation',
+    screen: MyInformation,
+    options: {
+      navigationDefaultOptions,
+    },
+  }
 ];

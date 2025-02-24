@@ -9,24 +9,21 @@ import Header from 'components/molecules/header';
 import Text from 'components/atoms/text';
 import { Typography } from 'styles';
 import Button from 'components/atoms/button';
+import { isAndroid } from 'utils/constants';
+import { scaleSize } from 'styles/mixins';
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
   border-radius: 25px;
-`;
-
-export const PaddingContainer = styled.View`
-  flex: 1px;
   padding-horizontal: 16px;
+
 `;
 
-export const ScreenHeader = styled(Header)`
-  background-color: ${DEFAULT_THEME.transparent};
-`;
+export const ScreenHeader = styled(Header)``;
 
 export const Content = styled.ScrollView`
-  flex: 1;
+  padding-bottom: 150px;
 `;
 
 export const BottomButtonsContainer = styled.View`
@@ -36,9 +33,9 @@ export const BottomButtonsContainer = styled.View`
   align-items: center;
   justify-content: center;
   margin-top: 30px;
-  position: absolute;
   align-self: center;
-  bottom: 50px;
+  margin-top: ${scaleSize(100)}px;
+  padding-bottom: 50px;
 `;
 
 export const BottomButton = styled(Button)`
@@ -89,8 +86,8 @@ export const Title = styled(Text)`
 `;
 
 export const Subtitle = styled(Text)`
-  font-size: ${Typography.FONT_SIZE_12}px;
-  line-height: ${Typography.FONT_SIZE_14}px;
+  font-size: ${Typography.FONT_SIZE_14}px;
+  line-height: ${Typography.FONT_SIZE_22}px;
   color: ${DEFAULT_THEME.white};
   margin-vertical: 15px;
 `;
