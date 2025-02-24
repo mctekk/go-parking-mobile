@@ -50,11 +50,12 @@ export enum VEHICLES_LIST_EVENTS {
 interface IVehiclesListProps {
   isLoading?: boolean;
   safeCache?: string;
+  onVehiclePress?: (vehicle: object) => void;
 }
 
 const VehiclesList = (props: IVehiclesListProps) => {
   // Props
-  const { isLoading = true, safeCache } = props;
+  const { isLoading = true, safeCache, onVehiclePress } = props;
 
   // Refs
   const items = useRef([]);
@@ -195,7 +196,9 @@ const VehiclesList = (props: IVehiclesListProps) => {
     getTransactions(1);
   };
 
-  const onCardPress = (item: object) => {};
+  const onCardPress = (item: object) => {
+    onVehiclePress && onVehiclePress(item);
+  };
 
   const renderItem = useCallback(({ item, index }) => {
     return <VehicleCard key={item.id} vehicle={item} onPress={() => onCardPress(item)} />;
