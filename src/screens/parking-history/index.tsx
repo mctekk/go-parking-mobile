@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 // Modules
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 // Styles
@@ -13,12 +13,20 @@ import HistoryList from 'components/organisms/history-list';
 
 // Atoms
 import { TextTransform, translate } from 'components/atoms/localized-label';
+import SearchCard from 'components/molecules/search-card';
 
-interface IParkingHistoryScreenProps { }
+// Molecules
+import SearchBar from 'molecules/search-bar';
+import { DEFAULT_THEME } from 'styles/theme';
+
+interface IParkingHistoryScreenProps {}
 
 const ParkingHistory = (props: IParkingHistoryScreenProps) => {
   // Props
   const { navigation } = props;
+
+  // States
+  const [keyword, setKeyword] = useState('');
 
   const HeaderComponent = () => {
     return (
@@ -29,11 +37,37 @@ const ParkingHistory = (props: IParkingHistoryScreenProps) => {
     );
   };
 
+  const handleSearch = useCallback((text: string) => {
+    setKeyword(text);
+    //onSearch?.(text);
+  }, []);
+
+  const handleClearText = useCallback(() => {
+    setKeyword('');
+  }, []);
+
+  const onSubmitEditing = useCallback(() => {
+    console.log('Search:', keyword);
+  }, [keyword]);
+
   return (
-    <ViewContainer
-      headerChildren={<HeaderComponent />}
-    >
+    <ViewContainer headerChildren={<HeaderComponent />}>
       <Content>
+        <SearchBar
+          value={keyword}
+          defaultValue={keyword}
+          returnKeyType="search"
+          onChangeText={handleSearch}
+          handleClearText={handleClearText}
+          onSubmitEditing={onSubmitEditing}
+          searchInputStyle={{
+            backgroundColor: DEFAULT_THEME.white,
+          }}
+          searchContainerStyle={{
+            paddingHorizontal: 22,
+            marginTop: 22,
+          }}
+        />
         <HistoryList />
       </Content>
     </ViewContainer>
