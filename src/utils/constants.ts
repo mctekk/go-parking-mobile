@@ -28,3 +28,5 @@ export const pricesIds = {
   dev: ['test_price_01'],
   prod: ['test_price_prod_01'],
 };
+
+export const DUMMY_PROFILE_PICTURE = 'https://cdn.memod.com/avatar.png';

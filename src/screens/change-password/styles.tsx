@@ -17,18 +17,13 @@ const HEADER_HEIGHT = 130;
 export const Container = styled.View`
   flex: 1;
   background-color: ${DEFAULT_THEME.background};
+  border-radius: 25px;
+  padding-horizontal: 20px;
 `;
 
-export const ScreenHeader = styled(Header)`
-  height: ${HEADER_HEIGHT}px;
-  justify-content: space-between;
-  align-items: center;
-  background-color: ${DEFAULT_THEME.primary};
-  padding-top: 30px;
-`;
+export const ScreenHeader = styled(Header)``;
 
 export const Content = styled.View`
-  padding: 20px;
   flex: 1;
 `;
 
@@ -38,5 +33,5 @@ export const Input = styled(TextInput)`
 
 export const Button = styled(CustomButton)`
   height: 50px;
-  border-radius: 5px;
+  border-radius: 50px;
 `;

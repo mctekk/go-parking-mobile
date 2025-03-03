@@ -7,13 +7,17 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 // Atoms
 import Text from 'atoms/text';
-import BackButton from 'components/atoms/back-button';
-import CloseButton from 'components/atoms/close-button';
 
 // Styles
 import { Colors, Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
+import { scaleSize } from 'styles/mixins';
+
+// Icons
 import BellV2 from 'assets/icons/bell';
+
+// Utils
+import { isAndroid } from 'utils/constants';
 
 export interface IProps {
   title?: string;
@@ -21,21 +25,17 @@ export interface IProps {
   customHeader?: any;
   titleProps?: any;
   rightButtonComponent?: any;
-  leftButtonComponent?: any;
-  rightButtonProps?: any;
   buttonTitleProps?: any;
   style?: object;
-  closeButtonType?: 'CLOSE' | 'BACK';
   onLeftButtonPress?: () => void;
   onBackDetail?: () => void;
-  diableBackButton?: boolean;
-  backIconColor?: string;
-  hasBackButton?: boolean;
+  subtitleProps?: any;
+  barStyle?: 'light-content' | 'dark-content';
 }
 
 const SCREEN_MARGIN = 15;
-const HEADER_HEIGHT = Platform.OS === 'ios' ? 150 : 90;
-const HEADER_PADDING_TOP = Platform.OS === 'ios' ? 60 : 1;
+const HEADER_HEIGHT = !isAndroid ? 150 : scaleSize(80);
+const HEADER_PADDING_TOP = !isAndroid ? 60 : 10;
 
 const Container = styled.View`
   width: 100%;
@@ -46,7 +46,6 @@ const Container = styled.View`
   justify-content: space-between;
   align-items: center;
   padding-horizontal: 20px;
-  background-color: ${DEFAULT_THEME.primary};
 `;
 
 // @ts-ignore
@@ -78,9 +77,9 @@ const CustomHeader = styled.View`
 `;
 
 const IconContainer = styled.TouchableOpacity`
-  height: 50px;
-  width: 50px;
-  border-radius: 15px;
+  height: ${scaleSize(45)}px;
+  width: ${scaleSize(45)}px;
+  border-radius: 12px;
   align-items: center;
   justify-content: center;
   background-color: ${DEFAULT_THEME.background};
@@ -96,16 +95,11 @@ const MainHeader = (props: IProps) => {
     subtitleProps,
     customHeader,
     rightButtonComponent,
-    leftButtonComponent,
     onLeftButtonPress = () => navigation.goBack(),
     style,
-    closeButtonType = 'BACK',
     buttonTitleProps,
     onBackDetail,
-    diableBackButton = false,
-    hasBackButton = true,
-    backIconColor = Colors.WHITE,
-    barStyle = 'dark-content',
+    barStyle = isAndroid ? 'light-content' : 'dark-content',
   } = props;
 
   // Hooks

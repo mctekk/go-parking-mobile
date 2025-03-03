@@ -6,24 +6,29 @@ import { DEFAULT_THEME } from 'styles/theme';
 
 // Molecules
 import Header from 'components/molecules/header';
+import MainHeader from 'components/molecules/main-header';
 
 // Atoms
 import Button from 'components/atoms/button';
 
 export const Container = styled.View`
-  flex: 1;
-  background-color: ${DEFAULT_THEME.background};
+  flex: 1px;
+  margin: 10px;
+`;
+
+export const MainScreenHeader = styled(MainHeader)`
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const ScreenHeader = styled(Header)`
   justify-content: space-between;
   align-items: center;
-  background-color: ${DEFAULT_THEME.primary};
 `;
 
-export const Content = styled.SafeAreaView`
-  flex: 1px;
-  margin: 10px;
+export const Content = styled.View`
+    flex: 1;
+    padding-horizontal: 16px;
 `;
 
 export const IconContainer = styled.TouchableOpacity`

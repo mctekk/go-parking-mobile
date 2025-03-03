@@ -30,6 +30,7 @@ import {
 } from 'core/interface/parking.interface';
 import ParkingList from 'components/organisms/parking-list';
 import { ActivityIndicator } from 'react-native-paper';
+import { isAndroid } from 'utils/constants';
 
 interface IParkingBookingProps {
   navigation: any;
@@ -68,7 +69,7 @@ export const AllParkings = (props: IParkingBookingProps) => {
   return (
     <ViewContainer
       headerViewStyles={{
-        paddingTop: 80,
+        paddingTop: isAndroid ? 50 : 80,
       }}
     >
       <SafeAreaView />

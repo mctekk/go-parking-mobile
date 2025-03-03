@@ -213,6 +213,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				C209D072A7DE8E526DC12588 /* [CP] Embed Pods Frameworks */,
 				C65C34556E5CE25A46380BAF /* [CP] Copy Pods Resources */,
+				BDBE00C5ACDA4A109A697378 /* Upload Debug Symbols to Sentry */,
 			);
 			buildRules = (
 			);
@@ -295,7 +296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT \\\"/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode.sh $REACT_NATIVE_XCODE\\\"\"\n";
 		};
 		0F6700F4C8BC80202A8F8D53 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -352,6 +353,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		BDBE00C5ACDA4A109A697378 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode-debug-files.sh";
 		};
 		C209D072A7DE8E526DC12588 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -522,7 +537,7 @@
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
@@ -559,7 +574,7 @@
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = goparking/Info.plist;
@@ -822,7 +837,7 @@
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
@@ -965,7 +980,7 @@
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				ENABLE_BITCODE = NO;
 				FACEBOOK_APP_ID = 1590037204877670;
@@ -1101,7 +1116,7 @@
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = goparking/Info.plist;
@@ -1232,7 +1247,7 @@
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 7UBUKR2PLZ;
 				FACEBOOK_APP_ID = 1590037204877670;
 				INFOPLIST_FILE = goparking/Info.plist;

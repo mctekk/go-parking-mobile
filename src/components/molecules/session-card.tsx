@@ -28,8 +28,14 @@ const Container = styled.TouchableOpacity`
 `;
 
 const RowBetween = styled.View`
+  flex: 1;
   justify-content: space-between;
   flex-direction: row;
+`;
+
+const StreetName = styled(CustomText)`
+  flex: 1;
+
 `;
 
 const Row = styled.View`
@@ -74,13 +80,15 @@ const SessionCard = (props: ISessionCardProps) => {
 
   return (
     <Container onPress={onCardPress}>
-      <RowBetween style={{ marginBottom: 8 }}>
-        <CustomText
+      <RowBetween
+        style={{ marginBottom: 8 }}
+      >
+        <StreetName
           size={Typography.FONT_SIZE_14}
           weight="600"
           color={DEFAULT_THEME.titleGray}>
           {order?.name}
-        </CustomText>
+        </StreetName>
         <CustomText
           size={Typography.FONT_SIZE_18}
           weight="600"
@@ -88,6 +96,7 @@ const SessionCard = (props: ISessionCardProps) => {
           {`$${order?.price?.amount}`}
         </CustomText>
       </RowBetween>
+
       <CustomText
         size={Typography.FONT_SIZE_12}
         weight="500"
@@ -96,6 +105,7 @@ const SessionCard = (props: ISessionCardProps) => {
         color={DEFAULT_THEME.dashGray}>
         {order?.street}
       </CustomText>
+
       <ModelRow>
         <Row style={{ width: '40%' }}>
           <IconContainer>
@@ -126,8 +136,12 @@ const SessionCard = (props: ISessionCardProps) => {
           </CustomText>
         </Row>
       </ModelRow>
+
       <Separator />
-      <RowBetween style={styles.timeLeftRow}>
+
+      <RowBetween
+        style={styles.timeLeftRow}
+      >
         <Row>
           <IconContainer>
             <TimeIcon />
@@ -147,8 +161,11 @@ const SessionCard = (props: ISessionCardProps) => {
           20m 50s
         </CustomText>
       </RowBetween>
+
       <RowBetween>
-        <Button style={styles.remindButton}>
+        <Button
+          style={styles.remindButton}
+        >
           <CustomText
             size={Typography.FONT_SIZE_16}
             weight="700"
@@ -156,7 +173,10 @@ const SessionCard = (props: ISessionCardProps) => {
             {translate('remindMe', TextTransform.CAPITALIZE)}
           </CustomText>
         </Button>
-        <Button style={styles.manageButton} onPress={onCardPress}>
+        <Button
+          style={styles.manageButton}
+          onPress={onCardPress}
+        >
           <CustomText
             size={Typography.FONT_SIZE_16}
             weight="700"
@@ -165,6 +185,7 @@ const SessionCard = (props: ISessionCardProps) => {
           </CustomText>
         </Button>
       </RowBetween>
+
     </Container>
   );
 };

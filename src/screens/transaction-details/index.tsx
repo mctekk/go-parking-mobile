@@ -36,6 +36,7 @@ import { ShareUtil } from 'utils';
 
 // Interfaces
 import { IParkingLocation, IParkingPrice } from 'core/interface/parking.interface';
+import { isAndroid } from 'utils/constants';
 
 export enum TRANSACTION_TYPE {
   BOOKING = 'booking',
@@ -179,7 +180,7 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
   return (
     <ViewContainer
       headerViewStyles={{
-        paddingTop: 80,
+        paddingTop: isAndroid ? 50 : 80,
       }}
     >
       <SafeAreaView />
@@ -214,24 +215,30 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
                 />
               </MapView>
             </MapContainer>
+
             <TopSectionContainer>
               <CustomText
                 size={Typography.FONT_SIZE_14}
+                lineHeight={Typography.FONT_SIZE_20}
                 weight="700"
                 style={{ marginBottom: 8 }}
                 color={DEFAULT_THEME.white}>
                 {parkingName}
               </CustomText>
               <CustomText
-                size={Typography.FONT_SIZE_10}
+                size={Typography.FONT_SIZE_12}
+                lineHeight={Typography.FONT_SIZE_20}
                 weight="500"
-                lineHeight={Typography.FONT_SIZE_14}
                 color={DEFAULT_THEME.white}>
                 {streetLocation}
               </CustomText>
             </TopSectionContainer>
           </TopContainer>
-          <DashLine color={DEFAULT_THEME.cardGray} />
+
+          <DashLine
+            color={DEFAULT_THEME.cardGray}
+          />
+
           <DetailsContainer>
             {rowsData?.map((rowData: any, index: number) => {
               return (
@@ -272,18 +279,19 @@ export const TransactionDetails = (props: ITransactionDetailsScreenProps) => {
               {`$${price.amount}`}
             </CustomText>
           </DetailRowContent>
-        </Content>
 
-        <BottomButton
-          onPress={handleButtonPress}
-          title={translate(getButtonLocale(), TextTransform.CAPITALIZE)}
-          textStyle={{
-            fontSize: Typography.FONT_SIZE_16,
-            lineHeight: Typography.FONT_SIZE_20,
-            fontWeight: '700',
-            color: DEFAULT_THEME.black,
-          }}
-        />
+          <BottomButton
+            onPress={handleButtonPress}
+            title={translate(getButtonLocale(), TextTransform.CAPITALIZE)}
+            textStyle={{
+              fontSize: Typography.FONT_SIZE_16,
+              lineHeight: Typography.FONT_SIZE_20,
+              fontWeight: '700',
+              color: DEFAULT_THEME.black,
+            }}
+          />
+
+        </Content>
       </Container>
     </ViewContainer>
   );

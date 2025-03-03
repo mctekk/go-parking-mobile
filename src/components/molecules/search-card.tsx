@@ -2,7 +2,7 @@
 
 // Modules
 import React, { useCallback, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 // Atoms
@@ -10,10 +10,13 @@ import { TextTransform, translate } from 'components/atoms/localized-label';
 import VehicleIcon from 'components/atoms/vehicle-icon';
 
 // Utils
-import { dummyVehicleTypes } from 'utils/dummy-data';
+import { isAndroid } from 'utils/constants';
 
 // Molecules
 import SearchBar from './search-bar';
+import Text from 'components/atoms/text';
+import { Typography } from 'styles';
+import { DEFAULT_THEME } from 'styles/theme';
 
 interface ISearchCardProps {
   onSearch: (text: string) => void;
@@ -21,16 +24,20 @@ interface ISearchCardProps {
 };
 
 const CardContainer = styled.View`
-  padding: 16px;
+  padding: ${isAndroid ? Dimensions.get('window').height / 50 : '16'}px;
+  background-color: ${DEFAULT_THEME.white};
   border-radius: 20px;
-  background-color: #fff;
   elevation: 5;
   margin-horizontal: 16px;
+  height: ${Dimensions.get('window').height / 7.5}px;
+  justify-content: center;
 `;
 
-const Title = styled.Text`
-  font-size: 18px;
-  font-weight: bold;
+const Title = styled(Text)`
+  font-size: ${Typography.FONT_SIZE_18}px;
+  line-height: ${Typography.LINE_HEIGHT_24}px;
+  color: ${DEFAULT_THEME.black};
+  font-weight: 700;
   margin-bottom: 8px;
 `;
 
@@ -94,6 +101,9 @@ export const SearchCard = (props: ISearchCardProps) => {
         onSubmitEditing={onSubmitEditing}
         searchInputStyle={{
           backgroundColor: 'rgba(238, 238, 238, 1)',
+        }}
+        style={{
+          color: DEFAULT_THEME.black,
         }}
       />
 

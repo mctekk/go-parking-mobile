@@ -14,6 +14,7 @@ import DashLine from 'components/atoms/dash-line';
 import { Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
 import { CarIcon, ClockIcon } from 'assets/icons';
+import { scaleSize } from 'styles/mixins';
 
 interface IHistoryCardProps {
   onPress?: () => void;
@@ -23,7 +24,7 @@ interface IHistoryCardProps {
 const Container = styled.TouchableOpacity`
   width: 100%;
   background-color: ${DEFAULT_THEME.cardGray};
-  padding: 20px;
+  padding: ${scaleSize(15)}px;
   margin-bottom: 10px;
   border-radius: 10px;
 `;
@@ -62,7 +63,10 @@ const IconContainer = styled.View`
   margin-right: 5px;
 `;
 
-const BottomSectionContainer = styled.View``;
+const BottomSectionContainer = styled.View`
+  flex: 1;
+  margin-left: 15px;
+`;
 
 const HistoryCard = (props: IHistoryCardProps) => {
   const { onPress, order } = props;
@@ -72,7 +76,9 @@ const HistoryCard = (props: IHistoryCardProps) => {
   };
 
   return (
-    <Container onPress={onCardPress}>
+    <Container
+      onPress={onCardPress}
+    >
       <TopContainer>
         <CustomText
           size={Typography.FONT_SIZE_15}
@@ -87,7 +93,9 @@ const HistoryCard = (props: IHistoryCardProps) => {
           28 July 2024
         </CustomText>
       </TopContainer>
+
       <DashLine color={DEFAULT_THEME.dashGray} />
+
       <BottomContainer>
         <MapContainer>
           <MapView
@@ -104,29 +112,37 @@ const HistoryCard = (props: IHistoryCardProps) => {
             }}
           />
         </MapContainer>
-        <BottomSectionContainer style={{ width: '48%' }}>
+
+        <BottomSectionContainer>
           <CustomText
             size={Typography.FONT_SIZE_14}
+            lineHeight={Typography.FONT_SIZE_18}
             weight="700"
             style={{ marginBottom: 8 }}
-            color={DEFAULT_THEME.white}>
+            color={DEFAULT_THEME.white}
+            numberOfLines={2}
+          >
             {order?.name}
           </CustomText>
           <CustomText
-            size={Typography.FONT_SIZE_10}
+            size={Typography.FONT_SIZE_12}
+            lineHeight={Typography.FONT_SIZE_16}
             weight="500"
-            lineHeight={Typography.FONT_SIZE_14}
-            color={DEFAULT_THEME.white}>
+            color={DEFAULT_THEME.white}
+            numberOfLines={2}
+          >
             {order?.street}
           </CustomText>
         </BottomSectionContainer>
-        <BottomSectionContainer style={{ width: '28%' }}>
+
+        <BottomSectionContainer>
           <IconRow>
             <IconContainer>
               <ClockIcon />
             </IconContainer>
             <CustomText
               size={Typography.FONT_SIZE_15}
+              lineHeight={Typography.FONT_SIZE_20}
               weight="600"
               color={DEFAULT_THEME.white}>
               {order?.duration_time}
@@ -134,10 +150,15 @@ const HistoryCard = (props: IHistoryCardProps) => {
           </IconRow>
           <IconRow>
             <IconContainer>
-              <CarIcon width={10} height={10} fill={DEFAULT_THEME.black} />
+              <CarIcon
+                width={10}
+                height={10}
+                fill={DEFAULT_THEME.black}
+              />
             </IconContainer>
             <CustomText
               size={Typography.FONT_SIZE_15}
+              lineHeight={Typography.FONT_SIZE_20}
               weight="600"
               color={DEFAULT_THEME.white}>
               EF479379

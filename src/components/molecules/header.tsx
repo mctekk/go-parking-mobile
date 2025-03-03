@@ -3,6 +3,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styled from 'styled-components/native';
+import is from 'styled-is';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 // Atoms
@@ -13,6 +14,8 @@ import CloseButton from 'components/atoms/close-button';
 // Styles
 import { Colors, Typography } from 'styles';
 import { DEFAULT_THEME } from 'styles/theme';
+import { isAndroid } from 'utils/constants';
+import { scaleSize } from 'styles/mixins';
 
 export interface IProps {
   title?: string;
@@ -31,9 +34,9 @@ export interface IProps {
   hasBackButton?: boolean;
 }
 
-const SCREEN_MARGIN = 20;
-const HEADER_HEIGHT = Platform.OS === 'ios' ? 80 : 50;
-const HEADER_PADDING_TOP = Platform.OS === 'ios' ? 30 : 1;
+const SCREEN_MARGIN = 0;
+const HEADER_HEIGHT = !isAndroid ? 60 : scaleSize(50);
+const HEADER_PADDING_TOP = 5;
 
 const Container = styled.View`
   width: 100%;
@@ -48,10 +51,10 @@ const Container = styled.View`
 
 // @ts-ignore
 const Title = styled(Text)`
+  width: 100%;
   color: ${Colors.WHITE};
   font-size: ${Typography.FONT_SIZE_20}px;
-  line-height: ${Typography.LINE_HEIGHT_24}px;
-  width: 200px;
+  line-height: ${Typography.FONT_SIZE_27}px;
 `;
 
 const CustomHeader = styled.View`
@@ -99,7 +102,10 @@ const Header = (props: IProps) => {
   };
 
   return (
-    <Container style={style}>
+    <Container
+      style={style}
+      isAndroid={isAndroid}
+    >
       {leftButtonComponent ? (
         <>{leftButtonComponent}</>
       ) : (

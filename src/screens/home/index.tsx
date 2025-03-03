@@ -33,6 +33,7 @@ import SearchCard from 'components/molecules/search-card';
 import ParkingList from 'components/organisms/parking-list';
 import MapIcon from 'assets/icons/map-icon';
 import { isAndroid } from 'utils/constants';
+import { Dimensions } from 'react-native';
 
 // Interfaces
 interface IHomeProps {
@@ -96,7 +97,7 @@ export const Home = (props: IHomeProps) => {
   return (
     <ViewContainer
       headerViewStyles={{ 
-        height: isAndroid ? '25%' : '35%',
+        height: isAndroid ? Dimensions.get('window').height / 4 : '35%',
 
        }}
        contentViewStyles={{
@@ -107,7 +108,7 @@ export const Home = (props: IHomeProps) => {
     >
       <ParkingList
         ListHeaderComponent={ListHeaderComponent}
-        contentContainerStyle={{ 
+        contentContainerStyle={{
           padding: 20,
           paddingBottom: 80,
          }}

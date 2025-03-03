@@ -8,6 +8,8 @@ import { Colors, Typography } from 'styles';
 // Molecules
 import Header from 'components/molecules/header';
 import Button from 'components/atoms/button';
+import { scaleSize } from 'styles/mixins';
+import { isAndroid } from 'utils/constants';
 
 export const Container = styled.View`
   flex: 1;
@@ -26,11 +28,11 @@ export const DetailRowContent = styled.View`
 
 export const DetailRow = styled.View``;
 
-export const ScreenHeader = styled(Header)`
-  background-color: ${DEFAULT_THEME.transparent};
-`;
+export const ScreenHeader = styled(Header)``;
 
-export const Content = styled.ScrollView``;
+export const Content = styled.ScrollView`
+  padding-bottom: 150px;
+`;
 
 export const Title = styled.Text`
   font-size: ${Typography.FONT_SIZE_24}px;
@@ -59,7 +61,8 @@ export const IconContainer = styled.TouchableOpacity`
 
 export const TopContainer = styled.View`
   flex-direction: row;
-  margin-bottom: 20px;
+  margin-top: ${isAndroid ? scaleSize(15) : scaleSize(10)}px;
+  margin-bottom: ${isAndroid ? scaleSize(25) : scaleSize(20)}px;
   align-items: center;
 `;
 
@@ -71,6 +74,7 @@ export const MapContainer = styled.View`
 `;
 
 export const TopSectionContainer = styled.View`
+  flex: 1;
   margin-left: 20px;
 `;
 
@@ -79,8 +83,7 @@ export const BottomButton = styled(Button)`
   background-color: ${DEFAULT_THEME.primary};
   border-radius: 50px;
   align-items: center;
-  position: absolute;
   align-self: center;
-  bottom: 50px;
-  margin-top: 0px;
+  margin-top: ${scaleSize(100)}px;  
+  margin-bottom: 50px;
 `;

@@ -159,25 +159,26 @@ const LineTextInput = ({
       isFocused={isFocused}
       style={containerStyle}
     >
-
-      <IconContainer
-        style={{ marginRight: 2 }}
-      >
-        {customLeftIcon ? (
-          <>
-            {customLeftIcon()}
-          </>
-        ) : (
-          <IconButton
-            iconType={leftIconType}
-            name={leftIconName}
-            size={leftIconSize}
-            color={leftIconColor}
-            backgroundColor={backgroundColor}
-            onPress={() => togglePasswordVisibility(!showPassword)}
-          />
-        )}
-      </IconContainer>
+      {leftIconName || customLeftIcon && (
+        <IconContainer
+          style={{ marginRight: 2 }}
+        >
+          {customLeftIcon ? (
+            <>
+              {customLeftIcon()}
+            </>
+          ) : (
+            <IconButton
+              iconType={leftIconType}
+              name={leftIconName}
+              size={leftIconSize}
+              color={leftIconColor}
+              backgroundColor={backgroundColor}
+              onPress={() => togglePasswordVisibility(!showPassword)}
+            />
+          )}
+        </IconContainer>
+      )}
 
       <TextInput
         ref={customRef}

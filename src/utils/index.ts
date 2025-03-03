@@ -54,3 +54,16 @@ export const getFormattedRemainingTime = (milliseconds: number) => {
   const formattedTime = moment.utc(milliseconds).format('HH:mm:ss');
   return formattedTime;
 };
+
+export const getCardTypeImage = (cardType: string) => {
+  switch (cardType) {
+    case 'visa':
+      return require('assets/images/card-types/visa.png');
+    case 'mastercard':
+      return require('assets/images/card-types/master_card.png');
+    case 'amex':
+      return require('assets/images/card-types/amex.png');
+      default:
+        return '';
+  }
+};
