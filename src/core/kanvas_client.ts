@@ -6,7 +6,6 @@ import Config from 'react-native-config';
 // Constants
 import { AUTH_TOKEN } from 'utils/constants';
 
-
 const getToken = async () => {
   const token = await AsyncStorage.getItem(AUTH_TOKEN);
   return token;
@@ -27,10 +26,9 @@ export const client = new KanvasCore({
   middlewares: [genericAuthMiddleware(getToken)],
 });
 
-
 /**
  * Creates an instance of KanvasCore configured for admin access.
- * 
+ *
  * @constant {KanvasCore} adminClient - The KanvasCore instance configured with admin credentials.
  * @param {string} url - The URL of the Kanvas service, retrieved from Config.KANVAS_URL.
  * @param {string} key - The API key for the Kanvas service, retrieved from Config.KANVAS_KEY.
@@ -41,5 +39,5 @@ export const adminClient = new KanvasCore({
   url: `${Config.KANVAS_URL}`,
   key: `${Config.KANVAS_KEY}`,
   middlewares: [genericAuthMiddleware(getToken)],
-  adminKey: `${Config.ADMIN_KEY}`,
+  adminKey: `${Config.KANVAS_ADMIN_KEY}`,
 });

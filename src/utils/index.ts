@@ -63,7 +63,24 @@ export const getCardTypeImage = (cardType: string) => {
       return require('assets/images/card-types/master_card.png');
     case 'amex':
       return require('assets/images/card-types/amex.png');
-      default:
-        return '';
+    default:
+      return '';
   }
+};
+
+/**
+ * Handle the attributes from the kanvas data
+ * @param data - The kanvas data to handle
+ * @returns A data object with the attributes as properties
+ */
+export const handleProductAttributes = (data: any) => {
+  let new_data = { ...data };
+  const attributes = data?.attributes;
+  attributes.forEach((item: { name: string | number; value: any }) => {
+    new_data[item.name] = item.value;
+  });
+  new_data['price'] = {
+    amount: data?.variants[0]?.channel?.price,
+  };
+  return new_data;
 };
