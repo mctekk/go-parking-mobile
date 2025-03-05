@@ -44,9 +44,9 @@ const TabIcon = (props: IProps) => {
   const navigation = useNavigation();
 
   // Context
-  const { userData } = useContext(UserContext)
+  const { userData } = useContext(UserContext);
 
-  const tintColor = focused ? 'rgba(248, 215, 58, 1)' : 'rgba(170, 170, 170, 1)';
+  const tintColor = focused ? DEFAULT_THEME.primary : 'rgba(170, 170, 170, 1)';
 
   switch (name) {
     case 'home':

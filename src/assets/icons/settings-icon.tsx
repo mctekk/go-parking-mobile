@@ -1,11 +1,12 @@
 import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
+import { DEFAULT_THEME } from 'styles/theme';
 
 
 const SettingsIcon = (props: SvgProps) => {
 
   const {
-    fill = '#F8D73A',
+    fill = DEFAULT_THEME.primary,
     width = 24,
     height = 25,
   } = props;

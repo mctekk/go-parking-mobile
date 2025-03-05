@@ -205,7 +205,7 @@ const ListItme = (props: IListItmeProps) => {
     >
       <ItemWrapper>
         <ItemIconContainer>
-          <Icon fill={'#F8D73A'} />
+          <Icon fill={DEFAULT_THEME.primary} />
         </ItemIconContainer>
         <ItemText>{name}</ItemText>
       </ItemWrapper>
