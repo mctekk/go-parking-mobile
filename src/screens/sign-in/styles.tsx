@@ -28,7 +28,7 @@ export const Wrapper = styled.View`
 export const Title = styled(Text)`
   font-size: ${Typography.FONT_SIZE_36}px;
   line-height: ${Typography.FONT_SIZE_40}px;
-  font-weight: bold;
+  font-weight: 700;
   color: rgba(0, 0, 0, 1);
 `;
 

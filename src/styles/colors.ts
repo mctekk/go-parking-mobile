@@ -17,3 +17,5 @@ export const TITLE_GRAY = '#CCCCCC';
 export const LIGHT_GRAY = '#AAAAAA';
 export const DISABLED_GRAY = '#222222';
 export const DARK_YELLOW = '#C7A502';
+export const DARK_GREEN = 'rgba(40, 180, 94, 0.5)';
+export const DARK_BORDER_PRIMARY = 'rgba(40, 180, 94, 0.50)';
