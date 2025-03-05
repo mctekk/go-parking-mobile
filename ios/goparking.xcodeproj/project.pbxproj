@@ -11,9 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		78FE7533C6AFFADAD267A906 /* libPods-goparking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C66E9D7FDAFEA01CCAD1BC0 /* libPods-goparking.a */; };
+		1A952800ABB198D1EDCD740E /* libPods-goparking-goparkingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C046E8EEFD34E847DA2E2B /* libPods-goparking-goparkingTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		BA66D9E51C7870FC290FB761 /* libPods-goparking-goparkingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8755CEEA1EEAD3B8F9711366 /* libPods-goparking-goparkingTests.a */; };
+		D56AE3E6240A553786582D40 /* libPods-goparking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CF3E9C0A87988374238AA6 /* libPods-goparking.a */; };
 		F0C119F3D85EDF712CEC7E75 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 23408D82A08230B4131A4AEB /* PrivacyInfo.xcprivacy */; };
 		F6F6F8532BE13F7000021CB1 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = F6F6F8522BE13F7000021CB1 /* Fonts */; };
 		F6F6F8562BE1480F00021CB1 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F6F8552BE1480F00021CB1 /* File.swift */; };
@@ -39,23 +39,23 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = goparking/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = goparking/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = goparking/main.m; sourceTree = "<group>"; };
-		1417B799D207B49F67E7D70B /* Pods-goparking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.release.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.release.xcconfig"; sourceTree = "<group>"; };
-		19621E9AE2E3438768AF50BD /* Pods-goparking-goparkingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.release.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.release.xcconfig"; sourceTree = "<group>"; };
+		13C046E8EEFD34E847DA2E2B /* libPods-goparking-goparkingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-goparking-goparkingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23408D82A08230B4131A4AEB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = goparking/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		3D964F7160C3195A0969AB31 /* Pods-goparking.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.prod.debug.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.prod.debug.xcconfig"; sourceTree = "<group>"; };
-		42B03D6E6778D51DECCF4BD8 /* Pods-goparking.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.prod.release.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.prod.release.xcconfig"; sourceTree = "<group>"; };
-		447CE11C47CD78200C4D6DCE /* Pods-goparking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.debug.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.debug.xcconfig"; sourceTree = "<group>"; };
-		687EFF98BD420C6AA1B5FD1E /* Pods-goparking.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.dev.debug.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.dev.debug.xcconfig"; sourceTree = "<group>"; };
-		7C66E9D7FDAFEA01CCAD1BC0 /* libPods-goparking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-goparking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7ED3A0BF20B788DE84031256 /* Pods-goparking-goparkingTests.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.prod.debug.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.prod.debug.xcconfig"; sourceTree = "<group>"; };
+		24A9CB97175D8E02500307DA /* Pods-goparking-goparkingTests.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.dev.debug.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.dev.debug.xcconfig"; sourceTree = "<group>"; };
+		34B8CBC4C4B08BF2FC06E2DA /* Pods-goparking.dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.dev.release.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.dev.release.xcconfig"; sourceTree = "<group>"; };
+		45CF3E9C0A87988374238AA6 /* libPods-goparking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-goparking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DFA997AE51D3516E64D5094 /* Pods-goparking.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.prod.release.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.prod.release.xcconfig"; sourceTree = "<group>"; };
+		50D442DDDDC2E7C4FCB26CB8 /* Pods-goparking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.debug.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.debug.xcconfig"; sourceTree = "<group>"; };
+		53DC5F970BF8C21F7A166781 /* Pods-goparking-goparkingTests.dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.dev.release.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.dev.release.xcconfig"; sourceTree = "<group>"; };
+		71933AB16A9622A61052492F /* Pods-goparking-goparkingTests.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.prod.release.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.prod.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = goparking/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		81F10004AC6D62F4089E3DA3 /* Pods-goparking-goparkingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.debug.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.debug.xcconfig"; sourceTree = "<group>"; };
-		8755CEEA1EEAD3B8F9711366 /* libPods-goparking-goparkingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-goparking-goparkingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A84EAA3FC68590D5781714F0 /* Pods-goparking.dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.dev.release.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.dev.release.xcconfig"; sourceTree = "<group>"; };
-		C8AD718B5F3154EE8E992780 /* Pods-goparking-goparkingTests.dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.dev.release.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.dev.release.xcconfig"; sourceTree = "<group>"; };
-		CE297DF8D75FFE2381F680EC /* Pods-goparking-goparkingTests.prod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.prod.release.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.prod.release.xcconfig"; sourceTree = "<group>"; };
+		826BC033C3376CCE4F4889F5 /* Pods-goparking-goparkingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.debug.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		88C1F4B45FD38A03044103A5 /* Pods-goparking.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.prod.debug.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.prod.debug.xcconfig"; sourceTree = "<group>"; };
+		8B7E47B5A19E0FD31EEE7756 /* Pods-goparking-goparkingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.release.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.release.xcconfig"; sourceTree = "<group>"; };
+		9181F6018A17252051822E55 /* Pods-goparking.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.dev.debug.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.dev.debug.xcconfig"; sourceTree = "<group>"; };
+		942F806A2556903D6D2E98E9 /* Pods-goparking-goparkingTests.prod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.prod.debug.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.prod.debug.xcconfig"; sourceTree = "<group>"; };
+		9475427D0E0F70C5A0D7178A /* Pods-goparking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking.release.xcconfig"; path = "Target Support Files/Pods-goparking/Pods-goparking.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F641008A793CBFC166CB9ED8 /* Pods-goparking-goparkingTests.dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goparking-goparkingTests.dev.debug.xcconfig"; path = "Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests.dev.debug.xcconfig"; sourceTree = "<group>"; };
 		F6F6F8522BE13F7000021CB1 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
 		F6F6F8542BE1480E00021CB1 /* goparking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "goparking-Bridging-Header.h"; sourceTree = "<group>"; };
 		F6F6F8552BE1480F00021CB1 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA66D9E51C7870FC290FB761 /* libPods-goparking-goparkingTests.a in Frameworks */,
+				1A952800ABB198D1EDCD740E /* libPods-goparking-goparkingTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78FE7533C6AFFADAD267A906 /* libPods-goparking.a in Frameworks */,
+				D56AE3E6240A553786582D40 /* libPods-goparking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,8 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7C66E9D7FDAFEA01CCAD1BC0 /* libPods-goparking.a */,
-				8755CEEA1EEAD3B8F9711366 /* libPods-goparking-goparkingTests.a */,
+				45CF3E9C0A87988374238AA6 /* libPods-goparking.a */,
+				13C046E8EEFD34E847DA2E2B /* libPods-goparking-goparkingTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,18 +161,18 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				447CE11C47CD78200C4D6DCE /* Pods-goparking.debug.xcconfig */,
-				687EFF98BD420C6AA1B5FD1E /* Pods-goparking.dev.debug.xcconfig */,
-				3D964F7160C3195A0969AB31 /* Pods-goparking.prod.debug.xcconfig */,
-				1417B799D207B49F67E7D70B /* Pods-goparking.release.xcconfig */,
-				A84EAA3FC68590D5781714F0 /* Pods-goparking.dev.release.xcconfig */,
-				42B03D6E6778D51DECCF4BD8 /* Pods-goparking.prod.release.xcconfig */,
-				81F10004AC6D62F4089E3DA3 /* Pods-goparking-goparkingTests.debug.xcconfig */,
-				F641008A793CBFC166CB9ED8 /* Pods-goparking-goparkingTests.dev.debug.xcconfig */,
-				7ED3A0BF20B788DE84031256 /* Pods-goparking-goparkingTests.prod.debug.xcconfig */,
-				19621E9AE2E3438768AF50BD /* Pods-goparking-goparkingTests.release.xcconfig */,
-				C8AD718B5F3154EE8E992780 /* Pods-goparking-goparkingTests.dev.release.xcconfig */,
-				CE297DF8D75FFE2381F680EC /* Pods-goparking-goparkingTests.prod.release.xcconfig */,
+				50D442DDDDC2E7C4FCB26CB8 /* Pods-goparking.debug.xcconfig */,
+				9181F6018A17252051822E55 /* Pods-goparking.dev.debug.xcconfig */,
+				88C1F4B45FD38A03044103A5 /* Pods-goparking.prod.debug.xcconfig */,
+				9475427D0E0F70C5A0D7178A /* Pods-goparking.release.xcconfig */,
+				34B8CBC4C4B08BF2FC06E2DA /* Pods-goparking.dev.release.xcconfig */,
+				4DFA997AE51D3516E64D5094 /* Pods-goparking.prod.release.xcconfig */,
+				826BC033C3376CCE4F4889F5 /* Pods-goparking-goparkingTests.debug.xcconfig */,
+				24A9CB97175D8E02500307DA /* Pods-goparking-goparkingTests.dev.debug.xcconfig */,
+				942F806A2556903D6D2E98E9 /* Pods-goparking-goparkingTests.prod.debug.xcconfig */,
+				8B7E47B5A19E0FD31EEE7756 /* Pods-goparking-goparkingTests.release.xcconfig */,
+				53DC5F970BF8C21F7A166781 /* Pods-goparking-goparkingTests.dev.release.xcconfig */,
+				71933AB16A9622A61052492F /* Pods-goparking-goparkingTests.prod.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -184,12 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "goparkingTests" */;
 			buildPhases = (
-				E230D48E952A776F6ABD0A5F /* [CP] Check Pods Manifest.lock */,
+				DF25E8BEEE8D261A244FC189 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				26905EE462393CF54BDD5A3F /* [CP] Embed Pods Frameworks */,
-				0F6700F4C8BC80202A8F8D53 /* [CP] Copy Pods Resources */,
+				68B20652B3E14214496A73CA /* [CP] Embed Pods Frameworks */,
+				D5E35A95026AF04F077AC550 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,15 +205,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "goparking" */;
 			buildPhases = (
-				3B4DF8E5F26BD555D43601F2 /* [CP] Check Pods Manifest.lock */,
+				41A0859758CA9BD249651377 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				C209D072A7DE8E526DC12588 /* [CP] Embed Pods Frameworks */,
-				C65C34556E5CE25A46380BAF /* [CP] Copy Pods Resources */,
 				BDBE00C5ACDA4A109A697378 /* Upload Debug Symbols to Sentry */,
+				0760EB837444C97BCBDAA78D /* [CP] Embed Pods Frameworks */,
+				524A598CFFB408A7A342BBC3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,41 +298,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT \\\"/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode.sh $REACT_NATIVE_XCODE\\\"\"\n";
 		};
-		0F6700F4C8BC80202A8F8D53 /* [CP] Copy Pods Resources */ = {
+		0760EB837444C97BCBDAA78D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		26905EE462393CF54BDD5A3F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-goparking/Pods-goparking-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-goparking/Pods-goparking-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goparking/Pods-goparking-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3B4DF8E5F26BD555D43601F2 /* [CP] Check Pods Manifest.lock */ = {
+		41A0859758CA9BD249651377 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -354,38 +337,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BDBE00C5ACDA4A109A697378 /* Upload Debug Symbols to Sentry */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Upload Debug Symbols to Sentry";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode-debug-files.sh";
-		};
-		C209D072A7DE8E526DC12588 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goparking/Pods-goparking-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goparking/Pods-goparking-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goparking/Pods-goparking-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C65C34556E5CE25A46380BAF /* [CP] Copy Pods Resources */ = {
+		524A598CFFB408A7A342BBC3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -402,7 +354,55 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goparking/Pods-goparking-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E230D48E952A776F6ABD0A5F /* [CP] Check Pods Manifest.lock */ = {
+		68B20652B3E14214496A73CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDBE00C5ACDA4A109A697378 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh ../node_modules/@sentry/react-native/scripts/sentry-xcode-debug-files.sh";
+		};
+		D5E35A95026AF04F077AC550 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goparking-goparkingTests/Pods-goparking-goparkingTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF25E8BEEE8D261A244FC189 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -477,7 +477,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81F10004AC6D62F4089E3DA3 /* Pods-goparking-goparkingTests.debug.xcconfig */;
+			baseConfigurationReference = 826BC033C3376CCE4F4889F5 /* Pods-goparking-goparkingTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -505,7 +505,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19621E9AE2E3438768AF50BD /* Pods-goparking-goparkingTests.release.xcconfig */;
+			baseConfigurationReference = 8B7E47B5A19E0FD31EEE7756 /* Pods-goparking-goparkingTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -530,9 +530,9 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 447CE11C47CD78200C4D6DCE /* Pods-goparking.debug.xcconfig */;
+			baseConfigurationReference = 50D442DDDDC2E7C4FCB26CB8 /* Pods-goparking.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
+				ASSETCATALOG_COMPILER_APPICON_NAME = NewAppIconDev;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -567,9 +567,9 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1417B799D207B49F67E7D70B /* Pods-goparking.release.xcconfig */;
+			baseConfigurationReference = 9475427D0E0F70C5A0D7178A /* Pods-goparking.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = NewAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -830,9 +830,9 @@
 		};
 		F69F42AE2C5AF23700580BE8 /* Prod.Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3D964F7160C3195A0969AB31 /* Pods-goparking.prod.debug.xcconfig */;
+			baseConfigurationReference = 88C1F4B45FD38A03044103A5 /* Pods-goparking.prod.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = NewAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -867,7 +867,7 @@
 		};
 		F69F42AF2C5AF23700580BE8 /* Prod.Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7ED3A0BF20B788DE84031256 /* Pods-goparking-goparkingTests.prod.debug.xcconfig */;
+			baseConfigurationReference = 942F806A2556903D6D2E98E9 /* Pods-goparking-goparkingTests.prod.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -973,9 +973,9 @@
 		};
 		F69F42B12C5AF24300580BE8 /* Dev.Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 687EFF98BD420C6AA1B5FD1E /* Pods-goparking.dev.debug.xcconfig */;
+			baseConfigurationReference = 9181F6018A17252051822E55 /* Pods-goparking.dev.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
+				ASSETCATALOG_COMPILER_APPICON_NAME = NewAppIconDev;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1010,7 +1010,7 @@
 		};
 		F69F42B22C5AF24300580BE8 /* Dev.Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F641008A793CBFC166CB9ED8 /* Pods-goparking-goparkingTests.dev.debug.xcconfig */;
+			baseConfigurationReference = 24A9CB97175D8E02500307DA /* Pods-goparking-goparkingTests.dev.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1109,9 +1109,9 @@
 		};
 		F69F42B42C5AF24D00580BE8 /* Prod.Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 42B03D6E6778D51DECCF4BD8 /* Pods-goparking.prod.release.xcconfig */;
+			baseConfigurationReference = 4DFA997AE51D3516E64D5094 /* Pods-goparking.prod.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = NewAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1144,7 +1144,7 @@
 		};
 		F69F42B52C5AF24D00580BE8 /* Prod.Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE297DF8D75FFE2381F680EC /* Pods-goparking-goparkingTests.prod.release.xcconfig */;
+			baseConfigurationReference = 71933AB16A9622A61052492F /* Pods-goparking-goparkingTests.prod.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1240,9 +1240,9 @@
 		};
 		F69F42B72C5AF25600580BE8 /* Dev.Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A84EAA3FC68590D5781714F0 /* Pods-goparking.dev.release.xcconfig */;
+			baseConfigurationReference = 34B8CBC4C4B08BF2FC06E2DA /* Pods-goparking.dev.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
+				ASSETCATALOG_COMPILER_APPICON_NAME = NewAppIconDev;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = goparking/goparking.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1275,7 +1275,7 @@
 		};
 		F69F42B82C5AF25600580BE8 /* Dev.Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8AD718B5F3154EE8E992780 /* Pods-goparking-goparkingTests.dev.release.xcconfig */;
+			baseConfigurationReference = 53DC5F970BF8C21F7A166781 /* Pods-goparking-goparkingTests.dev.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
