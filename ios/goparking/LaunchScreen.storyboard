@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-x3-pnp">
-                                <rect key="frame" x="5" y="232" width="364" height="202"/>
+                                <rect key="frame" x="35" y="242" width="304" height="190"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
@@ -33,7 +33,7 @@
     </scenes>
     <color key="tintColor" systemColor="secondarySystemBackgroundColor"/>
     <resources>
-        <image name="Splash" width="257.5" height="256"/>
+        <image name="Splash" width="1601" height="256.5"/>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
