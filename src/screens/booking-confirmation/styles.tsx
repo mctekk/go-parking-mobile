@@ -28,7 +28,7 @@ export const CheckCircle = styled.View`
   height:${scaleSize(100)}px;
   border-radius: 80px;
   border-width: 7px;
-  border-color: rgba(255, 184, 0, 0.74);
+  border-color: ${DEFAULT_THEME.darkBorderPrimary};
 `;
 
 export const Title = styled(Text)`

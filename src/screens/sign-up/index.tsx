@@ -7,7 +7,7 @@ import React, { useContext, useState } from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Alert, Image, Platform } from 'react-native';
+import { Alert, Image, Platform, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Atoms
@@ -49,6 +49,7 @@ import authService from 'core/services/auth-service';
 import UserIcon from 'assets/icons/user-icon';
 import LockIcon from 'assets/icons/lock-icon';
 import LoadingModal from 'components/molecules/modals/loading-modal';
+import { DEFAULT_THEME } from 'styles/theme';
 
 // Interfaces
 interface ISignUpProps {
@@ -142,14 +143,17 @@ export const SignUp = (props: ISignUpProps) => {
 
   return (
     <Container>
+      <StatusBar barStyle={'dark-content'} />
 
       <Image
-        source={require('assets/images/go_parking_logo.png')}
+        source={require('assets/images/go-parking-logo-v2.png')}
+        resizeMode="contain"
         style={{
-          width: 180,
-          height: 180,
+          width: 250,
+          height: 100,
           alignSelf: 'center',
-          marginTop: 50,
+          marginTop: 80,
+          marginBottom: 30,
         }}
       />
 
@@ -260,7 +264,7 @@ export const SignUp = (props: ISignUpProps) => {
         <SignUpText>
           {translate('alreadyHaveAnAccount', TextTransform.CAPITALIZE)} {' '}
           <SignUpText
-            style={{ color: 'rgba(199, 165, 2, 1)', fontWeight: 'bold' }}
+            style={{ color: DEFAULT_THEME.primary, fontWeight: 'bold' }}
           >
             {translate('login', TextTransform.CAPITALIZE)}
           </SignUpText>

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
+import { DEFAULT_THEME } from 'styles/theme';
 
 const ScooterIcon = (props: SvgProps) => {
 
   const {
-    fill = '#F8D73A',
+    fill = DEFAULT_THEME.primary,
     width = 18,
     height = 16,
   } = props;

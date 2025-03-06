@@ -16,6 +16,7 @@ interface ColorTheme {
   disabledPayment: string;
   darkPrimary: string;
   selectArrow: string;
+  darkBorderPrimary: string;
 }
 export const DEFAULT_THEME: ColorTheme = {
   primary: Colors.PRIMARY,
@@ -32,7 +33,8 @@ export const DEFAULT_THEME: ColorTheme = {
   dashGray: Colors.LIGHT_GRAY,
   disabledPayment: Colors.DISABLED_GRAY,
   selectArrow: Colors.DISABLED_GRAY,
-  darkPrimary: Colors.DARK_YELLOW,
+  darkPrimary: Colors.DARK_GREEN,
+  darkBorderPrimary: Colors.DARK_BORDER_PRIMARY,
 };
 
 // export const theme = {

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
+import { DEFAULT_THEME } from 'styles/theme';
 
 const TabHomeIcon = (props: SvgProps) => {
 
   const {
     width = 24,
     height = 24,
-    fill = '#F8D73A',
+    fill = DEFAULT_THEME.primary,
   } = props;
 
   return (

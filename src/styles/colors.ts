@@ -1,4 +1,4 @@
-export const PRIMARY = 'rgba(248, 215, 58, 1)';
+export const PRIMARY = 'rgba(40, 180, 94, 1)';
 export const SECONDARY = 'rgba(45, 45, 45, 1)';
 export const PRIMARY_CLEAR = 'rgba(17, 24, 39, 0.2)';
 export const BLACK = '#000000';
@@ -17,3 +17,5 @@ export const TITLE_GRAY = '#CCCCCC';
 export const LIGHT_GRAY = '#AAAAAA';
 export const DISABLED_GRAY = '#222222';
 export const DARK_YELLOW = '#C7A502';
+export const DARK_GREEN = 'rgba(40, 180, 94, 0.5)';
+export const DARK_BORDER_PRIMARY = 'rgba(40, 180, 94, 0.50)';

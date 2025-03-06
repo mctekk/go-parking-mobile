@@ -51,6 +51,8 @@ import { AuthContext } from 'components/context/auth-context';
 import styled from 'styled-components/native';
 import UserIcon from 'assets/icons/user-icon';
 import LockIcon from 'assets/icons/lock-icon';
+import { DEFAULT_THEME } from 'styles/theme';
+import { StatusBar } from 'react-native';
 
 
 
@@ -134,14 +136,16 @@ export const SignIn = (props: ISignInProps) => {
 
   return (
     <Container>
-
+      <StatusBar barStyle={'dark-content'} />
       <Image
-        source={require('assets/images/go_parking_logo.png')}
+        source={require('assets/images/go-parking-logo-v2.png')}
+        resizeMode="contain"
         style={{
-          width: 180,
-          height: 180,
+          width: 250,
+          height: 100,
           alignSelf: 'center',
           marginTop: 50,
+          marginBottom: 30,
         }}
       />
 
@@ -252,7 +256,7 @@ export const SignIn = (props: ISignInProps) => {
         <SignUpText>
           {translate('notAMember', TextTransform.CAPITALIZE)} {' '}
           <SignUpText
-            style={{ color: 'rgba(199, 165, 2, 1)', fontWeight: 'bold' }}
+            style={{ color: DEFAULT_THEME.primary, fontWeight: 'bold' }}
           >
             {translate('registerNow', TextTransform.CAPITALIZE)}
           </SignUpText>
